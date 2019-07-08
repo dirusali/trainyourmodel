@@ -8,4 +8,4 @@ class DataFileAdmin(admin.ModelAdmin):
     list_filter = ('title',)
     
                     
-admin.site.register(DataField,DataFieldAdmin)
+admin.site.register(DataFile,DataFileAdmin)
