@@ -23,12 +23,3 @@ urlpatterns = [
 # Serve media like categories picture
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns
-
-handler404 = portal_views.error404
-handler500 = portal_views.error500   
