@@ -1,4 +1,4 @@
-
+from django.conf.urls import include, url
 from django.views.generic import TemplateView
 #nuevo para redirecciones de url
 from django.views.generic.base import RedirectView
