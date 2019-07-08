@@ -27,48 +27,9 @@
   
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="{% static 'images/favicon/ms-icon-144x144.png' %}">
-<title>{% block title %}The Best 5{% endblock %}</title>
-{% block meta %}<link rel="publisher" href="https://plus.google.com/u/0/115567898557132319434" />{% endblock %}
-<script>
-  dataLayer = [];
-</script>
-{% comment %}<!-- Google Tag Manager -->{% endcomment %}
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5Z2PWFQ');</script>
-{% comment %}<!-- End Google Tag Manager -->{% endcomment %}
+<title>{% block title %}Machine Learning as a Service 5{% endblock %}</title>
 
-{% comment %}<!-- For Admitad affiliation network -->{% endcomment %}
-<meta name="verify-admitad" content="376e0c1f16" />
-{% comment %}<!-- For Zanox affiliation network -->{% endcomment %}
-<meta name="verification" content="fc86394353de3fcac7ff2c76b3800123" />
-<meta name="google-site-verification" content="o3kkJc1Tv0ks3i50VwYl9MxqkIVkjv3DuHGqDI1Uj3w" />
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-102150447-2');
-  </script>
-  <meta name="theme-color" content="#ffffff">
-  {% comment %}<!-- Facebook Pixel Code -->{% endcomment %}
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window,document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-     fbq('init', '1834454873475427');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" src="https://www.facebook.com/tr?id=1834454873475427&ev=PageView&noscript=1"/>
-  </noscript>
-{% comment %}<!-- End Facebook Pixel Code -->{% endcomment %}
+
 <script src="{% static 'best5/js/jquery-3.3.1.min.js' %}"></script>
 {% if is_home %}
   <script src="{% static 'best5/js/owl.carousel.min.js' %}"></script>
@@ -96,14 +57,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="main-1">
         <img src="{% static 'images/logo-white.png' %}" alt="Logo Thebest5" width="200" class="logo" />
         <ul>
-          <li><a href="https://{{request.get_host}}/registrar-tienda/">Registrar tienda</a></li>
-          <li><a href="https://{{request.get_host}}/como-funciona/" title="Ver cómo funciona el recomendador The Best 5">¿Cómo funciona?</a></li>
-          <li><a href="https://{{request.get_host}}/tiendas-thebest5/" title="Ver tiendas de The Best 5">Ver todas las tiendas</a></li>
-          <li><a href="https://{{request.get_host}}/preguntas-frecuentes/" title="Preguntas frecuentes acerca de The Best 5">FAQ</a></li>
-          <li><a href="https://www.thebest5.es/blog/" target="_blank" title="Ir al Blog The Best 5">Blog</a></li>
-          <li><a href="https://{{request.get_host}}/politica-de-privacidad/" rel="nofollow">Política de privacidad</a></li>
-          <li><a href="https://{{request.get_host}}/terminos-y-condiciones/" rel="nofollow">Términos y condiciones</a></li>
-          <li><a href="https://{{request.get_host}}/contacto/" rel="nofollow">Contacto</a></li>
+          <li><a href="https://{{request.get_host}}/classification/">Classify Variables</a></li>
+          <li><a href="https://{{request.get_host}}/clustering/" >Cluster Variables</a></li>
+          <li><a href="https://{{request.get_host}}/categorical/">Categorical</a></li>
+          <li><a href="https://{{request.get_host}}/how-it-works/" title="how it works">How it works</a></li>
+          <li><a href="https://www.ml-saas.com/blog/" target="_blank" title="Go to blog">Blog</a></li>
+          <li><a href="https://{{request.get_host}}/privacy/" rel="nofollow">Privacy</a></li>
+          <li><a href="https://{{request.get_host}}/terms/" rel="nofollow">Terms and conditions</a></li>
+          <li><a href="https://{{request.get_host}}/contact/" rel="nofollow">Contact</a></li>
         </ul>
       </div>
       <div class="main-2">
@@ -147,66 +108,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div style="text-align:center;font-size:12px;padding:25px 40px 5px 35px;color: #d1ecde;margin-bottom: -30px;">*Los precios se indican en Euros e incluyen IVA, pero no los gastos de envío. Puede haber cambios en el precio, la clasificación, las disponibilidad y los gastos. El precio final será, en todo caso, aquel mostrado en las webs a las que redirigimos.</div>
   </div>
   <div class="copy">
-    <div class="container">
-      <p>@The Best 5 {{current_anno}}</p>
-      <ul class="social">
-        <li><a href="https://www.instagram.com/thebest5spain/" class="instagram" target="_blank"><span class="fab fa-instagram"></span></a></li>
-        <li><a href="https://www.facebook.com/thebest5spain/" target="_blank" class="facebook"><span class="fab fa-facebook-f"></span></a></li>
-        <li><a href="https://plus.google.com/u/0/115567898557132319434" target="_blank"  class="google"><span class="fab fa-google-plus-g"></span></a></li>
-      </ul>
-    </div>
-  </div>
   <a href="#" class="scroll-top"></a>
 </footer>
 {% comment %}<!-- tab newsletter -->{% endcomment %}
-<div class="tab-newsletter">
-  <a href="#" data-fancybox data-src="#newsletter" rel="nofollow"><span class="ico"></span><span class="txt">TRUCOS PARA COMPRAR MÁS BARATO</a>
-</div>
-<div class="lightbox newsletter" id="newsletter" style="max-width:50%;">
-    <div class="mobile only row">
-      <div class="ui mailchimp mobile">
-            <div class="content ui three column centered grid" id="modal_img">
-                <div class="one column centered row">
-                    <div class="column" id="mensaje">
-                        <h2 class="ui center aligned header" style="color: #FFF">
-                            Descárgate GRATIS nuestro eBook de 5 TRUCOS PARA COMPRAR ONLINE MÁS BARATO
-                        </h2>
-                        <div id="boton-guia-compra" class="centered row" style="display:none;">
-                          <div class="six wide column">
-                              <a href="{% static 'pdf/5-trucos-para-comprar-online-más-barato-The-Best-5.pdf' %}" target="_blank" title="Descargar eBook"><button type="submit" class="fluid ui primary button">Descargar eBook</button></a>
-                          </div>
-                    </div>
-                </div>
-                <div  id="formulario" class="one column centered row">
-                    <div class="column">
-                        <div class="subscribe_form">
-                            <form id="subscribe-mobile" class="ui form subscribe" method='POST' action="{% url 'portal:subscribe' %}">
-                            {% csrf_token %}
-                                <div id="search-box" class="ui transparent input field" style="border:1px solid #ccc; border-radius:65px; background-color:#ffffff; padding-left:10px;">
-                                    <input id="email_id" name="email" type="email" required placeholder="Escribe aquí tu correo electrónico para descargarlo"
-                                           style="min-width: 420px;font-weight:300; font-family: 'Poppins', sans-serif;font-size:1.7em;">
-                                </div>
-                                <div class="ui two column centered grid">
-                                    <div class="centered row">
-                                    <input type="checkbox" id="terminos" required />
-         <label for="terminos" style="color: white;margin-top:-6px;margin-left: 5px;">Acepto <a href="https://{{request.get_host}}/terminos-y-condiciones/" rel="nofollow" target="_blank" style="color:antiquewhite;text-decoration:underline;">términos y condiciones</a> y la <a href="https://{{request.get_host}}/politica-de-privacidad/" rel="nofollow" target="_blank" style="color:antiquewhite;text-decoration:underline;">política de privacidad</a></label>
-                                    </div>
-                                    <div class="centered row">
-                                      <div class="six wide column">
-                                        <button type="submit" class="fluid ui primary button">
-                                          Descargar eBook
-                                        </button>
-                                      </div>
-                                    </div>
-                                </div>
-                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 {% comment %}<!-- ./tab newsletter -->{% endcomment %}
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
