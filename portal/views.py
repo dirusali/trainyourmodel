@@ -206,9 +206,4 @@ def subscribe(request):
 
 
 
-class AjaxTagProductsView(IsAdminUser, ChainedSelectChoicesView):
-    def get_child_set(self):
-        # Return the best 5 products related to the search tag
-        products = RatedProduct.objects.filter(searchtag__id=self.parent_value, active=True).order_by('-title')
-        return products
-    
+
