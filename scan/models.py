@@ -4,7 +4,6 @@ from django.template.defaultfilters import slugify
 import json
 from django_mysql.models import ListTextField
 from django.utils import timezone
-from model_utils.models import TimeStampedModel
 from lxml import html
 import collections
 import logging
