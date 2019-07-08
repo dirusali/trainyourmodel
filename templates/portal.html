@@ -1,0 +1,381 @@
+{% extends "base.html" %}
+{% load extra_tags %}
+{% load static %}
+{% block title %}The Best 5, the smart search engine.{% endblock %}
+{% block meta %}
+<meta name="description" content="
+The Best 5 is a Smart Comparison Engine that only shows you the best 5 products rated by everyone. Don´t waste more time searching online">
+<meta property="og:title" content="The Best 5, The Smart Comparison Engine">
+<meta property="og:site_name" content="The Best 5">
+<meta property="og:url" content="www.thebest5.com/uk/">
+<meta property="og:description" content="The Best 5 is a Smart Comparison Engine that only shows you the best 5 products rated by everyone. Don´t waste more time searching online">
+<meta property="og:type" content="website" />
+<meta property="og:image" content="/static/images/Logo-TheBest5-Intelligent-Comparison-Engine.png">
+<meta property="og:locale" content="en_UK" />
+<link rel="canonical" href="https://www.thebest5.com/uk/" />
+<meta name="robots" content="index, follow">
+{% endblock %}
+{% block content %}
+<body class="home"> 
+    <div id="top"></div>
+    <header id="header-home">
+        <div id="menu-mobile"></div>
+        <div class="container">
+            <div class="nav-home">
+                <div class="logo"><a href="/"><img src="{% static 'images/Logo-TheBest5-Intelligent-Comparison-Engine.png' %}" alt="Logo Thebest5" width="220" /></a></div>
+                <nav>
+                    {% include "menu.html" %}
+                </nav>
+                <a href="#" class="toggle-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
+            </div>
+            <div class="ui grid" id="div_search" style="">
+                <div id="search-container" class="search-wrap">
+                    <div id="search-content-home" class="ui fluid category search">
+                        <div id="search-box" class="search-component-home">
+                            <input id="search-input" class="prompt search-box" type="text" placeholder="I am looking for the best 5..." name="search-field" required />
+                            <button class="close-icon" type="reset"></button>
+                            <a id="doSearch"><button type="submit" class="search-button"></button></a>
+                        </div>
+                        <div class="right aligned results"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="txt">
+                <p class="p1">search once, find the best products</p>
+                <p class="p2">We simplify your purchasing decisions</p>
+            </div>
+            <div class="slider-home owl-carousel">{% comment %}<!-- slider -->{% endcomment %}
+                <div class="item">
+                    <img src="{% static 'images/carousel/best-electronics-reviews-thebest5.png' %}" alt="Find the best products in Electronics." />
+                </div>
+                <div class="item">
+                    <img src="{% static 'images/carousel/best-vacuum-cleaners-thebest5.png' %}" alt="Find the best Vacuum cleaners." />
+                </div>
+                <div class="item">
+                    <img src="{% static 'images/carousel/best-digital-cameras-reviews-thebest5.png' %}" alt="Find the best Digital Cameras."  />
+                </div>
+                <div class="item">
+                    <img src="{% static 'images/carousel/best-running-shoes-reviews-thebest5.png' %}" alt="Find the best Running Shoes." />
+                </div>
+                <div class="item">
+                    <img src="{% static 'images/carousel/best-curved-smart-tvs-reviews-thebest5.png' %}" alt="Find the best curved Smart TVs." />
+                </div>
+               <div class="item">
+                    <img src="{% static 'images/carousel/best-kitchen-cleaners-reviews-thebest5.png' %}" alt="Find the best Kitchen Robots" />
+                </div>
+            </div>{% comment %}<!-- ./slider -->{% endcomment %}
+        </div>
+    </header>    
+    <div class="container">{% comment %}<!-- section home-intro" -->{% endcomment %}
+        <section class="home-buscado">
+            <h2 class="tit1">Best sellers this month</h2>
+            <section class="products-list cols4">
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-10-inch-tablets/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'images/best-10-inch-tablets-reviews-thebest5.jpg' %}" alt="See the best 10 inch tablets." />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/best-10-inch-tablets" class="tit">10 inch tablets</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/best-10-inch-tablets"> 10 inch tablets {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-17-inch-laptops/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'images/best-17-inch-laptops-reviews-thebest5.jpg' %}" alt="See the best 17 inch laptops." />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/best-17-inch-laptops/" class="tit">17 Inch Laptops</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/best-17-inch-laptops/"> 17 inch laptops in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-compact-cameras/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'images/best-compact-cameras-reviews-thebest5.jpg' %}" alt="See the best compact." />
+                    </a>
+                    <div class="txt">
+                        <a href="https://www.thebest5.com/uk/best-compact-cameras" class="tit">Compact Cameras</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/best-compact-cameras/"> compact cameras in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-cordless-vacuums/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'images/best-cordless-vacuum-cleaners-reviews-thebest5.jpg' %}" alt="See the best vacuum cleaners." />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/best-cordless-vacuums/" class="tit">Cordless Vacuum Cleaners</a>
+                        <p class="desc"> Find the best <a href="https:/www.thebest5.com/uk/best-cordless-vacuums/"> cordless vacuum cleaners in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-electric-shavers/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'images/best-electric-shavers-reviews-thebest5.jpg' %}" alt="See the best electric shavers this month" />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/best-electric-shavers/" class="tit">Electric Shavers</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/best-electric-shavers/"> electric shavers in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-external-hard-drives/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'images/best-external-hard-drives-reviews-thebest5.jpg' %}" alt="See the best external hard drives this month." />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/best-external-hard-drives" class="tit">External Hard Drives</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/best-external-hard-drives"> external hard drives in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-gaming-pcs/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'images/best-gaming-pcs-reviews-thebest5.jpg' %}" alt="See the best gaming PCs this month." />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/best-gaming-pcs" class="tit">Gaming PCs</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/best-gaming-pcs/"> gaming pcs in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-nespresso-machines/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'images/best-nespresso-machines-reviews-thebest5.jpg' %}" alt="See the best nespresso machines this month." />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/best-nespresso-machines/" class="tit">Nespresso Machines</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/best-nespresso-machines/">nespresso machines in {% now "Y" %}</a></p>
+                    </div>
+                </article>                                                                             
+            </section>
+        </section>
+        <section class="home-intro">
+            <h1 class="tit1">The Best 5, your intelligent comparison engine</h1>
+            <p class="feat">We show you the best 5 rated products to make your online shopping much easier and also,<br> our price comparison engine, will let you know which store offers the best price.</p>
+            <div class="algoritmo-desc container xsmall">
+                <div class="img-wrapper">
+                    <img src="{% static 'images/img-algoritmo.png' %}" alt="Icon Algorithm The Best 5" />
+                </div>
+                <div class="txt">
+                    <p>Our Artificial Intelligence algorithm is able to read thousands of trusted reviews and articles published online, analyze them and determine which are the best products of the moment, but...</p>
+                    <h2 class="tit2">Which are the parameters studied?</h2>
+                </div>
+            </div>
+            <div class="caracteristicas">
+                <div class="item caract-opiniones">
+                    <p>Customer reviews on thousands of products</p>
+                </div>
+                <div class="item caract-marca">
+                    <p>Prices of all the items of the same category</p>
+                </div>
+                <div class="item caract-calidad">
+                    <p>How many people are talking about the brand on blogs and social media</p>
+                </div>
+                <div class="item caract-ventas">
+                    <p>What's been said about the brand in reviews by experts and customers</p>
+                </div>
+                <div class="item caract-precio">
+                    <p>How many items are sold daily</p>
+                </div>
+            </div>
+        </section>
+        <section class="home-buscado">{% comment %}<!-- section lo más buscado -->{% endcomment %}
+            <h2 class="tit1">Most searched this month</h2>
+            {% comment %}<p class="feat">TOP Categories:</p>{% endcomment %}
+            <section class="products-list cols4">
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-tumble-dryers/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'categories/best-tumble-dryers-reviews-thebest5.jpg' %}" alt="the best tumble dryers" />
+                    </a>
+                    <div class="txt">
+                        <a href="https://www.thebest5.com/uk/best-tumble-dryers/" class="tit">Tumble Dryers </a>
+                        <p class="desc"> find the best <a href="https://www.thebest5.com/uk/best-tumble-dryers//">tumble dryers in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-fridge-freezers/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'categories/best-fridge-freezers-reviews-thebest5.jpg' %}" alt="the best fridge freezers." />
+                    </a>
+                    <div class="txt">
+                        <a href="https://www.thebest5.com/uk/best-fridge-freezers/" class="tit">Fridge Freezers</a>
+                        <p class="desc"> find the best <a href="https://www.thebest5.com/uk/best-fridge-freezers//">fridge freezers in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-portable-air-conditioners/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'categories/best-portable-air-conditioners-reviews-thebest5.jpg' %}" alt="the best portable air conditioners." />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/best-portable-air-conditioners/" class="tit">Portable Air Conditioners</a>
+                        <p class="desc"> find the best <a href="https://www.thebest5.com/uk/best-portable-air-conditioners//">portable air conditioners in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-gaming-chairs/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'categories/best-gaming-chairs-reviews-thebest5.jpg' %}" alt="the best gaming chairs" />
+                    </a>
+                    <div class="txt">
+                        <a href="https://www.thebest5.com/uk/best-gaming-chairs/" class="tit">Gaming Chairs</a>
+                        <p class="desc"> find the best <a href="https://www.thebest5.com/uk/best-gaming-chairs/">gaming chairs in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-bread-makers/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'categories/best-bread-makers-reviews-thebest5.jpg' %}" alt="the best bread makers" />
+                    </a>
+                    <div class="txt">
+                        <a href="https://www.thebest5.com/uk/best-bread-makers/" class="tit">Bread Makers</a>
+                        <p class="desc"> find the best <a href="https://www.thebest5.com/uk/best-bread-makers/">bread makers in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-43-inch-tvs/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'categories/best-43-inch-tvs-reviews-thebest5.jpg' %}" alt="the best 43 inch tvs" />
+                    </a>
+                    <div class="txt">
+                        <a href="https://www.thebest5.com/uk/best-43-inch-tvs/" class="tit">43 Inch TVs</a>
+                        <p class="desc"> find the best <a href="https://www.thebest5.com/uk/best-43-inch-tvs/">43 inch tvs in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-55-inch-tvs/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'categories/best-55-inch-tvs-reviews-thebest5.jpg' %}" alt="the best 55 inch tvs" />
+                    </a>
+                    <div class="txt">
+                        <a href="https://www.thebest5.com/uk/best-55-inch-tvs/" class="tit">55 Inch TVs</a>
+                        <p class="desc"> find the best <a href="https://www.thebest5.com/uk/best-55-inch-tvs/">55 inch tvs in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-all-in-one-printer/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="{% static 'categories/best-all-in-one-printers-reviews-thebest5.jpg' %}" alt="the best all in one printers" />
+                    </a>
+                    <div class="txt">
+                        <a href="https://www.thebest5.com/uk/best-all-in-one-printer/" class="tit">All In One Printer</a>
+                        <p class="desc"> find the best <a href="https://www.thebest5.com/uk/best-all-in-one-printer/">all in one printer in {% now "Y" %}</a></p>
+                    </div>
+                </article>                                                                              
+            </section>
+            <section class="home-buscado">
+            <h2 class="tit1">TOP Categories</h2>
+            <section class="products-list cols4">
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/category/kitchen-home/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="https://www.thebest5.com/media/best-home-and-kitchen-products-category-thebest5-engine.jpg" alt="See best home and kitchen products of {% now "Y" %}" />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/category/kitchen-home/" class="tit">Kitchen & Home</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/category/kitchen-home"> kitchen & home products in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/category/health-personal-care/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="https://www.thebest5.com/media/best-health-and-personal-care-products-category-thebest5-engine.jpg" alt="See the best health and care products of {% now "Y" %}" />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/category/health-personal-care/" class="tit">Health & Personal Care</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/category/health-personal-care/">health & personal care in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/category/electronics-photo/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="https://www.thebest5.com/media/best-electronics-and-photo-category-thebest5-engine.jpg" alt="See the best electronics and photo products of {% now "Y" %}" />
+                    </a>
+                    <div class="txt">
+                        <a href="https://www.thebest5.com/uk/category/electronics-photo/" class="tit">Electronics & Photo</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/category/electronics-photo/"> electronics & photo products in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/category/pc-video-games/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="https://www.thebest5.com/media/best-videogames-category-thebest5-engine.jpg" alt="See the best videogames of {% now "Y" %}" />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/category/pc-video-games/" class="tit">PC & Videogames</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/category/pc-video-games/">pc & videogames products in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://165.22.154.17/category/computers-accessories/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="https://www.thebest5.com/media/best-computers-category-thebest5-comparison-engine2.jpg" alt="See the best computers products of {% now "Y" %}" />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/category/computers-accessories/" class="tit">Computer Accessories</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/category/bebes/">computers accessories products in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/category/beauty/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="https://www.thebest5.com/media/best-beauty-products-category-thebest5-engine.jpg" alt="See the best beauty products of {% now "Y" %}" />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://165.22.154.17/category/beauty/" class="tit">Beauty</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/category/beauty/"> beauty products in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/category/sports-outdoors/" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="https://www.thebest5.com/media/best-sports-products-category-thebest5-engine.jpg" alt="See best sports & outdoors products in {% now "Y" %}" />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/category/sports-outdoors/" class="tit">Sports & Outdoors</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/uk/category/sports-outdoors/">sports & outdoors products in {% now "Y" %}</a></p>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <a rel="nofollow" href="https://www.thebest5.com/uk/category/watches" class="link-img">
+                        <span class="ico"></span>
+                        <img class="lazy" src="{% static 'images/none.jpg' %}" data-src="https://www.thebest5.com/media/best-watches-category-thebest5-engine.jpg" alt="see the best watches in {% now "Y" %}" />
+                    </a>
+                    <div class="txt">
+                        <a rel="nofollow" href="https://www.thebest5.com/uk/category/watches/" class="tit">Watches</a>
+                        <p class="desc"> Find the best <a href="https://www.thebest5.com/category/watches"> watches in {% now "Y" %}</a></p>
+                    </div>
+                </article>                                                                             
+            </section>
+            <div class="see-all"><a href="https://www.thebest5.com/uk/categories/" title="See categories for best recommended products" rel="nofollow">See all categories</a></div>
+            <div class="container small">
+                <h2 class="tit1">The Best 5 simplifies your purchasing decisions</h2>
+                {% comment %}<p class="feat">Do you want to save up money in your online purchases?.</p>{% endcomment %}
+                <p>Did you know that on average you spend 90 minutes before buying anything online? This is the reason why we decided to create The Best 5, to simply make your life easier.</p>
+                <p>The Best 5 studies daily all the information on the internet about products and reviews from consumers, to find out which are the best products recommended by everyone and also which websites have the best prices. We only show you the best 5 recommended products according to your budget, so you don't get crazy having to decide between thousands of products and prices available online. <a href="https://www.thebest5.com/uk/how-it-works/" target="_blank">Want to know more?</a></p>
+            </div>
+        </section>{% comment %}<!-- ./section lo más buscado -->{% endcomment %}
+    </div>
+    <section class="logos-footer">{% comment %}<!-- section logos -->{% endcomment %}
+        <div class="container">
+            <a rel="nofollow" href="https://womeninprogress.elcorreo.com/noticias/andrea-garin-fundadora-y-directora-de-the-best-5/" target="_blank"><img src="{% static 'images/logo-elcorreo.png' %}" alt="Logo El Correo" /></a>
+            <a rel="nofollow" href="https://www.elreferente.es/tecnologicos/thebest5-tecnologia-comprar-online-33158" target="_blank"><img src="{% static 'images/logo-elreferente.jpg' %}" alt="Logo El Referente" /></a>
+            <a rel="nofollow" href="https://www.elmundo.es/yodona/lifestyle/2017/06/26/5950f54922601ddd3e8b45f0.html" target="_blank"><img src="{% static 'images/logo-elmundo.png' %}" alt="Logo El Mundo" /></a>
+            <a rel="nofollow" href="https://www.emprendedores.es/ideas-de-negocio/mujeres-emprendedoras-premio-ayuntamiento-madrid" target="_blank"><img src="{% static 'images/logo-emprendedores.png' %}" alt="Logo Emprendedores" /></a>
+            <a rel="nofollow" href="https://www.youtube.com/watch?v=HDR2T-1NCa8" target="_blank"><img src="{% static 'images/logo-metxa.png' %}" alt="Logo Metxa" /></a>
+            <a rel="nofollow" href="https://www.spri.eus/es/upeuskadi-comunicacion/andrea-garin-the-best-5-los-productos-mejor-recomendados-en-un-click/" target="_blank"><img src="{% static 'images/logo-spri.png' %}" alt="Logo Grupo Spri Taldea" /></a>
+            <a rel="nofollow" href="https://www.spri.eus/es/upeuskadi-comunicacion/andrea-garin-the-best-5-los-productos-mejor-recomendados-en-un-click/" target="_blank"><img src="{% static 'images/logo-gv.png' %}" alt="Logo Gobierno Vasco" /></a>
+            <a rel="nofollow" href="https://www.ondavasca.com/#/audios/la-emprendedora-alavesa-andrea-garin-nos-presenta-su-proyecto-the-best-5" target="_blank"><img src="{% static 'images/logo-ondavasca.png' %}" alt="Logo Onda Vasca" /></a>
+            <a rel="nofollow" href="https://www.alavaemprende.com/the-best-5-ahorra-tiempo-y-dinero-comprando-por-internet/" target="_blank"><img src="{% static 'images/logo-diputacion.png' %}" alt="Logo Diputación Foral de Álava" /></a>
+        </div>
+    </section>
+{% endblock %}
+        
