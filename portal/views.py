@@ -15,51 +15,14 @@ from django.db.models import Count
 from django.shortcuts import redirect
 
 from portal.models import Subscribe
-from portal.utils import SendSubscribeMail, round_next_down, round_next_up
+#from portal.utils import SendSubscribeMail, round_next_down, round_next_up
 from portal.models import Subscribe
 
 from el_pagination.views import AjaxListView
 from django.http import Http404, JsonResponse, HttpResponse, HttpResponseRedirect, HttpResponseServerError
 from django.db.models import Q
 from django.contrib.staticfiles.templatetags.staticfiles import static
-
-
-def error404(request):
-    context = {}
-    #context = {"project_name":"web"}
-
-    context['category_images'] = CategoryImage.objects.all().order_by('name')
-    context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
-    context['is_home'] = False
-    context['lazyjs'] = False
-    context['valoracionesjs'] = False
-    context['valoracionesTiendajs'] = False
-    context['normal_footer_cat'] = True
-    current_anno = datetime.datetime.now().strftime('%Y')
-    context['current_anno'] = current_anno
-    return render(request, '404.html', context)
-
-def error500(request):
-    context = {}
-    context['category_images'] = CategoryImage.objects.all().order_by('name')
-    context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
-    context['is_home'] = False
-    context['lazyjs'] = False
-    context['valoracionesjs'] = False
-    context['valoracionesTiendajs'] = False
-    context['normal_footer_cat'] = True
-    current_anno = datetime.datetime.now().strftime('%Y')
-    context['current_anno'] = current_anno
-
-
-
-def formatea(p):
-    p = unicodedata.normalize("NFKD", p).encode("ascii","ignore").decode("ascii")
-    if p[-2:].lower() == 'es':
-        p = p[:-2]
-    if p[-1:].lower() == 's':
-        p = p[:-1] 
-    return p    
+ 
 
 
 def contacto(request):
