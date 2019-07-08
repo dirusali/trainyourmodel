@@ -1,0 +1,38 @@
+{% load static %}
+<div id="top"></div>
+<div class="menu-fix">
+	<div class="menu-nav">
+		<div class="container">
+		<div class="logo-mobile"><a href="{% url 'portal:home' %}"><img src="{% static 'images/Logo-TheBest5-White.png' %}" alt="Logo The Best 5"/></a></div>
+		<div class="nav">
+			<nav>
+				{% include "menu.html" %}
+			</nav>
+		</div>
+		<a href="#" class="toggle-menu">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</a>
+		</div>
+	</div>
+	<div class="logo-search">
+		<div class="container">
+			<div class="logo"><a href="{% url 'portal:home' %}"><img src="{% static 'images/Logo-TheBest5-White.png' %}" alt="Logo The Best5" width="220" /></a></div>
+				<div id="search-container" class="search-wrap ">
+					<div class="ui fluid category search">
+						<div id="search-box" class="search-component">
+							{% if busqueda is not None%}
+							<input id="search-input" class="prompt search-box" type="text" value="{{ busqueda }}" name="search-field" required />
+							{% else %}
+							<input id="search-input" class="prompt search-box" type="text" placeholder="I am looking for the best 5..." name="search-field" required />
+							{% endif %}
+							<button class="close-icon" type="reset"></button>
+							<a id="doSearch" rel="nofollow"><button id="doSearch" type="submit" class="search-button"></button></a>
+						</div>
+						<div class="right aligned results" style="z-index: 1500;"></div>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
