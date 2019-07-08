@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+{% load extra_tags %}
+{% load static %}
+{% block title %}¿Tienes alguna duda? Contacta con The Best 5{% endblock %}
+{% block meta %}
+<meta name="description" content="Si tienes alguna duda sobre The Best 5 o tienes alguna pregunta sobre alguno de los productos que te recomendamos, ponte en contacto con nosotros.">
+<meta property="og:title" content="¿Tienes alguna duda? Contacta con The Best 5">
+<meta property="og:site_name" content="The Best 5">
+<meta property="og:url" content="{{request.build_absolute_uri}}">
+<meta property="og:description" content="Si tienes alguna duda sobre The Best 5 o tienes alguna pregunta sobre alguno de los productos que te recomendamos, ponte en contacto con nosotros.">
+<meta property="og:type" content="website" />
+<meta property="og:image" content="{% static 'images/logo-the-best-5-recomendador-inteligente.jpg' %}">
+<meta property="og:locale" content="es_ES" />
+<link rel="canonical" href="{{request.build_absolute_uri|to_https}}" />
+<meta name="robots" content="noindex, follow">
+{% endblock %}
+{% block content %}
+<body>
+{% comment %}<!-- header -->{% endcomment %}
+	<header id="header" class="ffixed">
+		{% comment %}<!-- shared header -->{% endcomment %}
+		{% include "header.html" %}
+		{% comment %}<!-- ./shared header -->
+		<!-- en background-image podemos sobreescribir la imagen -->{% endcomment %}
+		<div class="head-bg" style="background-image: url({% static 'images/the-best-5-contacto-header-bg.jpg' %}); background-position: 50% 90%">		
+			<div class="title-tag-wrapper"><h1 class="title-tag">Contacto</h1></div>
+		</div>
+	</header>
+	<section class="section-text final-text">
+		<div class="container small">
+			<h2 class="tit1">Tu mensaje se ha enviado correctamente.</h2>
+			<p class="feat">Gracias por ponerte en contacto con nosotros. Te responderemos lo antes posible para resolver tus dudas.</p>
+		</div>
+	</section>
+	<section class="section-text">
+		<div class="container small">
+		</div>
+	</section>
+{% endblock %}
