@@ -6,11 +6,11 @@ from django.conf.urls import handler404, handler500
 
 # TODO : Set correct robots.txt & sitemap
 from django.http import HttpResponse
-from rest_framework_jwt.views import obtain_jwt_token
+#from rest_framework_jwt.views import obtain_jwt_token
 from django.views.generic import TemplateView
-from web import settings
+from feedmedata import settings
 from django.contrib.sitemaps.views import sitemap
-from portal.sitemaps import SearchTagSitemap, CategorySitemap, SearchTagSitemapFemale, StaticViewSitemap
+#from portal.sitemaps import SearchTagSitemap, CategorySitemap, SearchTagSitemapFemale, StaticViewSitemap
 from portal import views as portal_views
 
 sitemaps = {
