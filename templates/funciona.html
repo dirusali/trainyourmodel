@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load extra_tags %}
+{% load static %}
+{% block title %}How does The Best 5 work?{% endblock %}
+{% block meta %}
+<meta name="description" content="Our algorithms study thousands of specialized articles and online reviews, showing you the best 5 options of what you are looking for and comparing prices">
+<meta property="og:title" content="How does The Best 5 work?">
+<meta property="og:site_name" content="The Best 5">
+<meta property="og:url" content="http://165.22.154.175/how-it-works/">
+<meta property="og:description" content="Our algorithms study thousands of specialized articles and online reviews, showing you the best 5 options of what you are looking for and comparing prices">
+<meta property="og:type" content="website" />
+<meta property="og:image" content="/static/images/logo-the-best-5-recomendador-inteligente.jpg">
+<meta property="og:locale" content="en_GB" />
+<link rel="canonical" href="https://www.thebest5.com/uk/how-it-works/" />
+<meta name="robots" content="index, follow">
+{% endblock %}
+{% block content %}
+<body>
+	{% comment %}<!-- header -->{% endcomment %}
+	<header id="header" class="ffixed">
+		{% comment %}<!-- shared header -->{% endcomment %}
+		{% include "header.html" %}
+		{% comment %}<!-- ./shared header -->
+		<!-- en background-image podemos sobreescribir la imagen -->{% endcomment %}
+		<div class="head-bg" style="background-image: url({% static 'images/the-best-5-como-funciona-header-bg.jpg' %}); background-position: 50% 90%">		
+			<div class="title-tag-wrapper"><h1 class="title-tag">How does the best 5 work?</h1></div>
+		</div>
+	</header>
+	{% comment %}<!-- ./header -->
+	<!-- section section-text" -->{% endcomment %}
+	<section class="section-text como-funciona-intro">
+		<div class="container small">
+		<h2 class="tit1">We make purchasing decisions a lot simpler for you</h2>
+		<p class="feat">Shopping online can drive you crazy having to decide between thousands of webs and products available...</p>
+		</div>
+		<div class="container medium">
+			<div class="cols">
+				<div class="col">
+					<p>Tell us if this sounds familiar to you: spending hours in front of your computer looking for the right product and then figuring out where to find the best price. A search engine will show you hundreds of webs and blogs that will make you lose you time reading and deciding over information that you don't even know if it's trustworthy.</p>
+					<p>At The Best 5, our algorithms study thousands of specialized articles as well as reviews of online buyers, showing you the best 5 options of what you are looking for and comparing prices on different stores so that you always get the best deals. Saving time and money has never been so easy.</p>
+				</div>
+				<div class="col">
+					<image src="{% static 'images/img-funciona.png' %}" alt="" class="img-funciona" />
+				</div>
+			</div>
+		</div>
+	</section>
+	{% comment %}<!-- ./section section-text" -->
+	<!-- section -->{% endcomment %}
+	<section class="section-text">
+		<div class="container small">
+		<h1 class="tit1">How does your intelligent comparison engine work?</h1>
+		<p class="feat">We show you the best 5 rated products so that you don´t waste any time surfing the internet</p>
+		</div>
+		<div class="algoritmo-desc container xsmall">
+			<div class="img-wrapper">
+				<img src="{% static 'images/img-algoritmo.png' %}" alt="" />
+			</div>
+			<div class="txt">
+				<p>We are a technological company that has developed an algorithm with Artificial Intelligence technology that reads thousands of websites and reviews online, analyzes them and also determines which are the best products available according to what all online buyers say.</p>
+				<h2 class="tit2">Which are the parameters studied?</h2>
+			</div>
+		</div>
+		<div class="caract-extended">
+			<div class="item caract-opiniones">
+				<p class="p1">Customer & Expert Reviews</p>
+				<p class="desc">Did you know that 60% of our purchasing decisions are based on what other people recommend? Just like that. Consumers reviews have already become almosy compulsory when deciding which product to buy. That's why we decided to save you that endless reading and let our algorithms read instead</p>
+			</div>
+			<div class="item caract-marca">
+				<p class="p1">Price</p>
+				<p class="desc">One of the most important for every when deciding which product to choose. That's why we divide our results into 3 price ranges, to show you the best 5 products within your budget. We also compare each product in hundreds of stores so you can always buy at the cheapest price.</p>
+			</div>
+			<div class="item caract-calidad">
+				<p class="p1">Brand on blogs and social media</p>
+				<p class="desc">The brand of the products is another variable that we look at. That's why we take into account mentions to different brands that are made on blogs and social networks as well as what it´s been said about them.</p>
+			</div>
+			<div class="item caract-ventas">
+				<p class="p1">Brand quality</p>
+				<p class="desc">Our algorithms also study hundreds of blogs of people specialized in different products and brands to take into account the voice of the expert in this field.</p>
+			</div>
+			<div class="item caract-precio">
+				<p class="p1">Best sellers</p>
+				<p class="desc">People like best sellers, that's why we also take into account how many items are daily sold.</p>
+			</div>
+		</div>
+		<div class="container xsmall">
+			<p>With all this information, our algorithm gets a value rating (up to 10) for each product, and shows you the best 5 selected from left to right, being the one on the left the best product according to the users. We also divide the results into 3 price ranges so you can find the best products based on your budget.</p>
+			<p>You will also find the button "compare prices" where you will find a price comparison on different stores, always ordered from lowest to highest price. The cheapest price is the one that we show directly below the product next to the store's logo.<strong> We don´t accept money to get the prices of any store at the top of the list,</strong> if a website has the best price, it will always be at the top for no cost</p>
+			<p>The "graphic icon" above each product, shows you the historic price of that product so that you can estimates the best moment to buy it.</p>
+			<p>The "stars" show reviews that users write on our website, by clicking on them you will be able to read them. In addition, the button "Write review" you can leave your opinion about all those products that you have tried to help other users with your experiences. This information is very useful so we can keep showing the best products so ... leave us your opinions!</p>
+		</div>
+	</section>
+	{% comment %}<!-- ./section -->
+	<!-- section section-text -->{% endcomment %}
+	<section class="section-text mt50 bg">
+		<div class="container small">
+		<h2 class="tit1">Get alerts for price drops on the products you want?</h2>
+		<p>Guessing when is the best time to buy something can be hard and time wasting so we have developed a price alert feature that will email you when a product drops below your desired price. It is very easy to use and it will monitor price trends to let you know when the price of a product matches your budget. Keep in mind also that new products, specially techological ones, tend to drop significantly after their initial release. Waiting a couple of months for a new gadget can pay off, leaving you with more pennies in your pocket.</p>
+		</div>
+	</section>
+	{% comment %}<!-- ./section section-text -->{% endcomment %}
+	<section class="final-text section-text mt50">
+		<div class="container small">
+			<h2 class="tit1">Find out a little bit more</h2>
+			<p class="feat">If you have any questions you can check our <a href="https://www.thebest5.com/uk/faq/">FAQ</a> or drop us an email to <a href="mailto:admin@thebest5.es" rel="nofollow">admin@thebest5.es</a></p>
+		</div>
+		<div class="container medium final-text">
+				<section class="section-faqs">
+					<article class="item-faq">
+						<a href="#" class="faq-question">What is The Best 5?</a>
+						<div class="faq-content">
+							<p>Surely before buying any product on the internet, you have spent hours reading reviews, websites, comparing prices ... and the offer is that big that it's hard for you to decide because you don´t know which product is the best. Well, we have good news, with The Best 5 you won´t waste more time searching online! </p>
+							<p>The Best 5 is the only intelligent comparison website that reads thousands of reviews online and, based on them, it recommends the best options of what you are looking for, saving you time and money. And the best part: all in one click and for free.</p>
+						</div>
+					</article>
+					<article class="item-faq">
+						<a href="#" class="faq-question">How does The Best 5 differ from other comparison & review websites?</a>
+						<div class="faq-content">
+							<p>Many websites and blogs list hundreds of products, providing little valuable information to help customers evaluate the best ones, which makes you lose an average of 90 minutes reading reviews, features and comparing prices to end with many doubts.</p>
+							<p>In The Best 5 we do that previous search that you would do before buying anything online, reducing those 90 minutes to 1 click. We punctuate the articles and we show you only the 5 best rated products of what you are looking for, and the websites where you can get the best prices.</p>
+						</div>
+					</article>
+					<article class="item-faq">
+						<a href="#" class="faq-question">Is the Best 5 for free?</a>
+						<div class="faq-content">
+							<p>Of course it is.</p>
+						</div>
+					</article>
+					<article class="item-faq">
+						<a href="#" class="faq-question">How do you make money?</a>
+						<div class="faq-content">
+							<p>We have a CPC (cost per click) business model, which the online stores pay us a certain amount per click they receive from our website. Also, with certain stores we get a commission for each sale that takes place in the online stores to which we redirect.</p>
+						</div>
+					</article>
+					<article class="item-faq">
+						<a href="#" class="faq-question">Do I have to register  to use The Best 5?</a>
+						<div class="faq-content">
+							<p>No, you don´t! You can join our Newsletter by entering you email at the footer of our website to be monthly updated about the best products, but that is your choice!</p>
+						</div>
+					</article>
+					<article class="item-faq">
+						<a href="#" class="faq-question">How do I use The Best 5?</a>
+						<div class="faq-content">
+							<p>Type the generic category that you are looking for in the search bar that says "Find me the best 5...", press enter and select the one you are interested in. The best 5 rated products in each category will appear from left to right, the winner will always be highlighted at the very left. You will be able to check the historical prices, to set an alarm to get an email if prices drop and also to compare prices in different stores for each product.</p>
+							<p>Clicking on "Go to shop" will drive you to the site where you can buy the product. You can also narrow down you search by the 3 price ranges, depending on which one suits your budget.</p>
+							<p>Below the 5 products you will find an extensive article of information, tricks and curiosities about this products that will help you with your purchase decision.</p>
+						</div>
+					</article>
+			<p class="center"><a href="https:///www.thebest5.com/uk/faq/">See all FAQs</a></p>
+		</div>
+	
+{% endblock %}
