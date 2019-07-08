@@ -13,22 +13,12 @@ from django.contrib.sitemaps.views import sitemap
 #from portal.sitemaps import SearchTagSitemap, CategorySitemap, SearchTagSitemapFemale, StaticViewSitemap
 from portal import views as portal_views
 
-sitemaps = {
-    'tags': SearchTagSitemap,
-    'femaletags': SearchTagSitemapFemale,
-    'categories': CategorySitemap,
-    'static': StaticViewSitemap,
-}
+
 
 urlpatterns = [
     url(r'^', include('portal.urls')),    
     url(r'^admin/', admin.site.urls),
-    url(r'^google37306863f3b606bc.html$',TemplateView.as_view(template_name='google37306863f3b606bc.html')),
     #url(r'^api-token-auth/', obtain_jwt_token),
-    url(r'^scan/', include('scan.urls')),
-    url(r'^dashboard/', include('dashboard.urls')),
-    url(r'^', include('django_evercookie.urls')),
-    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]
 # Serve media like categories picture
 if settings.DEBUG:
