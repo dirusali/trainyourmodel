@@ -15,7 +15,6 @@ urlpatterns = [
         #url(r'^/classification/$', Classification.as_view(), name='categories-detail'),
         #url(r'^/categorical/$', 
         #url(r'^/supervised/$    
-        url(r'^/query/$', SearchTagApi.as_view(), name='query'),
         url(r'^/terms-and-conditions/$', CondicionesView.as_view(), name='terms'),
         url(r'^/privacy/$', PrivacidadView.as_view(), name='priv'),
         url(r'^/how-it-works/$', FuncionaView.as_view(), name='funciona'),
