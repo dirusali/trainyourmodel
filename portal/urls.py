@@ -11,8 +11,6 @@ from .views import HomeView, FuncionaView, ContactoView, RegistroTiendaView, Con
 
 urlpatterns = [
     url(r'^/$', HomeView.as_view(), name='home'),
-    url('/error404/$', portal_views.error404, name='error404'),
-    url('/error500/$', portal_views.error500, name='error500'),
        # url(r'^/clustering/$', Clustering.as_view(), name='categories'),
         #url(r'^/classification/$', Classification.as_view(), name='categories-detail'),
         #url(r'^/categorical/$', 
