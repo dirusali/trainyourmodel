@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load extra_tags %}
+{% load static %}
+{% block title %}Any inquiry? Contact the team of The Best 5{% endblock %}
+{% block meta %}
+<meta name="description" content="If you have any doubt or question about The Best 5, drop us an email.">
+<meta property="og:title" content="¿Any doubt? Get in touch">
+<meta property="og:site_name" content="The Best 5">
+<meta property="og:url" content="http://165.22.154.175/contact/">
+<meta property="og:description" content="If you have any doubt or question about The Best 5, drop us an email.">
+<meta property="og:type" content="website" />
+<meta property="og:image" content="/static/images/logo-the-best-5-recomendador-inteligente.jpg">
+<meta property="og:locale" content="en_GB" />
+<link rel="canonical" href="http://165.22.154.175/contact/" />
+<meta name="robots" content="noindex, follow">
+{% endblock %}
+{% block content %}
+<body>	
+	{% comment %}<!-- header -->{% endcomment %}
+	<header id="header" class="ffixed">
+		{% comment %}<!-- shared header -->{% endcomment %}
+		{% include "header.html" %}
+		{% comment %}<!-- ./shared header -->
+		<!-- en background-image podemos sobreescribir la imagen -->{% endcomment %}
+		<div class="head-bg" style="background-image: url({% static 'images/the-best-5-contacto-header-bg.jpg' %}); background-position: 50% 90%">		
+			<div class="title-tag-wrapper"><h1 class="title-tag">Contact</h1></div>
+		</div>
+	</header>
+	{% comment %}<!-- ./header -->{% endcomment %}
+	{% comment %}<!-- section section-text" -->{% endcomment %}
+	<section class="section-text final-text">
+		<div class="container small">
+		<h2 class="tit1">Do you have any inquiry? Contact The Best 5</h2>
+		<p class="feat">We will reply as soon as possible to your request.</p>
+		</div>
+		<div class="container xsmall contact-form">
+			<form action="/contacto/" method="post">
+				{% csrf_token %}
+				<div class="f-row">
+					<label for="name">Name</label>
+					<input type="text" id="name" name="name" required  />
+				</div>
+				<div class="f-row">
+					<label for="email">Email</label>
+					<input type="email" id="email_contacto" name="email_contacto" required />
+				</div>
+				<div class="f-row">
+					<label for="message">How can we help you?</label>
+					<textarea id="message" name="message" required ></textarea>
+				</div>
+				
+				<div class="f-row check">
+					<input type="checkbox" id="terminos" required />
+					<label for="terms">I agree to <a href="http://{{request.get_host}}/terminos-y-condiciones/" rel="nofollow" target="_blank">terms</a> and <a href="http://{{request.get_host}}/politica-de-privacidad/" rel="nofollow" target="_blank">privacy</a></label>
+				</div>
+				<div class="f-row">
+					<input type="submit" value="Send" class="btn" />
+				</div>
+			</form>
+		</div>
+	</section>
+	{% comment %}<!-- ./section section-text" -->
+	<!-- section -->{% endcomment %}
+	<section class="section-text">
+		<div class="container small">
+		</div>
+	</section>
+	{% comment %}<!-- ./section -->{% endcomment %}
+{% endblock %
