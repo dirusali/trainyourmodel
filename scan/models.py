@@ -1,6 +1,5 @@
 
 from django.db import models, OperationalError, transaction
-from autoslug import AutoSlugField
 from django.template.defaultfilters import slugify
 from tinymce.models import HTMLField
 import json
