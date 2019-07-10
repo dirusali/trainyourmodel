@@ -2,9 +2,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf.urls import handler404, handler500
-
-
-# TODO : Set correct robots.txt & sitemap
 from django.http import HttpResponse
 #from rest_framework_jwt.views import obtain_jwt_token
 from django.views.generic import TemplateView
