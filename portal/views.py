@@ -25,6 +25,8 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
  
 def index(request):
     my_dict = {'insert_me':"hello, I am from views"}
+    return render(request,'index.html',context=my_dict)
+  
 
 
 
