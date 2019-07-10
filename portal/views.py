@@ -5,6 +5,7 @@ import random
 import unicodedata
 import datetime
 
+
 from django.template.loader import get_template, render_to_string
 from django.shortcuts import render
 from django.views.generic import TemplateView
