@@ -27,8 +27,21 @@ for i in lista:
     numbers = i[0:(long-1)]
     numbers = [ float(n) for n in numbers ]
     newlist.append(numbers)    
-df_feat = pd.DataFrame(np.array(newlist),columns=np.array(header))
-X = df_feat
+df = pd.DataFrame(np.array(newlist),columns=np.array(header))
+for v in header:
+    column = df[v]
+    m = np.median(column)
+    count=-1
+    print('VAMOS CON LA COLUMNA %s' % v)
+    for i in column: 
+        count+=1
+        if i > 10*m:
+            df.set_value(count, v, m)
+            print('sustituyendo valor %s, ahora queda %s y deberia ser %s' % (i,df[v][count],m))
+        if i < (m/10):
+            df.set_value(count, v, m)
+            print('sustituyendo valor %s, ahora queda %s y deberia ser %s' % (i,df[v][count], m))
+X = df
 y = np.array(results)
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=101)
 param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
