@@ -3,7 +3,7 @@
 # Construimos el arbol de posibilidades y elegimos el atributo q más info aporta como el nodo inicial
 # Repetimos el proceso diviendo desde el inicial hasta q cada rama queda en 0 
 # Es forma util para clasificar los algoritmos de mi web, de manera q llego al q hay q usar con el minimo numero de preguntas
-
+#To limit overfitting, repeat process on sub-samples of data (tree ensembles, or random forests). Next, you check which variables are most often selected among the tree ensemble or, as an additional refinement, you assess the relevance of each variable in the ensemble with a permutation test.
 from sklearn import datasets
 import numpy as np
 import matplotlib.pyplot as plt
