@@ -31,6 +31,7 @@ for i in lista:
     numbers = i[0:(long-1)]
     numbers = [ float(n) for n in numbers ]
     newlist.append(numbers)    
+
 df = pd.DataFrame(np.array(newlist),columns=np.array(header))
 for v in header:
     column = df[v]
