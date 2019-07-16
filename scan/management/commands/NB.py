@@ -1,6 +1,6 @@
 #Naive Bayes implementado con GaussianNB pero es igual con BernouilliNB, CompetentNB o MultinomialNB
 #Naive Bayes es un clasificador sencillo y potente, la Regresion Logistica solo lo supera cuando muestra tienda a infinito
-
+# Va muy bien para var categoricas: compra o no, sistema de recomendacion....en continuo asume una dist normal q puede no ser
 from sklearn import datasets
 import numpy as np
 import matplotlib.pyplot as plt
