@@ -1,3 +1,4 @@
+#Algoritmo para predecir variables categóricas (SIvsNO),(+,-),(Azul,rojo), podriamos crear (x,y,z,t) clusters con Kmeans y con SVM predecir si los elementos de una muestra caen en una u otra categoria
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
