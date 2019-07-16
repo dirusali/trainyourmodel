@@ -1,3 +1,6 @@
+# Este Algoritmo sirve para clasificar RESULTADOS ETIKETANDOLOS: en este caso se que hay dos clusters: hombre y mujer
+# Si no conozco los datos de una muestra puedo dividir en tantos clusters como quiera y clasificarlos asi
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
