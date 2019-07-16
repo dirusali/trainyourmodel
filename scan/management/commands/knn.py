@@ -1,3 +1,4 @@
+#Con DB Iris me da precision y recall de 1 mejor q SVM y q NB, es una variable categorica con target (0,1 y 2) tipos plantas
 from sklearn import datasets
 import numpy as np
 import matplotlib.pyplot as plt
