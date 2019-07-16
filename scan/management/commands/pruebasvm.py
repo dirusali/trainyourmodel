@@ -1,6 +1,7 @@
 #Algoritmo para predecir variables categóricas (SIvsNO),(+,-),(Azul,rojo), podriamos crear (x,y,z,t) clusters con Kmeans y con SVM predecir si los elementos de una muestra caen en una u otra categoria
 # Cuando Kmeans falla al clasficar, como 2 anillos x ej, usar Expectation–Maximization (EM) Clustering using Gaussian Mixture Models (GMM)
 #https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68
+#si la variable a predecir no fuera categorica, se puede usar el alg. KNN q es xa clasificar tb
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
