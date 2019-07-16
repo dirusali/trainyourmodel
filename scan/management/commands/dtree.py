@@ -1,3 +1,9 @@
+# Decision trees: lo que hace es calcular info ganada en cada paso, hasta q no se gana ganada => entropia = 0, paro la rama
+# Es como dividir el dataset en trozos para ver de q está hecho hasta q los trozos son homogeneos, no hay q dividr +
+# Construimos el arbol de posibilidades y elegimos el atributo q más info aporta como el nodo inicial
+# Repetimos el proceso diviendo desde el inicial hasta q cada rama queda en 0 
+# Es forma util para clasificar los algoritmos de mi web, de manera q llego al q hay q usar con el minimo numero de preguntas
+
 from sklearn import datasets
 import numpy as np
 import matplotlib.pyplot as plt
