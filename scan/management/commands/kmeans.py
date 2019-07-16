@@ -1,6 +1,13 @@
 # Este Algoritmo sirve para clasificar RESULTADOS ETIKETANDOLOS: en este caso se que hay dos clusters: hombre y mujer
 # Si no conozco los datos de una muestra puedo dividir en tantos clusters como quiera y clasificarlos asi
 # Se puede hacer con dos o con mas variables, para pintarlas en el eje x solo te poner una xo tiene todo en cuenta xa analisis
+#Clustering: A clustering problem is where you want to discover the inherent groupings in the data, such as grouping customers by purchasing behavior.
+#Association:  An association rule learning problem is where you want to discover rules that describe large portions of your data, such as people that buy X also tend to buy Y.
+#Some popular examples of unsupervised learning algorithms are:
+#K-means for clustering problems.
+#Apriori algorithm for association rule learning problems.
+
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
