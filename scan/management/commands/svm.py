@@ -2,6 +2,7 @@
 # Cuando Kmeans falla al clasficar, como 2 anillos x ej, usar Expectation–Maximization (EM) Clustering using Gaussian Mixture Models (GMM)
 #https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68
 #si la variable a predecir no fuera categorica, se puede usar el alg. KNN q es xa clasificar tb
+#Con esta DB IRIS el SVM me da precission y recall 0.98 y Bayes 0.96
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
