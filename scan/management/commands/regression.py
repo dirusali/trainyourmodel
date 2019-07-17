@@ -1,3 +1,5 @@
+#la varianza es lo q cambia y cuando muevo una unidad de x
+#el coef de corr es r y determinacion es el r2, el r2 ajustado elimina el efecto de variables q no aportan nada al modelo
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
