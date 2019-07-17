@@ -21,3 +21,23 @@ plt.scatter(y_test,pred)
 print('MAE:', metrics.mean_absolute_error(y_test,pred))
 print('MAE:', metrics.mean_squared_error(y_test,pred))
 print('MAE:', np.sqrt(metrics.mean_squared_error(y_test,pred)))
+
+# Si quiero hacer un analisis PCA para reducir las vbles a solo 2 componentes principales x ej haría:
+
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+scaler.fit(df)
+scaled_data = scaler.transform(df)
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2)
+pca.fit(scaled_data)
+x_pca = pca.transform(scaled_data)
+X = x_pca
+y = price
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4,random_state=101) 
+lm.fit(X_train,y_train)
+pred = lm.predict(X_test)
+plt.scatter(y_test,pred)
+print('MAE:', metrics.mean_absolute_error(y_test,pred))
+print('MAE:', metrics.mean_squared_error(y_test,pred))
+print('MAE:', np.sqrt(metrics.mean_squared_error(y_test,pred)))
