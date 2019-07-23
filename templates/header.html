@@ -3,7 +3,7 @@
 <div class="menu-fix">
 	<div class="menu-nav">
 		<div class="container">
-		<div class="logo-mobile"><a href="{% url 'portal:home' %}"><img src="{% static 'images/Logo-TheBest5-White.png' %}" alt="Logo The Best 5"/></a></div>
+		<div class="logo-mobile"><a href="{% url 'portal:home' %}"><img src="{% static 'images/Logo-feedmedata.png' %}" alt="Logo The Best 5"/></a></div>
 		<div class="nav">
 			<nav>
 				{% include "menu.html" %}
@@ -18,14 +18,14 @@
 	</div>
 	<div class="logo-search">
 		<div class="container">
-			<div class="logo"><a href="{% url 'portal:home' %}"><img src="{% static 'images/Logo-TheBest5-White.png' %}" alt="Logo The Best5" width="220" /></a></div>
+			<div class="logo"><a href="{% url 'portal:home' %}"><img src="{% static 'images/Logo-feedmedata.png' %}" alt="Logo The Best5" width="220" /></a></div>
 				<div id="search-container" class="search-wrap ">
 					<div class="ui fluid category search">
 						<div id="search-box" class="search-component">
 							{% if busqueda is not None%}
 							<input id="search-input" class="prompt search-box" type="text" value="{{ busqueda }}" name="search-field" required />
 							{% else %}
-							<input id="search-input" class="prompt search-box" type="text" placeholder="I am looking for the best 5..." name="search-field" required />
+							<input id="search-input" class="prompt search-box" type="text" placeholder="Upload your file..." name="search-field" required />
 							{% endif %}
 							<button class="close-icon" type="reset"></button>
 							<a id="doSearch" rel="nofollow"><button id="doSearch" type="submit" class="search-button"></button></a>
