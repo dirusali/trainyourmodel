@@ -28,11 +28,128 @@ def index(request):
     return render(request,'index.html',context=my_dict)
   
 
+class HomeView(View):
+
+    def get(self, request, *args, **kwargs):
+        context={}
+
+        # Get most searched topics
+        last_month = today - timedelta(days=30)
+        topics = [x['tag'] for x in SearchTagCounter.objects.filter(hit__gte=last_month).values('tag').annotate(total=Count('tag')).order_by('-total')[:50]]
+        context['searched'] = SearchTag.active_objects.filter(id__in=topics).extra(where=["LENGTH(tag) - LENGTH(REPLACE(tag, ' ', ''))+1 < %s"], params=[3])[:5]
+
+        # Get promoted categories
+        # 
+        # context['promoted'] = SearchTag.active_objects.filter(is_promoted=True)
+        #context['categories'] = list(context['promoted'])[:6]
+        # Modificación para cargar todas las categorías en Home
+        context['category_images'] = CategoryImage.objects.all().order_by('name')
+        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
+        context['is_home'] = True
+        context['lazyjs'] = True
+        context['valoracionesjs'] = False
+        context['valoracionesTiendajs'] = False
+        context['normal_footer_cat'] = True
+        current_anno = datetime.datetime.now().strftime('%Y')
+        context['current_anno'] = current_anno
+
+        return render(request, 'portal.html', context)
 
 
+class ContactoView(View):
+
+    def get(self, request, *args, **kwargs):
+        context={}
+
+        context['category_images'] = CategoryImage.objects.all().order_by('name')
+        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
+        context['is_home'] = False
+        context['lazyjs'] = False
+        context['valoracionesjs'] = False
+        context['valoracionesTiendajs'] = False
+        context['normal_footer_cat'] = True
+        current_anno = datetime.datetime.now().strftime('%Y')
+        context['current_anno'] = current_anno
+        return render(request, 'contacto.html', context)
 
 
+class PrivacidadView(View):
+
+     def get(self, request, *args, **kwargs):
+        context={}
+
+        context['category_images'] = CategoryImage.objects.all().order_by('name')
+        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
+        context['is_home'] = False
+        context['lazyjs'] = False
+        context['valoracionesjs'] = False
+        context['valoracionesTiendajs'] = False
+        context['normal_footer_cat'] = True
+        current_anno = datetime.datetime.now().strftime('%Y')
+        context['current_anno'] = current_anno
+
+        return render(request, 'priv.html', context)
 
 
+       
+ ef contacto(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email_contacto')
+        message = request.POST.get('message')
+        
+        body = render_to_string(
+            'email_content.html', {
+                'name': name,
+                'email': email,
+                'message': message,
+            },
+        )
 
+        if name and message and email:
+            try:
+                #email_message.send()
+                send_mail('The Best 5 :: Formulario Web', body, 'admin@thebest5.es', ['admin@thebest5.es'])
+                send_mail('The Best 5', 'Buenos días. Hemos recibido tu mensaje correctamente. Recibirás una respuesta lo antes posible.', 'admin@thebest5.es', [email])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return HttpResponseRedirect('/mensaje-enviado/')
+        else:
+            # In reality we'd use a form class
+            # to get proper validation errors.
+            return HttpResponse('Asegúrate de que has rellenado correctamente los campos.')
+    else:
+        context={}
+        context['category_images'] = CategoryImage.objects.all().order_by('name')
+        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
+        context['is_home'] = False
+        context['lazyjs'] = False
+        context['valoracionesjs'] = False
+        context['valoracionesTiendajs'] = False
+        context['normal_footer_cat'] = True
+        current_anno = datetime.datetime.now().strftime('%Y')
+        context['current_anno'] = current_anno
+        
+        return render(request, 'contacto.html', context)      
 
+       ef successView(request):
+        context={}
+
+        # Get most searched topics
+        last_month = today -  datetime.timedelta(30)
+        topics = [x['tag'] for x in SearchTagCounter.objects.filter(hit__gte=last_month).values('tag').annotate(total=Count('tag')).order_by('-total')[:50]]
+        context['searched'] = SearchTag.active_objects.filter(id__in=topics).extra(where=["LENGTH(tag) - LENGTH(REPLACE(tag, ' ', ''))+1 < %s"], params=[3])[:5]
+
+        # Modificación para cargar todas las categorías en Home
+        context['category_images'] = CategoryImage.objects.all().order_by('name')
+        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
+        context['is_home'] = True
+        context['lazyjs'] = False
+        context['valoracionesjs'] = False
+        context['valoracionesTiendajs'] = False
+        context['normal_footer_cat'] = True
+        current_anno = datetime.datetime.now().strftime('%Y')
+        context['current_anno'] = current_anno
+
+        return render(request, 'success.html', context)
+       
