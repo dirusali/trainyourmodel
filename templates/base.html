@@ -42,13 +42,13 @@
   <div class="newsletter">
     <div class="container medium">
       <div class="txt">
-        <p>Los productos mejor recomendados, en UN CLICK, y no pierdas más tiempo. ¿Te apuntas?</p>
-        <div class="guia">
+        <p>Upload your data and get answers in ONE CLICK, no need to hire consultants.</p>
+        <div class="guide">
           <span class="ico"></span>
-          <p>Descárgate GRATIS nuestro eBook de 5 TRUCOS PARA COMPRAR ONLINE MÁS BARATO</p>
+          <p>download your guide about machine learning insights for your business</p>
         </div>
       </div>
-      <a id="suscripcion-footer" href="#" data-fancybox data-src="#newsletter" class="btn" rel="nofollow">Descargar eBook</a>
+      <a id="suscripcion-footer" href="#" data-fancybox data-src="#newsletter" class="btn" rel="nofollow">Download eBook</a>
       </div>
     </div>
   </div>
@@ -57,52 +57,13 @@
       <div class="main-1">
         <img src="{% static 'images/logo-white.png' %}" alt="Logo Thebest5" width="200" class="logo" />
         <ul>
-          <li><a href="https://{{request.get_host}}/classification/">Classify Variables</a></li>
-          <li><a href="https://{{request.get_host}}/clustering/" >Cluster Variables</a></li>
-          <li><a href="https://{{request.get_host}}/categorical/">Categorical</a></li>
           <li><a href="https://{{request.get_host}}/how-it-works/" title="how it works">How it works</a></li>
-          <li><a href="https://www.ml-saas.com/blog/" target="_blank" title="Go to blog">Blog</a></li>
           <li><a href="https://{{request.get_host}}/privacy/" rel="nofollow">Privacy</a></li>
           <li><a href="https://{{request.get_host}}/terms/" rel="nofollow">Terms and conditions</a></li>
           <li><a href="https://{{request.get_host}}/contact/" rel="nofollow">Contact</a></li>
         </ul>
       </div>
       <div class="main-2">
-        <ul>
-          {% if normal_footer_cat %}
-            {% for category in categories %}
-                  <li><a href="{% url 'portal:categories-detail' slug=category.category|slugify %}" title="Ver {% if object.female %}las{% else %}los{% endif %} mejores Artículos de {{ category.category }}">{{ category.category|title }}</a></li>
-                  {% if forloop.counter == 10 %}
-                  </ul>
-                  <ul>
-                  {% endif %}
-              {% endfor %}
-          {% else %}
-              {% if is_search %}
-                  {% for tag in tag_list|slice:":14" %}
-                        <li><a href="{% if tag.female %}{% url 'portal:detail-female' slug=tag.slug %}{% else %}{% url 'portal:detail' slug=tag.slug %}{% endif %}" title="Ver {% if tag.female %}las{% else %}los{% endif %} mejores {{tag.tag}}">{% if tag.female %}Las{% else %}Los{% endif %} mejores {{tag.tag|lower}} de {{current_anno}}</a></li>
-                        {% if forloop.counter == 7 %}
-                        </ul>
-                        <ul>
-                        {% endif %}
-                        {% if forloop.counter == 14 %}
-                        </ul>
-                        {% endif %}
-                  {% endfor %}
-              {% else %}
-                {% for related_link in related_links|slice:":14" %}
-                   <li><a href="{% if related_link.female %}{% url 'portal:detail-female' slug=related_link.slug %}{% else %}{% url 'portal:detail' slug=related_link.slug %}{% endif %}" class="prev" title="Quiero encontrar {% if related_link.female %}las{% else %}los{% endif %} 5 mejores {{related_link.tag}} de {{current_anno}}">{% if related_link.female %}Las{% else %}Los{% endif %} mejores {{related_link.tag|lower}} de {{current_anno}}</a></li>
-                    {% if forloop.counter == 7 %}
-                      </ul>
-                      <ul>
-                    {% endif %}
-                    {% if forloop.counter == 14 %}
-                      </ul>
-                    {% endif %}
-                {% endfor %}
-              {% endif %}
-          {% endif %}
-        </ul>
       </div>
     </div>
     <div style="text-align:center;font-size:12px;padding:25px 40px 5px 35px;color: #d1ecde;margin-bottom: -30px;">*Los precios se indican en Euros e incluyen IVA, pero no los gastos de envío. Puede haber cambios en el precio, la clasificación, las disponibilidad y los gastos. El precio final será, en todo caso, aquel mostrado en las webs a las que redirigimos.</div>
@@ -130,28 +91,46 @@ window.cookieconsent.initialise({
   },
   "theme": "classic",
   "content": {
-    "message": "Utilizamos cookies para medir el tráfico del sitio web y mejorar la experiencia de usuario. Pulsa el botón para seguir navegando con normalidad.",
+    "message": "ef successView(request):
+        context={}
+
+        # Get most searched topics
+        last_month = today -  datetime.timedelta(30)
+        topics = [x['tag'] for x in SearchTagCounter.objects.filter(hit__gte=last_month).values('tag').annotate(total=Count('tag')).order_by('-total')[:50]]
+        context['searched'] = SearchTag.active_objects.filter(id__in=topics).extra(where=["LENGTH(tag) - LENGTH(REPLACE(tag, ' ', ''))+1 < %s"], params=[3])[:5]
+
+        # Modificación para cargar todas las categorías en Home
+        context['category_images'] = CategoryImage.objects.all().order_by('name')
+        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
+        context['is_home'] = True
+        context['lazyjs'] = False
+        context['valoracionesjs'] = False
+        context['valoracionesTiendajs'] = False
+        context['normal_footer_cat'] = True
+        current_anno = datetime.datetime.now().strftime('%Y')
+        context['current_anno'] = current_anno
+
+        return render(request, 'success.html', context).",
     "dismiss": "Seguir navegando",
     "link": "Leer más",
-    "href": "https://www.thebest5.es/politica-de-privacidad/"
+    "href": "https://www.feedmedata.me/privacy/"
   }
 })});
 </script>
 <script src="{% static 'semantic/dist/semantic.min.js' %}"></script>
-<script src="{% static 'best5/js/animatescroll.min.js' %}"></script>
+<script src="{% static 'feedmedata/js/animatescroll.min.js' %}"></script>
 {% comment %}<script src="{% static 'best5/js/jquery.fancybox.min.js' %}"></script>{% endcomment %}
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script src="{% static 'best5/js/icheck.js' %}"></script>
-{% if valoracionesjs or valoracionesTiendajs %}{% comment %}<!-- ./star rating plugin -->{% endcomment %}
+<script src="{% static 'feedmedata/js/icheck.js' %}"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 {% endif %}{% comment %}<!-- ./star rating plugin -->{% endcomment %}
 {% if lazyjs %}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.min.js"></script>
 {% endif %}
-<script src="{% static 'best5/js/scripts.js' %}"></script>
+<script src="{% static 'feedmedata/js/scripts.js' %}"></script>
 <script src="{% static 'django_evercookie/swfobject-2.2.min.js' %}"></script>
-<script src="{% static 'best5/js/js.cookie.js' %}"></script>
+<script src="{% static 'feedmedata/js/js.cookie.js' %}"></script>
 <script src="/ecookie"></script>
 {% load evercookie_js_api %}
 {% if lazyjs %}
@@ -182,17 +161,6 @@ window.cookieconsent.initialise({
       autoplayTimeout: 3000,
       smartSpeed: 350,
   });
-</script>
-{% endif %}
-{% if valoracionesjs or valoracionesTiendajs %}
-<script>
-  $(".star-rating").rateYo({
-    starWidth: "20px",
-      normalFill: "#c3e0ce",
-      ratedFill: "#87c59e",
-      spacing: "3px",
-      halfStar: true
-    });
 </script>
 {% endif %}
     <script>
@@ -271,181 +239,9 @@ window.cookieconsent.initialise({
           url: '/query/?q={query}'
         }
     });
-        {% if valoracionesjs %} 
-        var send_opinion = function(form){
-                var name = $("#name"+form).val();
-                var title = $("#title"+form).val();
-                var email_opinion = $("#email_opinion"+form).val();
-                var opinion = $("#opinion"+form).val();
-                var rating = $("#star-rating"+form).rateYo("rating");
-                var FormId = $("#FormId"+form).val();
-                var ProdId = $("#ProdId"+form).val();
-            if(email_opinion){
-                var csrfmiddlewaretoken = csrftoken;
-                var opinion_data = {"title": title,"name": name,"email_opinion": email_opinion,
-                    "opinion": opinion,"rating": rating,"FormId": FormId,"ProdId": ProdId,"csrfmiddlewaretoken" : csrfmiddlewaretoken};
-                $.ajax({
-                    type: 'POST',
-                    url:  '/opinion/',
-                    data: opinion_data,
-                    success: function(response){
-                        if(response.status == "404"){
-                            $('.error-notification').slideDown('fast');
-                            window.setTimeout(closeOpinionError,4000);
-                            function closeOpinionError() {
-                              $('.error-notification').slideUp('fast');
-                            }
-                        }
-                        else{
-                            $('.notification').slideDown('fast');
-                            window.setTimeout(closeOpinion,4000);
-                            function closeOpinion() {
-                              $('.notification').slideUp('fast');
-                              $("[name='title"+form+"']").val('');
-                              $("[name='name"+form+"']").val('');
-                              $("[name='email_opinion"+form+"']").val('');
-                              $("#star-rating").rateYo("option", "rating", "0");
-                              $("[name='opinion"+form+"']").val('');
-                              $('input[name=terminos]').attr('checked', false);
-                              $.fancybox.close();
-                            }
-                        }
-                    },
-                    error: function(response) {
-                        alert("No se ha podido enviar tu opinión, por favor inténtalo más tarde. Muchas gracias");
-                    }
-                });
-                return false;
-            }
-        };
-        var send_alert = function(form){
-                var price_alert = $("#importe_alert"+form).val();
-                var email_alert = $("#email_alert"+form).val();
-                var FormId = $("#FormId"+form).val();
-                var ProdId = $("#ProdId"+form).val();
-            if(email_alert){
-                var csrfmiddlewaretoken = csrftoken;
-                var alert_data = {"price_alert": price_alert,"email_alert": email_alert,
-                    "FormId": FormId,"ProdId": ProdId,"csrfmiddlewaretoken" : csrfmiddlewaretoken};
-                $.ajax({
-                    type: 'POST',
-                    url:  '/alerts/',
-                    data: alert_data,
-                    success: function(response){
-                        if(response.status == "404"){
-                            $('.error-notification').slideDown('fast');
-                            window.setTimeout(closeOpinionError,4000);
-                            function closeOpinionError() {
-                              $('.error-notification').slideUp('fast');
-                            }
-                        }
-                        else{
-                            $('.notification').slideDown('fast');
-                            window.setTimeout(closeOpinion,4000);
-                            function closeOpinion() {
-                              $('.notification').slideUp('fast');
-                              $("[name='importe_alert"+form+"']").val('');
-                              $("[name='email_alert"+form+"']").val('');
-                              $('input[name=terminosalerta]').attr('checked', false);
-                              $.fancybox.close();
-                            }
-                        }
-                    },
-                    error: function(response) {
-                        alert("Lo sentimos, no se ha podido enviar tu petición de aviso, por favor inténtalo más tarde. Muchas gracias.");
-                    }
-                });
-                return false;
-            }
-        };
-        var send_alert_grafica = function(form){
-                var price_alert = $("#importe_alert_grafica"+form).val();
-                var email_alert = $("#email_alert_grafica"+form).val();
-                var FormId = $("#FormId"+form).val();
-                var ProdId = $("#ProdId"+form).val();
-            if(email_alert){
-                var csrfmiddlewaretoken = csrftoken;
-                var alert_data = {"price_alert": price_alert,"email_alert": email_alert,
-                    "FormId": FormId,"ProdId": ProdId,"csrfmiddlewaretoken" : csrfmiddlewaretoken};
-                $.ajax({
-                    type: 'POST',
-                    url:  '/alerts/',
-                    data: alert_data,
-                    success: function(response){
-                        if(response.status == "404"){
-                            $('.error-notification').slideDown('fast');
-                            window.setTimeout(closeOpinionError,4000);
-                            function closeOpinionError() {
-                              $('.error-notification').slideUp('fast');
-                            }
-                        }
-                        else{
-                            $('.notification').slideDown('fast');
-                            window.setTimeout(closeOpinion,4000);
-                            function closeOpinion() {
-                              $('.notification').slideUp('fast');
-                              $("[name='importe_alert_grafica"+form+"']").val('');
-                              $("[name='email_alert_grafica"+form+"']").val('');
-                              $('input[name=terminosalertagrafica]').attr('checked', false);
-                              $.fancybox.close();
-                            }
-                        }
-                    },
-                    error: function(response) {
-                        alert("Lo sentimos, no se ha podido enviar tu petición de aviso, por favor inténtalo más tarde. Muchas gracias.");
-                    }
-                });
-                return false;
-            }
-        };
-        {% endif %}
-        {% if valoracionesTiendajs %} 
-        var send_opinion_tienda = function(){
-                var shop_name = $("#shop_name").val();
-                var shop_title = $("#shop_title").val();
-                var shop_email_opinion = $("#shop_email_opinion").val();
-                var shop_opinion = $("#shop_opinion").val();
-                var shop_rating = $("#shop_star-rating").rateYo("rating");
-                var ShopId = $("#ShopId").val();
-            if(shop_email_opinion){
-                var csrfmiddlewaretoken = csrftoken;
-                var shop_opinion_data = {"shop_title": shop_title,"shop_name": shop_name,"shop_email_opinion": shop_email_opinion,
-                    "shop_opinion": shop_opinion,"shop_rating": shop_rating,"ShopId": ShopId,"csrfmiddlewaretoken" : csrfmiddlewaretoken};
-                $.ajax({
-                    type: 'POST',
-                    url:  '/shop-opinion/',
-                    data: shop_opinion_data,
-                    success: function(response){
-                        if(response.status == "404"){
-                            $('.error-notification').slideDown('fast');
-                            window.setTimeout(closeOpinionError,4000);
-                            function closeOpinionError() {
-                              $('.error-notification').slideUp('fast');
-                            }
-                        }
-                        else{
-                            $('.notification').slideDown('fast');
-                            window.setTimeout(closeOpinion,4000);
-                            function closeOpinion() {
-                              $('.notification').slideUp('fast');
-                              $("[name='shop_title']").val('');
-                              $("[name='shop_name']").val('');
-                              $("[name='shop_email_opinion']").val('');
-                              $("#shop_star-rating").rateYo("option", "rating", "0");
-                              $("[name='shop_opinion']").val('');
-                              $('input[name=shop_terminos]').attr('checked', false);
-                              $.fancybox.close();
-                            }
-                        }
-                    },
-                    error: function(response) {
-                        alert("No se ha podido enviar tu opinión, por favor inténtalo más tarde. Muchas gracias");
-                    }
-                });
-                return false;
-            }
-        };
-        {% endif %}
+        
+        
+        
         var send_subscription = function(is_mobile){
                 var email = $("#email_id").val();
             if(email){
@@ -498,136 +294,8 @@ window.cookieconsent.initialise({
                 send_subscription(true);
             }
         });
-      {% if valoracionesjs %}
-        $('#opinion_form1').form({
-            fields: {
-              name: 'name1',
-              email_opinion: 'email_opinion1',
-              opinion: 'opinion1',
-            },
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_opinion('1');
-            }
-        });
-        $('#alerts_form1').form({
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_alert('1');
-            }
-        });
-        $('#alerts_form_grafica1').form({
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_alert_grafica('1');
-            }
-        });
-         $('#opinion_form2').form({
-            fields: {
-              name: 'name2',
-              email_opinion: 'email_opinion2',
-              opinion: 'opinion2',
-            },
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_opinion('2');
-            }
-        });
-         $('#alerts_form2').form({
-          onSuccess: function(event, fields) {
-              event.preventDefault();
-              send_alert('2');
-          }
-        });
-        $('#alerts_form_grafica2').form({
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_alert_grafica('2');
-            }
-        });
-         $('#opinion_form3').form({
-            fields: {
-              name: 'name3',
-              email_opinion: 'email_opinion3',
-              opinion: 'opinion3',
-            },
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_opinion('3');
-            }
-        });
-        $('#alerts_form3').form({
-          onSuccess: function(event, fields) {
-              event.preventDefault();
-              send_alert('3');
-          }
-        });
-        $('#alerts_form_grafica3').form({
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_alert_grafica('3');
-            }
-        });
-         $('#opinion_form4').form({
-            fields: {
-              name: 'name4',
-              email_opinion: 'email_opinion4',
-              opinion: 'opinion4',
-            },
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_opinion('4');
-            }
-        });
-        $('#alerts_form4').form({
-          onSuccess: function(event, fields) {
-              event.preventDefault();
-              send_alert('4');
-          }
-        });
-        $('#alerts_form_grafica4').form({
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_alert_grafica('4');
-            }
-        });
-         $('#opinion_form5').form({
-            fields: {
-              name: 'name5',
-              email_opinion: 'email_opinion5',
-              opinion: 'opinion5',
-            },
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_opinion('5');
-            }
-        });
-         $('#alerts_form5').form({
-          onSuccess: function(event, fields) {
-              event.preventDefault();
-              send_alert('5');
-          }
-        });
-         $('#alerts_form_grafica5').form({
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_alert_grafica('5');
-            }
-        });
-        {% endif %}
-         {% if valoracionesTiendajs %}
-         $('#shop_opinion_form').form({
-            fields: {
-              name: 'shop_name',
-              email_opinion: 'shop_email_opinion',
-              opinion: 'shop_opinion',
-            },
-            onSuccess: function(event, fields) {
-                event.preventDefault();
-                send_opinion_tienda();
-            }
-        });
-         {% endif %}
+      
+            
         $("#btn-already-subscribed-mobile").click(function(e){{% comment %}/*Button to allow users to stop seeing the popup in new devices*/{% endcomment %}
             $('.ui.modal.mailchimp.mobile').modal('hide');
             setCookieSubscribed();{% comment %}/*Stop showing the popup*/{% endcomment %}
