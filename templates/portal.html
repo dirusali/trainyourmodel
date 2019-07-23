@@ -72,9 +72,15 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
     </header>    
     <div class="container">{% comment %}<!-- section home-intro" -->{% endcomment %}
         <section class="home-buscado">
-            <h2 class="tit1">Best sellers this month</h2>
-       
-               
+            <h2 class="tit1">Select Algorithm to run</h2>         
+        <form method = "post" enctype = "multipart/form-data">
+            {% csrf_token %}
+            <label>Upload a csv file</label>
+            <input type ="file" name="file">
+            <p> Only accept csv files, if you use another format please convert first.</p>
+            <button type = "submit">Upload</button>
+        </form>    
+        </section>       
         <section class="home-intro">
             <h1 class="tit1">Feedmedata, run AI algorithms with one click</h1>
             <p class="feat">We run data science and artificial algorithm for you, no programming skills needed.<br>Just upload your csv file and get the business insights.</p>
