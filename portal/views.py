@@ -135,15 +135,11 @@ class CondicionesView(View):
      def get(self, request, *args, **kwargs):
         context={}
 
-        context['category_images'] = CategoryImage.objects.all().order_by('name')
-        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
         context['is_home'] = False
         context['lazyjs'] = False
         context['valoracionesjs'] = False
         context['valoracionesTiendajs'] = False
         context['normal_footer_cat'] = True
-        current_anno = datetime.datetime.now().strftime('%Y')
-        context['current_anno'] = current_anno
 
         return render(request, 'terms.html', context)
 
