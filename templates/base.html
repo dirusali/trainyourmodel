@@ -65,8 +65,6 @@
       <div class="main-2">
       </div>
     </div>
-    <div style="text-align:center;font-size:12px;padding:25px 40px 5px 35px;color: #d1ecde;margin-bottom: -30px;">*Los precios se indican en Euros e incluyen IVA, pero no los gastos de envío. Puede haber cambios en el precio, la clasificación, las disponibilidad y los gastos. El precio final será, en todo caso, aquel mostrado en las webs a las que redirigimos.</div>
-  </div>
   <div class="copy">
   <a href="#" class="scroll-top"></a>
 </footer>
@@ -93,21 +91,11 @@ window.cookieconsent.initialise({
     "message": "ef successView(request):
         context={}
 
-        # Get most searched topics
-        last_month = today -  datetime.timedelta(30)
-        topics = [x['tag'] for x in SearchTagCounter.objects.filter(hit__gte=last_month).values('tag').annotate(total=Count('tag')).order_by('-total')[:50]]
-        context['searched'] = SearchTag.active_objects.filter(id__in=topics).extra(where=["LENGTH(tag) - LENGTH(REPLACE(tag, ' ', ''))+1 < %s"], params=[3])[:5]
-
-        # Modificación para cargar todas las categorías en Home
-        context['category_images'] = CategoryImage.objects.all().order_by('name')
-        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
         context['is_home'] = True
         context['lazyjs'] = False
         context['valoracionesjs'] = False
         context['valoracionesTiendajs'] = False
         context['normal_footer_cat'] = True
-        current_anno = datetime.datetime.now().strftime('%Y')
-        context['current_anno'] = current_anno
 
         return render(request, 'success.html', context).",
     "dismiss": "Agree",
