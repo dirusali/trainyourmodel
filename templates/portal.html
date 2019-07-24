@@ -30,40 +30,51 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </a>          
-                </div>          
+            </div>          
             </div> 
-        </div> 
     </header>    
-    <div class="container">{% comment %}<!--"data" -->{% endcomment %}
-        <section class="data">
+    <div class="container">{% comment %}<!-- section home-intro" -->{% endcomment %}
+        <section class="home-buscado">
             <h2 class="tit1">Upload your data</h2>   
             <form method = "post" enctype = "multipart/form-data" style="text-align:center">
-                <label>Upload a csv file</label>
-                <input type ="file" name="file">
-                <p> Only accept csv files, if you use another format please convert first.</p>
-                <button type = "submit">Upload</button>
-             </form>
-        </section>
-        <section class="algorithm">
+                                {% csrf_token %}
+                                <label>Upload a csv file</label>
+                                <input type ="file" name="file">
+                                <p> Only accept csv files, if you use another format please convert first.</p>
+                               <button type = "submit">Upload</button>
+                               </form> 
+        </section>       
+        <section class="home-intro">
             <h1 class="tit1">Choose Machine Learning Algorithm</h1>
             <p class="feat">We run most popular machine learning algorithms with only one click.<br>Just select your desired algorithm and click run for the results</p>
-            <div class="txt" style="text-align:center">>
-                   <form method = "post"  style="text-align:center">
-                           <select name="Pick One Algorithm">
-                               <option value="Linear Regression">Linear Regression</option>
-                               <option value="Support Vector Machine">Support Vector Machine</option>
-                               <option value="K-Nearest Neighbor">K-Nearest Neighbor</option>
-                               <option value="K-Means">K-Means</option>
-                               <option value="Random Trees">Random Trees</option> 
-                               <option value="Neural Networks">Neural Networks</option> 
-                               <input type ="submit" name="Submit>
-                           </select>
-                   </form> 
-            </div>    
-        </section> 
-    </div> 
-    </div>                                                        
+            <div class="algoritmo-desc container xsmall">
+                <div class="img-wrapper">
+                    <img src="{% static 'images/img-algoritmo.png' %}" width="666" height="302" alt="Icon Algorithm The Best 5" />
+                </div>
+                <div class="txt">
+                    <p>Our Artificial Intelligence algorithm is able to read thousands of trusted reviews and articles published online, analyze them and determine which are the best products of the moment, but...</p>
+                    <h2 class="tit2">Which are the parameters studied?</h2>
+                </div>
+            </div>
+            <div class="caracteristicas">
+                <div class="item caract-opiniones">
+                    <p>Customer reviews on thousands of products</p>
+                </div>
+                <div class="item caract-marca">
+                    <p>Prices of all the items of the same category</p>
+                </div>
+                <div class="item caract-calidad">
+                    <p>How many people are talking about the brand on blogs and social media</p>
+                </div>
+                <div class="item caract-ventas">
+                    <p>What's been said about the brand in reviews by experts and customers</p>
+                </div>
+                <div class="item caract-precio">
+                    <p>How many items are sold daily</p>
+                </div>
+            </div>
+        </section>
+           
+    </div>
 {% endblock %}
-        
-
         
