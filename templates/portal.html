@@ -38,7 +38,6 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
             <h2 class="tit1">Upload your data</h2>   
             <form method = "post" enctype = "multipart/form-data" style="text-align:center">
                                 {% csrf_token %}
-                                <label>Upload a csv file</label>
                                 <input type ="file" name="file">
                                 <p> Only accept csv files, if you use another format please convert first.</p>
                                <button type = "submit">Upload</button>
@@ -51,19 +50,16 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
         <section class="home-intro">
             <h1 class="tit1">Choose Machine Learning Algorithm</h1>
             <p class="feat">We run most popular machine learning algorithms with only one click.<br>Just select your desired algorithm and click run for the results</p>
-            <div class="algoritmo-desc container xsmall">
-                <div class="img-wrapper">
-                    <img src="{% static 'images/carousel/image2.png' %}"  alt="Icon Algorithm The Best 5" />
-                </div>
-                <div class="txt">
-                    <p>Our Artificial Intelligence Algorithms are able to give business insights based on your train data. You can also use them to make predictions on test data. Most often we classify machine learning algorithms in supervised VS unsupervised depending on whether or not you have data for your target variable.</p>
-                </div>
+            <div class="logo" align="center"><a href="/"><img src="{% static 'images/carousel/image2.png' %}"/></a></div>
+            <div class="txt">
+            <p>Our Artificial Intelligence Algorithms are able to give business insights based on your train data. You can also use them to make predictions on test data. Most often we classify machine learning algorithms in supervised VS unsupervised depending on whether or not you have data for your target variable.</p>
             </div>
            <p></p>
            <p></p>
-            <p></p>
+           <p></p>
             <div class="txt" style="text-align:center">>
                    <form method = "post"  style="text-align:center">
+                          {% csrf_token %}
                            <select name="Pick One Algorithm">
                                <option value="Linear Regression">Linear Regression</option>
                                <option value="Support Vector Machine">Support Vector Machine</option>
