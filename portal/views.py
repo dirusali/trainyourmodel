@@ -158,3 +158,15 @@ def subscribe(request):
             Subscribe.objects.create(email_id=email)
             SendSubscribeMail(email) # Send the Mail, Class available in utils.py
     return HttpResponse("/")
+
+def successView(request):
+        context={}
+
+
+        context['is_home'] = True
+        context['lazyjs'] = False
+        context['valoracionesjs'] = False
+        context['valoracionesTiendajs'] = False
+        context['normal_footer_cat'] = True
+
+        return render(request, 'success.html', context)
