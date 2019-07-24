@@ -17,6 +17,4 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^api-token-auth/', obtain_jwt_token),
 ]
-# Serve media like categories picture
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
