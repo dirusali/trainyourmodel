@@ -31,16 +31,15 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </a>
-            </div>
-            <div class="ui grid" id="div_search" style="">
-                <div id="search-container" class="search-wrap">
-                    <div id="search-content-home" class="ui fluid category search">
-                        <div id="search-box" class="search-component-home">
-                            <input id="search-input" class="prompt search-box" type="text" placeholder="Upload your file..." name="search-field" required />
-                            <button class="close-icon" type="reset"></button>
-                            <a id="doSearch"><button type="submit" class="search-button"></button></a>
-                        </div>
-                        <div class="right aligned results"></div>
+            </div> 
+            <div class="ui grid" id="upload_csv" style="">
+                                <form method = "post" enctype = "multipart/form-data">
+                                {% csrf_token %}
+                                <label>Upload a csv file</label>
+                                <input type ="file" name="file">
+                                <p> Only accept csv files, if you use another format please convert first.</p>
+                               <button type = "submit">Upload</button>
+                               </form>           
                     </div>
                 </div>
             </div>
@@ -69,14 +68,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
     </header>    
     <div class="container">{% comment %}<!-- section home-intro" -->{% endcomment %}
         <section class="home-buscado">
-            <h2 class="tit1">Select Algorithm to run</h2>         
-        <form method = "post" enctype = "multipart/form-data">
-            {% csrf_token %}
-            <label>Upload a csv file</label>
-            <input type ="file" name="file">
-            <p> Only accept csv files, if you use another format please convert first.</p>
-            <button type = "submit">Upload</button>
-        </form>    
+            <h2 class="tit1">Select Algorithm to run</h2>            
         </section>       
         <section class="home-intro">
             <h1 class="tit1">Feedmedata, run AI algorithms with one click</h1>
