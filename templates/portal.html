@@ -38,7 +38,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
             <h2 class="tit1">Upload your data</h2>   
             <form method = "post" enctype = "multipart/form-data" style="text-align:center">
             {% csrf_token %}
-            <input type ="file" name="file">Search File</input>
+            <input type="file" style="display:none;" id="file" name="file"/>
             <p> Please use csv format.</p>
             <button type = "submit">Upload</button>
             </form> 
