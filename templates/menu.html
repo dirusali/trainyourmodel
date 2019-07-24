@@ -2,43 +2,9 @@
 {% load static %}
 {% comment %}<!-- menu -->{% endcomment %}
     <ul id="menu">
-        <li><a href="https://www.thebest5.com/uk/">Home</a></li>
-        <li><a href="https://www.thebest5.com/uk/how-it-works/">How it works</a></li>
-        <li><a href="https://www.thebest5.com/uk/gifts-for-men/">Gifts for men</a></li>
-        <li><a href="https://www.thebest5.com/uk/gifts-for-women/">Gifts for women</a></li>
-        {% if is_home %}
-            <li class="with-submenu"><a id="menucategories" href="https://www.thebest5.com/uk/categories/">Categories</a>
-        {% else %}
-            <li class="with-submenu"><a id="menucategories" href="#">Categories</a>
-        {% endif %}
-            <div class="submenu">
-                <div class="links">
-                    <ul>
-                        {% for category in category_images %}
-                            <li><a href="{% url 'portal:categories-detail' slug=category.name|slugify %}" title="The best products in {{ category.name|title}}">
-                                <span class="ico-wrap">
-                                    {% if category.icon %}<span class="fas {{ category.icon }}"></span>{% else %}<span class="fas icon"></span>{% endif %}
-                            </span>{{ category.name|title}}</a></li>
-                            {% if forloop.counter == 9 %}
-                            </ul>
-                            <ul>
-                            {% endif %}
-                        {% endfor %}
-                        {% comment %}<li><a href="https://www.thebest5.com/uk/gifts-for-men/"><span class="ico-wrap"><span class="fas fa-mars"></span></span>Gifts for men</a></li>
-                        <li><a href="https://www.thebest5.com/uk/gifts-for-women/"><span class="ico-wrap"><span class="fas fa-venus"></span></span>Gifts for women</a></li>{% endcomment %}
-                        <li><a href="https://www.thebest5.com/uk/categories/"><span class="ico-wrap"><span class="fas icon"></span></span>See all</a></li>
-                    </ul>
-                    <div class="feat">
-                    <p>Most Searched:</p>
-                    <span class="ico"></span>
-                    <a rel="nofollow" href="https://www.thebest5.com/uk/best-fridge-freezers/">
-                        <img src="{% static 'images/best-fridge-freezers-reviews-thebest5.jpg' %}" alt="See The Best Fridge Freezers"/>
-                        <span class="btn-link">Fridge Freezers</span>
-                    </a>            
-                </div>
-            </div>
-        </li>
-        {% comment %}<li><a href="https://www.thebest5.com/uk/faq/">FAQ</a></li>
-        <li><a href="https://www.thebest5.com/uk/contact/">Contact</a></li>{% endcomment %}
+        <li><a href="http://198.211.107.214/e/">Home</a></li>
+        <li><a href="http://198.211.107.214//terms/">Terms and conditions</a></li>
+        <li><a href="http://198.211.107.214/privacy">Privacy</a></li>
+        <li><a href="http://198.211.107.214/contact/">Contact</a></li>
     </ul>
 {% comment %}<!-- ./menu -->{% endcomment %}
