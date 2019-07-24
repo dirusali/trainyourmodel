@@ -1,12 +1,8 @@
 from datetime import datetime
-from scan.models import SearchTag, RatedProduct, CategoryImage
 from django import template
 import json
 import ast
 register = template.Library()
-
-
-
 
 
 @register.filter(name='getlist')
