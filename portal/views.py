@@ -16,7 +16,6 @@ from django.shortcuts import redirect
 
 from portal.models import Subscribe
 #from portal.utils import SendSubscribeMail, round_next_down, round_next_up
-from portal.models import Subscribe
 
 from el_pagination.views import AjaxListView
 from django.http import Http404, JsonResponse, HttpResponse, HttpResponseRedirect, HttpResponseServerError
