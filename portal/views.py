@@ -146,3 +146,15 @@ class CondicionesView(View):
         context['current_anno'] = current_anno
 
         return render(request, 'terms.html', context)
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        email_qs = Subscribe.objects.filter(email_id=email)
+        if email_qs.exists() or len(email)==0:
+            data = {"status" : "404"}
+            return JsonResponse(data)
+        else:
+            Subscribe.objects.create(email_id=email)
+            SendSubscribeMail(email) # Send the Mail, Class available in utils.py
+    return HttpResponse("/")
