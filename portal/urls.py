@@ -11,7 +11,7 @@ from .views import HomeView, FuncionaView, ContactoView, CondicionesView, Privac
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),  
-        url(r'^terms/$', CondicionesView.as_view(), name='terms'),
+        url(r'^terms-and-conditions/$', CondicionesView.as_view(), name='terms'),
         url(r'^privacy/$', PrivacidadView.as_view(), name='priv'),
         #url(r'^how-it-works/$', FuncionaView.as_view(), name='funciona'),
         url(r'^subscribe/', subscribe, name="subscribe"),
