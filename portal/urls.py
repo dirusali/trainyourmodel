@@ -6,7 +6,7 @@ from portal import views as portal_views
 
 app_name = 'portal'
 
-from .views import HomeView, FuncionaView, ContactoView, CondicionesView, PrivacidadView, subscribe, SuccessView, contacto
+from .views import HomeView, FuncionaView, ContactoView, CondicionesView, PrivacidadView, subscribe, successView, contacto
 
 
 urlpatterns = [
