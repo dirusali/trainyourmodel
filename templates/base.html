@@ -179,69 +179,9 @@ window.cookieconsent.initialise({
                   }
               }
           }
-          {% if is_home %}
-            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-               $("#menucategorias").attr("href", "#");
-            }
-          {% else %}
-              if(!isMobile) {
-                 $("#menucategorias").attr("href", "https://www.thebest5.es/categorias/");
-              }
-            {% endif %}
-            // Search
-              $('#search-input').keypress(function(e) {
-                if(e.which == 13) {
-                  var url = '/buscar/?q=' + $('#search-input').val();
-                  window.location = url;
-                }
-              })
-              $('#doSearch').click(function(e) {
-                  var url = '/buscar/?q=' + $('#search-input').val();
-                  window.location = url;
-                })
-              $('.close-icon').click(function(e) {
-                $('#search-input').val('');
-                $('#search-input').attr("placeholder", "Busco los 5 mejores...");
-              })
-            // Search autocomplete
-           $('.ui.search')
-      .search({
-        minCharacters : 3,
-        maxResults: 12,
-        apiSettings   : {
-          onResponse: function(best5Response) {
-            var
-              response = {
-                results : []
-              }
-            ;
-            // translate GitHub API response to work with search
-            $.each(best5Response, function(index, item) {
-              var maxResults = 16;
-              if(index >= maxResults) {
-                return false;
-              }
-              if(item.female){
-                mejores = '/las-mejores-';
-              }else{
-                mejores = '/los-mejores-';
-              }
-              // add result to category
-              response.results.push({
-                title       : item.tag,
-                description : item.category,
-                url         : mejores + item.slug + '/'
-              });
-            });
-            return response;
-          },
-          url: '/query/?q={query}'
-        }
-    });
+
         
-        
-        
-        var send_subscription = function(is_mobile){
+          var send_subscription = function(is_mobile){
                 var email = $("#email_id").val();
             if(email){
                 var csrfmiddlewaretoken = csrftoken;
@@ -276,15 +216,12 @@ window.cookieconsent.initialise({
                 });
                 return false;
             }
-        };
-        $(".tab-newsletter, #suscripcion-footer").click(function(e) {
-          $('#boton-guia-compra').hide();
+          };
           $('#formulario').show();
           $('#terminos').prop('checked', false);
           $('#mensaje h2').empty();
-          $("#mensaje h2").html('Descárgate GRATIS nuestro eBook de 5 TRUCOS PARA COMPRAR ONLINE MÁS BARATO');
-        });
-        $('#subscribe-mobile').form({
+          });
+          $('#subscribe-mobile').form({
             fields: {
               email:'email'
             },
@@ -292,13 +229,13 @@ window.cookieconsent.initialise({
                 event.preventDefault();
                 send_subscription(true);
             }
-        });
+          });
       
             
-        $("#btn-already-subscribed-mobile").click(function(e){{% comment %}/*Button to allow users to stop seeing the popup in new devices*/{% endcomment %}
+          $("#btn-already-subscribed-mobile").click(function(e){{% comment %}/*Button to allow users to stop seeing the popup in new devices*/{% endcomment %}
             $('.ui.modal.mailchimp.mobile').modal('hide');
             setCookieSubscribed();{% comment %}/*Stop showing the popup*/{% endcomment %}
-        });
+          });
     });
     function setCookieSubscribed(){
         console.log("Refreshing cookies..");{% comment %}/*Set two cookies, une jquery cookie and another using evercookie*/{% endcomment %}
