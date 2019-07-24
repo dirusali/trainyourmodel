@@ -33,25 +33,11 @@ class HomeView(View):
     def get(self, request, *args, **kwargs):
         context={}
 
-        # Get most searched topics
-        last_month = today - timedelta(days=30)
-        topics = [x['tag'] for x in SearchTagCounter.objects.filter(hit__gte=last_month).values('tag').annotate(total=Count('tag')).order_by('-total')[:50]]
-        context['searched'] = SearchTag.active_objects.filter(id__in=topics).extra(where=["LENGTH(tag) - LENGTH(REPLACE(tag, ' ', ''))+1 < %s"], params=[3])[:5]
-
-        # Get promoted categories
-        # 
-        # context['promoted'] = SearchTag.active_objects.filter(is_promoted=True)
-        #context['categories'] = list(context['promoted'])[:6]
-        # Modificación para cargar todas las categorías en Home
-        context['category_images'] = CategoryImage.objects.all().order_by('name')
-        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
         context['is_home'] = True
         context['lazyjs'] = True
         context['valoracionesjs'] = False
         context['valoracionesTiendajs'] = False
         context['normal_footer_cat'] = True
-        current_anno = datetime.datetime.now().strftime('%Y')
-        context['current_anno'] = current_anno
 
         return render(request, 'portal.html', context)
 
@@ -61,15 +47,11 @@ class ContactoView(View):
     def get(self, request, *args, **kwargs):
         context={}
 
-        context['category_images'] = CategoryImage.objects.all().order_by('name')
-        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
         context['is_home'] = False
         context['lazyjs'] = False
         context['valoracionesjs'] = False
         context['valoracionesTiendajs'] = False
         context['normal_footer_cat'] = True
-        current_anno = datetime.datetime.now().strftime('%Y')
-        context['current_anno'] = current_anno
         return render(request, 'contacto.html', context)
 
 
@@ -78,21 +60,17 @@ class PrivacidadView(View):
      def get(self, request, *args, **kwargs):
         context={}
 
-        context['category_images'] = CategoryImage.objects.all().order_by('name')
-        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
         context['is_home'] = False
         context['lazyjs'] = False
         context['valoracionesjs'] = False
         context['valoracionesTiendajs'] = False
         context['normal_footer_cat'] = True
-        current_anno = datetime.datetime.now().strftime('%Y')
-        context['current_anno'] = current_anno
 
         return render(request, 'priv.html', context)
 
 
        
- ef contacto(request):
+def contacto(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email_contacto')
@@ -120,8 +98,6 @@ class PrivacidadView(View):
             return HttpResponse('Asegúrate de que has rellenado correctamente los campos.')
     else:
         context={}
-        context['category_images'] = CategoryImage.objects.all().order_by('name')
-        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
         context['is_home'] = False
         context['lazyjs'] = False
         context['valoracionesjs'] = False
@@ -132,24 +108,13 @@ class PrivacidadView(View):
         
         return render(request, 'contacto.html', context)      
 
-       ef successView(request):
-        context={}
+def successView(request):
+    context={}
+    context['is_home'] = True
+    context['lazyjs'] = False
+    context['valoracionesjs'] = False
+    context['valoracionesTiendajs'] = False
+    context['normal_footer_cat'] = True
 
-        # Get most searched topics
-        last_month = today -  datetime.timedelta(30)
-        topics = [x['tag'] for x in SearchTagCounter.objects.filter(hit__gte=last_month).values('tag').annotate(total=Count('tag')).order_by('-total')[:50]]
-        context['searched'] = SearchTag.active_objects.filter(id__in=topics).extra(where=["LENGTH(tag) - LENGTH(REPLACE(tag, ' ', ''))+1 < %s"], params=[3])[:5]
-
-        # Modificación para cargar todas las categorías en Home
-        context['category_images'] = CategoryImage.objects.all().order_by('name')
-        context['categories'] = SearchTag.active_objects.filter(is_valid=True).exclude(category='').exclude(category='Aplicaciones móviles').exclude(category='Hogar').order_by().values('category').distinct()
-        context['is_home'] = True
-        context['lazyjs'] = False
-        context['valoracionesjs'] = False
-        context['valoracionesTiendajs'] = False
-        context['normal_footer_cat'] = True
-        current_anno = datetime.datetime.now().strftime('%Y')
-        context['current_anno'] = current_anno
-
-        return render(request, 'success.html', context)
+    return render(request, 'success.html', context)
        
