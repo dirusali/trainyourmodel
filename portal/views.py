@@ -173,7 +173,7 @@ def successView(request):
 def upload_csv(request):
 	data = {}
 	if "POST" == request.method:
-	    return render(request, "portal/upload_csv.html", data)
+	    return render(request, "upload_csv.html", data)
 	try:
 	    csv_file = request.FILES["csv_file"]
 	    if not csv_file.name.endswith('.csv'):
@@ -183,5 +183,5 @@ def upload_csv(request):
 	except Exception as e:
 	    print(e)
 
-	return render(request, "portal/upload_csv.html", data)
+	return render(request, "upload_csv.html", data)
 
