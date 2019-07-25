@@ -17,6 +17,8 @@ urlpatterns = [
         url(r'^subscribe/', subscribe, name="subscribe"),
         url(r'^contact/$', ContactoView.as_view(), name='contacto'),
         url(r'^about/$', RedirectView.as_view(url='/como-funciona/', permanent=True)),
+        url(r'^upload/csv/$', views.upload_csv, name='upload_csv'),
+
         #urls(r'^results/$, Results.as_view(), name='results')
 ]
 
