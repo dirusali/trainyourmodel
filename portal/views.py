@@ -174,12 +174,11 @@ def upload_csv(request):
 	if "POST" == request.method:
 	    try:
 	        csv_file = request.FILES["csv_file"]
-	        if not csv_file.name.endswith('.csv'):
-	            print ('File is not CSV type')
-	        infile = pd.read_csv(csv_file)
-		df = pd.DataFrame(infile)
-		df = pd.head(3)
-	        data = {'results': infile}
+	        if csv_file.name.endswith('.csv'):
+	            infile = pd.read_csv(csv_file)
+		    df = pd.DataFrame(infile)
+		    df = pd.head(3)
+	           data = {'results': df}
 	    except Exception as e:
 	        print(e)
 
