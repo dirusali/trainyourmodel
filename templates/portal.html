@@ -34,7 +34,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
             </div> 
     </header>    
     <div class="container">{% comment %}<!-- section home-intro" -->{% endcomment %}
-        <section class="home-buscado">
+        <section class="home-upload">
             <h2 class="tit1">Upload your data</h2>   
             <form method = "post" enctype = "multipart/form-data" style="text-align:center">
             {% csrf_token %}
@@ -46,7 +46,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
         <div class="logo" align="center"><a href="/"><img src="{% static 'images/carousel/image4.png' %}"/></a></div>
         <p><br></p><p><br></p> 
 
-        <section class="home-intro">
+        <section class="home-run">
             <h1 class="tit1">Choose Machine Learning Algorithm</h1>
             <p class="feat">We run most popular machine learning algorithms with only one click.<br>
             Our Artificial Intelligence Algorithms are able to give business insights based on your train data. You can also use them to make predictions on test data. 
@@ -64,12 +64,12 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
                                <input type ="submit" name="Submit>
                            </select>
                    </form> 
+             </section>                                                                              
             </div> 
-            <p><br></p><p><br></p>
-            
+        <section class="explanation">   
         <div class="logo" align="center"><a href="/"><img src="{% static 'images/carousel/image2.png' %}"/></a></div>
         <p><br></p><p><br></p>
-         <div class="caracteristicas">
+        <div class="caracteristicas">
             <p class="feat"> 
             <p><br></p><p><br></p>               
             Supervised algorithms: need values for the target column so that the model can be trained in test data. ie: Regression, Support Vector Machines or Decision trees<br>
