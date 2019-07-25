@@ -178,7 +178,8 @@ def upload_csv(request):
 	    csv_file = request.FILES["csv_file"]
 	    if not csv_file.name.endswith('.csv'):
 	        print ('File is not CSV type')
-	    df = pd.read_csv(csv_file)
+	    infile = pd.read_csv(csv_file)
+	    df = infile
 	    return df
 	except Exception as e:
 	    print(e)
