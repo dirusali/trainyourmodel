@@ -204,8 +204,7 @@ def upload_csv(request):
 				pass
 
 	except Exception as e:
-		logging.getLogger("error_logger").error("Unable to upload file. "+repr(e))
-		messages.error(request,"Unable to upload file. "+repr(e))
+	    print(e)
 
 	return HttpResponseRedirect(reverse("portal:upload_csv"))
 
