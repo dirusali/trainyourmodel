@@ -173,7 +173,7 @@ def successView(request):
 def upload_csv(request):
 	if "POST" == request.method:
 	    try:
-	        csv_file = request.FILES["csv_file"]
+	        csv_file = request.FILES["file"]
 	        infile = pd.read_csv(csv_file)
 		df = pd.DataFrame(infile)
 		df = pd.head(3)
