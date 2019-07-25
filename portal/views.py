@@ -172,7 +172,7 @@ def successView(request):
         return render(request, 'success.html', context)
 
 
-def create_df(data):  
+def df_target(infile):  
     infile = data	
     reader = csv.reader(infile, delimiter=',')  
     lista = []
@@ -193,14 +193,28 @@ def create_df(data):
         numbers = [ float(n) for n in numbers ]
         newlist.append(numbers) 
     df = pd.DataFrame(np.array(newlist),columns=np.array(header))
-    return df
+    variables = (df,results)
+    return variables
 
 def upload_csv(request):
 	if "POST" == request.method:
 	    try:
 	        csv_file = request.FILES["csv_file"]
 	        infile = pd.read_csv(csv_file)
-	        data = {'results': infile}
+	        algo = request.submit["Submit"]
+		supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor" ]
+		if algo in supervised:
+			data = df_target(infile)
+		if algo == "Support Vector machine":
+			results = SVM(data)
+		if algo == "Linear Regression":
+			results = LM(data)
+		if algo == "Random Trees":
+			results = Rtree(data)
+		if algo == "K-Nearest Neighbor":
+			results = KNN(data)
+		if algo == "Kmeans":
+			results = KNN(data)						
 	    except Exception as e:
 	        print(e)
 
