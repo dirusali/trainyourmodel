@@ -173,18 +173,16 @@ def successView(request):
 def upload_csv(request):
 	data = {}
 	if "POST" == request.method:
-		return render(request, "portal/upload_csv.html", data)
+	    return render(request, "portal/upload_csv.html", data)
 	try:
 	    csv_file = request.FILES["csv_file"]
 	    if not csv_file.name.endswith('.csv'):
-	        messages.error(request,'File is not CSV type')
-		return HttpResponseRedirect(reverse("portal:upload_csv"))
-
-	     df = pd.read_csv(csv_file)
-	     return df
-
+	        print ('File is not CSV type')
+            else: 		
+	        df = pd.read_csv(csv_file)
+	         return df
 	except Exception as e:
 	    print(e)
 
-	return HttpResponseRedirect(reverse("portal:upload_csv"))
+	return render(request, "portal/upload_csv.html", data)
 
