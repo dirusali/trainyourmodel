@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import numpy as np
+%matplotlib inline
 from django.template.loader import get_template, render_to_string
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -177,6 +178,8 @@ def upload_csv(request):
 	        if not csv_file.name.endswith('.csv'):
 	            print ('File is not CSV type')
 	        infile = pd.read_csv(csv_file)
+		df = pd.DataFrame(infile)
+		df = pd.head(3)
 	        data = {'results': infile}
 	    except Exception as e:
 	        print(e)
