@@ -37,9 +37,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
         <section class="home-upload">
             <h2 class="tit1">Upload your Data and Select Your Algorithm</h2>  
             <p class="feat">We run most popular machine learning algorithms with only one click.<br>
-            Our Artificial Intelligence Algorithms are able to give business insights based on your train data. You can also use them to make predictions on test data. 
-            Supervised algorithms: need values for the target column so that the model can be trained in test data. ie: Regression, Support Vector Machines or Decision trees<br>
-            Unsupervised algorithms are used when target values are missing. They allow to classify your data and find hidden patterns. i.e: K-means, PCA or Apriori.
+            Just ulpload a csv file and select a supervised or unsupervised algorithm. In case of selecting a supervised algorithm the target variable should be placed in the last column of your csv file.
             </p>
             <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" align= "center" class="form-horizontal"> 
             {% csrf_token %}
@@ -62,13 +60,12 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
             </form> 
             </section>                                                                              
             </div> 
-        </div> 
+            </div> 
+            </div> 
+
+
         <section class="explanation"> 
-         <p><br></p><p><br></p>           
-        <div class="logo" align="center"><a href="/"><img src="{% static 'images/carousel/image2.png' %}"/></a></div>
         <p><br></p><p><br></p>
-        </section>
-           
-    </div>
+        </section>          
 {% endblock %}
         
