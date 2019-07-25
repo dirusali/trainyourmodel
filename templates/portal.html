@@ -40,37 +40,28 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
             {% csrf_token %}
             <div class="form-group">
             <div class="col-md-8">
-            <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
-            <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
             </div> 
-            </div>
-            </form>
-        </section>     
-        <div class="logo" align="center"><a href="/"><img src="{% static 'images/carousel/image4.png' %}"/></a></div>
-        <p><br></p><p><br></p> 
-                     
-        <section class="home-run">
+            <div class="logo" align="center"><a href="/"><img src="{% static 'images/carousel/image4.png' %}"/></a></div>
+            <p><br></p><p><br></p>          
             <h1 class="tit1">Choose Machine Learning Algorithm</h1>
             <p class="feat">We run most popular machine learning algorithms with only one click.<br>
             Our Artificial Intelligence Algorithms are able to give business insights based on your train data. You can also use them to make predictions on test data. 
             </p>
             <p><br></p><p><br></p>
-            <div class="txt" style="text-align:center">>
-                   <form method = "post"  style="text-align:center">
-                          {% csrf_token %}
-                           <select name="Pick One Algorithm">
-                               <option value="Linear Regression">Linear Regression</option>
-                               <option value="Support Vector Machine">Support Vector Machine</option>
-                               <option value="K-Nearest Neighbor">K-Nearest Neighbor</option>
-                               <option value="K-Means">K-Means</option>
-                               <option value="Random Trees">Random Trees</option> 
-                               <option value="Neural Networks">Neural Networks</option> 
-                               <input type ="submit" name="Submit>
-                           </select>
-                   </form> 
-             </section>                                                                              
+            select name="Pick One Algorithm">
+            <option value="Linear Regression">Linear Regression</option>
+            <option value="Support Vector Machine">Support Vector Machine</option>
+            <option value="K-Nearest Neighbor">K-Nearest Neighbor</option>
+            <option value="K-Means">K-Means</option>
+            <option value="Random Trees">Random Trees</option> 
+            <option value="Neural Networks">Neural Networks</option> 
+            </select>
+            <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
+            <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+            <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
+            </div>                            
+            </form> 
+            </section>                                                                              
             </div> 
         <section class="explanation"> 
         <p><br></p><p><br></p>
