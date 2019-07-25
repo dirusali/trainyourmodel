@@ -5,7 +5,6 @@ from django.views.generic.base import RedirectView
 from portal import views as portal_views
 
 app_name = 'portal'
-import views
 from .views import HomeView, upload_csv, FuncionaView, ContactoView, CondicionesView, PrivacidadView, subscribe, successView, contacto
 
 
@@ -17,7 +16,7 @@ urlpatterns = [
         url(r'^subscribe/', subscribe, name="subscribe"),
         url(r'^contact/$', ContactoView.as_view(), name='contacto'),
         url(r'^about/$', RedirectView.as_view(url='/como-funciona/', permanent=True)),
-        url(r'^upload/$', views.upload_csv, name='upload_csv'),
+        url(r'^upload/$', upload_csv.as_view(), name='upload_csv'),
 
         #urls(r'^results/$, Results.as_view(), name='results')
 ]
