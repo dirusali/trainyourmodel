@@ -171,7 +171,6 @@ def successView(request):
         return render(request, 'success.html', context)
 
 def upload_csv(request):
-	data = {}
 	if "POST" == request.method:
 	    return render(request, "upload_csv.html", data)
 	try:
@@ -179,10 +178,9 @@ def upload_csv(request):
 	    if not csv_file.name.endswith('.csv'):
 	        print ('File is not CSV type')
 	    infile = pd.read_csv(csv_file)
-	    df = infile
-	    return df
+	    data = {'results': infile}
 	except Exception as e:
 	    print(e)
 
-	return render(request, "upload_csv.html", data)
+	return render(request, "upload_csv.html", context=data)
 
