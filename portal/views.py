@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import numpy as np
+import csv
 from django.template.loader import get_template, render_to_string
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -170,6 +171,30 @@ def successView(request):
 
         return render(request, 'success.html', context)
 
+
+def create_df(data):  
+    infile = data	
+    reader = csv.reader(infile, delimiter=',')  
+    lista = []
+    for i in reader:
+        lista.append(i)
+    infile.close()  
+    long = len(lista[0])
+    header = lista[0][0:(long-1)]
+    corte = len(lista) - 1
+    lista = lista[1:corte]
+    results = []
+    for i in lista:
+        x = i[long-1]
+        results.append(float(x))
+    newlist=[]
+    for i in lista:
+        numbers = i[0:(long-1)]
+        numbers = [ float(n) for n in numbers ]
+        newlist.append(numbers) 
+    df = pd.DataFrame(np.array(newlist),columns=np.array(header))
+    return df
+
 def upload_csv(request):
 	if "POST" == request.method:
 	    try:
@@ -181,3 +206,87 @@ def upload_csv(request):
 
 	return render(request, "upload_csv.html", context=data)
 
+
+def SVM(df,results):
+    X = df
+    y= np.array(results)
+    X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=101)
+    param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
+    grid = GridSearchCV(SVC(),param_grid,verbose=3)
+    grid.fit(X_train,y_train)
+    grid_predictions = grid.predict(X_test)
+    print(confusion_matrix(y_test,grid_predictions))
+    print('\n')
+    print(classification_report(y_test,grid_predictions))
+	
+def NB(df,results):
+    X = df
+    y = np.array(results)
+    X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=101)
+    gnb = GaussianNB()
+    gnb.fit(X_train,y_train)
+    pred = gnb.predict(X_test)
+    print(confusion_matrix(y_test,pred))
+    print('\n')
+    print(classification_report(y_test,pred))	
+
+def LM(df,results):
+    X = df
+    y = price
+    from sklearn.cross_validation import train_test_split
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4,random_state=101) 
+    from sklearn.linear_model import LinearRegression
+    lm = LinearRegression()
+    lm.fit(X_train,y_train)
+    pred = lm.predict(X_test)
+    plt.scatter(y_test,pred)
+    print('MAE:', metrics.mean_absolute_error(y_test,pred))
+    print('MAE:', metrics.mean_squared_error(y_test,pred))
+    print('MAE:', np.sqrt(metrics.mean_squared_error(y_test,pred)))	
+	
+ 
+def KNN(df,results):
+    long = len(df.head(0)) - 1
+    header = list(df)[0:long]
+    labels = header[long]
+    results = df[labels]
+    data = df.drop('resultados',axis=1,inplace=True)
+    df = df.values
+    data = (df,resultados) # necesita una tuple con dos arrays, el input y los labels xq los kiero pintar y comparar
+    kmeans.fit(df)
+    kmeans.cluster_centers_
+    kmeans.labels_
+    fig, (ax1,ax2) = plt.subplots(1,2, sharey=True,figsize=(10,6))
+    ax1.set_title('Original')
+    ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
+    ax2.set_title('Model')
+    ax2.scatter(data[0][:,0],data[0][:,1],c=kmeans.labels_)	
+	
+def dtree(df,results):
+    X = df
+    y = np.array(results)
+    X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=101)
+    dtree = DecisionTreeClassifier()
+    dtree.fit(X_train,y_train)
+    pred = dtree.predict(X_test)
+    print(confusion_matrix(y_test,pred))
+    print('\n')
+    print(classification_report(y_test,pred)	
+	  
+def Kmeans(X,y):
+    X = df
+    long = len(df.head(0)) - 1
+    header = list(df)[0:long]
+    labels = header[long]
+    results = df[labels]
+    data = df.drop('resultados',axis=1,inplace=True)
+    df = df.values
+    data = (df,resultados) # necesita una tuple con dos arrays, el input y los labels xq los kiero pintar y comparar
+    kmeans.fit(df)
+    kmeans.cluster_centers_
+    kmeans.labels_
+    fig, (ax1,ax2) = plt.subplots(1,2, sharey=True,figsize=(10,6))
+    ax1.set_title('Original')
+    ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
+    ax2.set_title('Model')
+    ax2.scatter(data[0][:,0],data[0][:,1],c=kmeans.labels_)
