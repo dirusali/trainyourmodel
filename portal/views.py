@@ -201,20 +201,20 @@ def upload_csv(request):
 	    try:
 	        csv_file = request.FILES["csv_file"]
 	        algo = request.TEXT["algo"]
-	        infile = df_target(infile)
-		supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor"]
-		if algo in supervised:
-			data = df_target(infile)
-		if algo == "Support Vector machine":
-			results = SVM(data)
-		if algo == "Linear Regression":
-			results = LM(data)
-		if algo == "Random Trees":
-			results = Rtree(data)
-		if algo == "K-Nearest Neighbor":
-			results = KNN(data)
-		if algo == "Kmeans":
-			results = KNN(data)						
+	        #infile = df_target(infile)
+		#supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor"]
+		#if algo in supervised:
+		#	data = df_target(infile)
+		#if algo == "Support Vector machine":
+			#results = SVM(data)
+		#if algo == "Linear Regression":
+		#	results = LM(data)
+		#if algo == "Random Trees":
+		#	results = Rtree(data)
+		#if algo == "K-Nearest Neighbor":
+		#	results = KNN(data)
+		#if algo == "Kmeans":
+		#	results = KNN(data)						
 	    except Exception as e:
 	        print(e)
 
