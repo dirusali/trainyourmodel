@@ -4,7 +4,7 @@ import operator
 import random
 import unicodedata
 import datetime
-mport matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import numpy as np
