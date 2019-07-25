@@ -201,6 +201,7 @@ def upload_csv(request):
 	    try:
 	        csv_file = request.FILES["csv_file"]
 	        algo = request.TEXT["algo"]
+		data={'results':algo}
 	        #infile = df_target(infile)
 		#supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor"]
 		#if algo in supervised:
