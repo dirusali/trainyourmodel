@@ -208,3 +208,4 @@ def upload_csv(request):
 		messages.error(request,"Unable to upload file. "+repr(e))
 
 	return HttpResponseRedirect(reverse("portal:upload_csv"))
+
