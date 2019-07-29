@@ -200,7 +200,7 @@ def upload_csv(request):
 	if "POST" == request.method:
 	    try:
 	        csv_file = request.FILES["csv_file"]
-	        data = {'results':infile}
+	        data = {'results':csv_file}
 	    except Exception as e:
 	        print(e)
 
