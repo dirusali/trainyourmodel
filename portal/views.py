@@ -198,7 +198,7 @@ def df_target(infile):
 
 def upload_csv(request):
     if "POST" == request.method:
-	csv_file = requests.FILES('csv_file')
+	csv_file = request.FILES['csv_file']
         infile = pd.read_csv(csv_file)
         data={'results':infile}
     return render(request, "upload_csv.html", context=data)
