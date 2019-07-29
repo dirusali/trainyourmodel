@@ -179,28 +179,28 @@ def upload_csv(request):
 
 
 def df_target(infile):  
-    infile = data	
-    reader = csv.reader(infile, delimiter=',')  
-    lista = []
-    for i in reader:
-        lista.append(i)
-    infile.close()  
-    long = len(lista[0])
-    header = lista[0][0:(long-1)]
-    corte = len(lista) - 1
-    lista = lista[1:corte]
-    results = []
-    for i in lista:
-        x = i[long-1]
-        results.append(float(x))
-    newlist=[]
-    for i in lista:
-        numbers = i[0:(long-1)]
-        numbers = [ float(n) for n in numbers ]
-        newlist.append(numbers) 
-    df = pd.DataFrame(np.array(newlist),columns=np.array(header))
-    variables = (df,results)
-    return variables
+        infile = data	
+        reader = csv.reader(infile, delimiter=',')  
+        lista = []
+        for i in reader:
+            lista.append(i)
+        infile.close()  
+        long = len(lista[0])
+        header = lista[0][0:(long-1)]
+        corte = len(lista) - 1
+        lista = lista[1:corte]
+        results = []
+        for i in lista:
+            x = i[long-1]
+            results.append(float(x))
+        newlist=[]
+        for i in lista:
+            numbers = i[0:(long-1)]
+            numbers = [ float(n) for n in numbers ]
+            newlist.append(numbers) 
+        df = pd.DataFrame(np.array(newlist),columns=np.array(header))
+        variables = (df,results)
+        return variables
 
 
 
