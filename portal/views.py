@@ -172,10 +172,10 @@ def successView(request):
         return render(request, 'success.html', context)
 
 def upload_csv(request):
-        if "POST" == request.method:
-	    csv = request.FILES["file"]
-	    data = {'results':csv}
-	    return render(request, "upload_csv.html", context=data)
+	if request.method == 'POST' and request.FILES['file']:
+		csv = request.FILES["file"]
+	        data = {'results':csv}
+	        return render(request, "upload_csv.html", context=data)
 
 
 def df_target(infile):  
@@ -201,25 +201,6 @@ def df_target(infile):
         df = pd.DataFrame(np.array(newlist),columns=np.array(header))
         variables = (df,results)
         return variables
-
-
-
-	        #infile = df_target(infile)
-		#supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor"]
-		#if algo in supervised:
-		#	data = df_target(infile)
-		#if algo == "Support Vector machine":
-			#results = SVM(data)
-		#if algo == "Linear Regression":
-		#	results = LM(data)
-		#if algo == "Random Trees":
-		#	results = Rtree(data)
-		#if algo == "K-Nearest Neighbor":
-		#	results = KNN(data)
-		#if algo == "Kmeans":
-		#	results = KNN(data)						
-	    
-
 
 
 def SVM(df,results):
