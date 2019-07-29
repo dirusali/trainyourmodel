@@ -192,13 +192,7 @@ def upload_csv(request):
 	    try:
 	        csv = request.FILES["csv_file"]
                 df = pd.read_csv(csv)
-		long = len(df.head(0)) - 1
-                header = list(df)[0:long]
-                target = header[long]
-                resultados = df[target]
-		df = df.drop(target,axis=1,inplace=True)
-                regre = regression(df,resultados) 
-	        data = {'results': regre}
+	        data = {'results': df}
 	    except Exception as e:
 	        print(e)	
 	return render(request, "upload_csv.html", context=data)
