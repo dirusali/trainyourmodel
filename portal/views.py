@@ -197,13 +197,9 @@ def df_target(infile):
     return variables
 
 def upload_csv(request):
-	if "POST" == request.method:
-	    try:
-	        csv_file = request.FILES["csv_file"]
-	        data = {'results':csv_file}
-	    except Exception as e:
-	        print(e)
-
+    if "POST" == request.method:
+	csv = request.FILES["file"]
+	data = {'results':csv}
 	return render(request, "upload_csv.html", data)
 
 	        #infile = df_target(infile)
