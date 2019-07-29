@@ -218,7 +218,7 @@ def upload_csv(request):
 	if "POST" == request.method:
 	    try:
 	        infile = request.FILES["csv_file"]
-	        reader = csv.reader(infile, delimiter=',') 
+	        reader = infile.read().decode('UTF-8') 
 		decoded = io.stringIO(reader)
 	        data = {'results': decoded}
 	    except Exception as e:
