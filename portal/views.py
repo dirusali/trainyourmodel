@@ -174,7 +174,6 @@ def successView(request):
 
 
 
-
 def regression(df,results):
     X_train, X_test, y_train, y_test = train_test_split(df, results, test_size=0.4,random_state=101) 
     lm = LinearRegression()
@@ -188,7 +187,7 @@ def regression(df,results):
 
 
 def upload_csv(request):
-        if "POST" == request.method:
+	if "POST" == request.method:
 	    try:
 	        csv_file = request.FILES["csv_file"]
 	        infile = pd.read_csv(csv_file)
