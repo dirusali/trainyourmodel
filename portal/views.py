@@ -177,8 +177,8 @@ def upload_csv(request):
 	if "POST" == request.method:
 	    try:
 	        csv_file = request.FILES["csv_file"]
-	        #infile = pd.read_csv(csv_file)
-		reader = csv_file.read().decode('UTF-8')
+		reader = csv_file.reader(csv_file, delimiter=',')
+	        #infile = pd.read_csv(csv_file)		
 	        data = {'results': reader}
 	    except Exception as e:
 	        print(e)	
