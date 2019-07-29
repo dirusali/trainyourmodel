@@ -29,6 +29,13 @@ from django.http import Http404, JsonResponse, HttpResponse, HttpResponseRedirec
 from django.db.models import Q
 from django.contrib.staticfiles.templatetags.staticfiles import static
  
+N = 500
+x = np.random.rand(N)
+y = np.random.rand(N)
+colors = (0,0,0)
+area = np.pi*3
+sca = plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+en = plt.show()	
 
 
 class HomeView(View):
@@ -170,7 +177,6 @@ def successView(request):
         return render(request, 'success.html', context)
 
 
-
 def regression(df,results):
     X_train, X_test, y_train, y_test = train_test_split(df, results, test_size=0.4,random_state=101) 
     lm = LinearRegression()
@@ -183,30 +189,9 @@ def regression(df,results):
     return plot	
 
 
-def index(request):
-    N = 500
-    x = np.random.rand(N)
-    y = np.random.rand(N)
-    colors = (0,0,0)
-    area = np.pi*3
-    sca = plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-    en = plt.show()	
-    my_dict = {'insert_me': sca}
-    return render(request,'index.html',context=my_dict)
-  
 def upload_csv(request):
 	if "POST" == request.method:
-	    try:
-	        x = np.random.rand(N)
-                y = np.random.rand(N)
-                colors = (0,0,0)
-                area = np.pi*3
-                sca = plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-                en = plt.show()
-	        data = {'results': en}
-	    except Exception as e:
-	        print(e)
-		
+	    data = {'results': en} 	
 	return render(request, "upload_csv.html", context=data)
 
 def SVM(df,results):
