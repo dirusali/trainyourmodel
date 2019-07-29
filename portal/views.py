@@ -219,19 +219,7 @@ def upload_csv(request):
 	    try:
 	        infile = request.FILES["csv_file"]
 	        reader = csv.reader(infile, delimiter=',')  
-                lista = []
-                for i in reader:
-                    lista.append(i)
-                    infile.close()  
-                long = len(lista[0])
-                header = lista[0][0:(long-1)]
-                corte = len(lista) - 1
-                lista = lista[1:corte]
-                results = []
-                for i in lista:
-                    x = i[long-1]
-                    results.append(float(x))
-	        data = {'results': results}
+	        data = {'results': reader}
 	    except Exception as e:
 	        print(e)	
 	return render(request, "upload_csv.html", context=data)
