@@ -177,13 +177,11 @@ def upload_csv(request):
 	if "POST" == request.method:
 	    try:
 	        csv_file = request.FILES["csv_file"]
-	        infile = pd.read_csv(csv_file)
-		frame = pd.DataFrame(infile)
-		dibujo = print(frame)
-	        data = {'results': dibujo}
+	        #infile = pd.read_csv(csv_file)
+		reader = csv.reader(csv_file, delimiter=',')  
+	        data = {'results': reader}
 	    except Exception as e:
-	        print(e)
-		
+	        print(e)	
 	return render(request, "upload_csv.html", context=data)
 
 
