@@ -30,11 +30,6 @@ def index(request):
     my_dict = {'insert_me':"hello, I am from views"}
     return render(request,'index.html',context=my_dict)
   
-def upload_csv(request):	
-    if "POST" == request.method:
-	csv = request.FILES["file"]
-	data = {'results':csv}
-	return render(request, "upload_csv.html", context=data)
 
 class HomeView(View):
 
@@ -175,6 +170,12 @@ def successView(request):
         context['normal_footer_cat'] = True
 
         return render(request, 'success.html', context)
+
+def upload_csv(request):
+        if "POST" == request.method:
+	    csv = request.FILES["file"]
+	    data = {'results':csv}
+	    return render(request, "upload_csv.html", context=data)
 
 
 def df_target(infile):  
