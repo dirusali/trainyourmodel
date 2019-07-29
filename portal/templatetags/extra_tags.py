@@ -1,5 +1,7 @@
 from datetime import datetime
 from django import template
+import pandas as pd
+import numpy as np
 import json
 import ast
 register = template.Library()
