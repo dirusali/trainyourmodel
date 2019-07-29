@@ -17,13 +17,8 @@ def multiply(value):
     
 @register.simple_tag
 def frame(values):
-    df = pd.csv_read(values)
-    df = pd.DataFrame(df)
+    df = pd.DataFrame(values)
     return df
-
-
-
-
 
 @register.simple_tag
 def current_month():
