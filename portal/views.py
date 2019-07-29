@@ -34,8 +34,8 @@ x = np.random.rand(N)
 y = np.random.rand(N)
 colors = (0,0,0)
 area = np.pi*3
-sca = plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-en = plt.show()	
+sca = plt.scatter(x, y)
+figura = plt.show()
 
 
 class HomeView(View):
@@ -191,7 +191,7 @@ def regression(df,results):
 
 def upload_csv(request):
 	if "POST" == request.method:
-	    data = {'results': sca} 	
+	    data = {'results': figura} 	
 	return render(request, "upload_csv.html", context=data)
 
 def SVM(df,results):
