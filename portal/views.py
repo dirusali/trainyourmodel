@@ -191,7 +191,7 @@ def regression(df,results):
 
 def upload_csv(request):
 	if "POST" == request.method:
-	    data = {'results': en} 	
+	    data = {'results': sca} 	
 	return render(request, "upload_csv.html", context=data)
 
 def SVM(df,results):
