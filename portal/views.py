@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import numpy as np
-import csv
+import csv, io
 from django.template.loader import get_template, render_to_string
 from django.shortcuts import render
 from django.views.generic import TemplateView
