@@ -199,13 +199,12 @@ def df_target(infile):
 def upload_csv(request):
 	if "POST" == request.method:
 	    try:
-	        #csv_file = request.FILES["csv_file"]
-		infile = pd.read_csv('csv_file')
-	        data = {'results':csv_file}
+	        csv_file = request.FILES["csv_file"]
+	        #data = {'results':csv_file}
 	    except Exception as e:
 	        print(e)
 
-	return render(request, "upload_csv.html", context=data)
+	return render(request, "upload_csv.html", csv_file)
 
 	        #infile = df_target(infile)
 		#supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor"]
