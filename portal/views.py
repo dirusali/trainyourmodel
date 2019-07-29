@@ -191,13 +191,7 @@ def upload_csv(request):
 	    try:
 	        csv_file = request.FILES["csv_file"]
 	        df = pd.read_csv(csv_file)
-		long = len(df.head(0)) - 1
-                header = list(df)[0:long]
-                labels = header[long]
-                results = df[labels]
-                df = df.drop('resultados',axis=1,inplace=True)
-		regre = regression(df,results):
-	        data = {'results': regre}
+	        data = {'results': df}
 	    except Exception as e:
 	        print(e)
 		
