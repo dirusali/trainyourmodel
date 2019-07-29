@@ -218,7 +218,7 @@ def upload_csv(request):
 	if "POST" == request.method:
 	    try:
 	        infile = request.FILES["csv_file"]
-	        reader = csv.reader(documento, delimiter=',')  
+	        reader = csv.reader(infile, delimiter=',')  
                 lista = []
                 for i in reader:
                     lista.append(i)
