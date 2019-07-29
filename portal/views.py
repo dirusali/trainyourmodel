@@ -111,6 +111,12 @@ def contacto(request):
         
         return render(request, 'contacto.html', context)      
 
+def upload_csv(request):
+    if request.method == 'POST':
+        csv = request.FILES["file"]
+	data = {'results':csv}
+        return render(request, "upload_csv.html", context=data)
+
 def successView(request):
     context={}
     context['is_home'] = True
@@ -171,11 +177,6 @@ def successView(request):
 
         return render(request, 'success.html', context)
 
-def upload_csv(request):
-	if request.method == 'POST' and request.FILES['file']:
-		csv = request.FILES["file"]
-	        data = {'results':csv}
-	        return render(request, "upload_csv.html", context=data)
 
 
 def df_target(infile):  
