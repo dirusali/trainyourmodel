@@ -219,8 +219,8 @@ def upload_csv(request):
 	    try:
 	        csv_file = request.FILES["csv_file"]
 	        infile = pd.read_csv(csv_file)
-		df = data_target[infile][0]
-                target = data_target[1]
+		df = data_target(infile)[0]
+                target = data_target(infile)[1]
 		dibujo = LM(df,target)
 	        data = {'results': dibujo}
 	    except Exception as e:
