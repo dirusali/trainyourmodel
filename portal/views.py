@@ -173,20 +173,10 @@ def successView(request):
 
         return render(request, 'success.html', context)
 
-def upload_csv(request):
-	if "POST" == request.method:
-	    try:
-	        csv_file = request.FILES["csv_file"]
-	        infile = pd.read_csv(csv_file)		
-	        data = {'results': reader}
-	    except Exception as e:
-	        print(e)	
-	return render(request, "upload_csv.html", context=data)
 
 
-def df_target(infile):  
-        infile = data	
-        reader = csv.reader(infile, delimiter=',')  
+def data_target(documento):  	
+        reader = csv.reader(documento, delimiter=',')  
         lista = []
         for i in reader:
             lista.append(i)
@@ -198,15 +188,44 @@ def df_target(infile):
         results = []
         for i in lista:
             x = i[long-1]
-            results.append(float(x))
+            results.append(float(x))	      
         newlist=[]
         for i in lista:
             numbers = i[0:(long-1)]
             numbers = [ float(n) for n in numbers ]
             newlist.append(numbers) 
         df = pd.DataFrame(np.array(newlist),columns=np.array(header))
-        variables = (df,results)
+        variables= [df,results]				      
         return variables
+
+def LM(df,results):
+    X = df
+    y = price
+    from sklearn.cross_validation import train_test_split
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4,random_state=101) 
+    from sklearn.linear_model import LinearRegression
+    lm = LinearRegression()
+    lm.fit(X_train,y_train)
+    pred = lm.predict(X_test)
+    plot = plt.scatter(y_test,pred)
+    #a = print('MAE:', metrics.mean_absolute_error(y_test,pred))
+    #b = print('MAE:', metrics.mean_squared_error(y_test,pred))
+    #c = print('MAE:', np.sqrt(metrics.mean_squared_error(y_test,pred)))	  
+    return plot	
+
+
+def upload_csv(request):
+	if "POST" == request.method:
+	    try:
+	        csv_file = request.FILES["csv_file"]
+	        infile = pd.read_csv(csv_file)
+		df = data_target[infile][0]
+                target = data_target[1]
+		dibujo = LM(df,target)
+	        data = {'results': dibujo}
+	    except Exception as e:
+	        print(e)	
+	return render(request, "upload_csv.html", context=data)
 
 
 def SVM(df,results):
@@ -233,21 +252,6 @@ def NB(df,results):
     report = classification_report(y_test,pred)	
     return (matrix,report)
 
-def LM(df,results):
-    X = df
-    y = price
-    from sklearn.cross_validation import train_test_split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4,random_state=101) 
-    from sklearn.linear_model import LinearRegression
-    lm = LinearRegression()
-    lm.fit(X_train,y_train)
-    pred = lm.predict(X_test)
-    plt.scatter(y_test,pred)
-    a = print('MAE:', metrics.mean_absolute_error(y_test,pred))
-    b = print('MAE:', metrics.mean_squared_error(y_test,pred))
-    c = print('MAE:', np.sqrt(metrics.mean_squared_error(y_test,pred)))	  
-    return (a,b,c)	
-	
 	
  
 def KNN(df,results):
