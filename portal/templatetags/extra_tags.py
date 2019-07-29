@@ -13,6 +13,15 @@ def getlist(value):
 def multiply(value):
     return value * 6
     
+@register.simple_tag
+def frame(values):
+    df = pd.csv_read(values)
+    df = pd.DataFrame(df)
+    return df
+
+
+
+
 
 @register.simple_tag
 def current_month():
