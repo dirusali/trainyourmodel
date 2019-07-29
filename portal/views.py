@@ -228,7 +228,7 @@ def SVM(df,results):
     grid = GridSearchCV(SVC(),param_grid,verbose=3)
     grid.fit(X_train,y_train)
     grid_predictions = grid.predict(X_test)
-    matrix = (confusion_matrix(y_test,grid_predictions))
+    matrix = confusion_matrix(y_test,grid_predictions)
     report = classification_report(y_test,grid_predictions))
     return (matrix,report) 	
 	
@@ -240,8 +240,8 @@ def NB(df,results):
     gnb = GaussianNB()
     gnb.fit(X_train,y_train)
     pred = gnb.predict(X_test)
-    matrix = confusion_matrix(y_test,pred))
-    report = (classification_report(y_test,pred))	
+    matrix = confusion_matrix(y_test,pred)
+    report = classification_report(y_test,pred)	
     return (matrix,report)
 
 def LM(df,results):
