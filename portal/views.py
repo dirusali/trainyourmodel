@@ -30,6 +30,11 @@ def index(request):
     my_dict = {'insert_me':"hello, I am from views"}
     return render(request,'index.html',context=my_dict)
   
+def upload_csv(request):	
+    if "POST" == request.method:
+	csv = request.FILES["file"]
+	data = {'results':csv}
+	return render(request, "upload_csv.html", context=data)
 
 class HomeView(View):
 
@@ -196,11 +201,7 @@ def df_target(infile):
     variables = (df,results)
     return variables
 
-def upload_csv(request):
-    if "POST" == request.method:
-	csv = request.FILES["file"]
-	data = {'results':csv}
-	return render(request, "upload_csv.html", data)
+
 
 	        #infile = df_target(infile)
 		#supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor"]
