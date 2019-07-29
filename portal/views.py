@@ -178,7 +178,7 @@ def upload_csv(request):
 	    try:
 	        csv_file = request.FILES["csv_file"]
 	        #infile = pd.read_csv(csv_file)
-		reader = csv.reader(csv_file, delimiter=',')  
+		reader = csv_file.read().decode('UTF-8')
 	        data = {'results': reader}
 	    except Exception as e:
 	        print(e)	
