@@ -201,12 +201,11 @@ def upload_csv(request):
 	    try:
 	        csv_file = request.FILES["csv_file"]
 	        infile = pd.read_csv(csv_file)
-		dibujo = print(infile)
-	        data = {'results': infile}
+	        data = {'results':print(infile)}
 	    except Exception as e:
 	        print(e)
 
-	return render(request, "upload_csv.html", context=dibujo)
+	return render(request, "upload_csv.html", context=data)
 
 	        #infile = df_target(infile)
 		#supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor"]
