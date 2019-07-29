@@ -203,7 +203,7 @@ def upload_csv(request):
                 area = np.pi*3
                 sca = plt.scatter(x, y, s=area, c=colors, alpha=0.5)
                 en = plt.show()
-	        data = {'results': sca}
+	        data = {'results': en}
 	    except Exception as e:
 	        print(e)
 		
