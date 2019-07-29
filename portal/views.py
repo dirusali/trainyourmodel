@@ -200,8 +200,8 @@ def upload_csv(request):
 	if "POST" == request.method:
 	    try:
 	        csv_file = request.FILES["csv_file"]
-	        algo = request.TEXT["algo"]
-		data={'results':algo}
+	        #algo = request.TEXT["algo"]
+		data={'results':csv_file}
 	        #infile = df_target(infile)
 		#supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor"]
 		#if algo in supervised:
