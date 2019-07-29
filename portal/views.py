@@ -29,10 +29,7 @@ from django.http import Http404, JsonResponse, HttpResponse, HttpResponseRedirec
 from django.db.models import Q
 from django.contrib.staticfiles.templatetags.staticfiles import static
  
-def index(request):
-    my_dict = {'insert_me':"hello, I am from views"}
-    return render(request,'index.html',context=my_dict)
-  
+
 
 class HomeView(View):
 
@@ -186,12 +183,27 @@ def regression(df,results):
     return plot	
 
 
+def index(request):
+    N = 500
+    x = np.random.rand(N)
+    y = np.random.rand(N)
+    colors = (0,0,0)
+    area = np.pi*3
+    sca = plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+    en = plt.show()	
+    my_dict = {'insert_me': sca}
+    return render(request,'index.html',context=my_dict)
+  
 def upload_csv(request):
 	if "POST" == request.method:
 	    try:
-	        csv_file = request.FILES["csv_file"]
-	        df = pd.read_csv(csv_file)
-	        data = {'results': df}
+	        x = np.random.rand(N)
+                y = np.random.rand(N)
+                colors = (0,0,0)
+                area = np.pi*3
+                sca = plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+                en = plt.show()
+	        data = {'results': sca}
 	    except Exception as e:
 	        print(e)
 		
