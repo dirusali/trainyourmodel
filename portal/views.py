@@ -218,8 +218,9 @@ def upload_csv(request):
 	if "POST" == request.method:
 	    try:
 	        infile = request.FILES["csv_file"]
-	        reader = csv.reader(infile, delimiter=',')  
-	        data = {'results': reader}
+	        reader = csv.reader(infile, delimiter=',') 
+		decoded = io.stringIO(reader)
+	        data = {'results': decoded}
 	    except Exception as e:
 	        print(e)	
 	return render(request, "upload_csv.html", context=data)
