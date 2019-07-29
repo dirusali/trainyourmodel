@@ -200,11 +200,11 @@ def upload_csv(request):
 	if "POST" == request.method:
 	    try:
 	        csv_file = request.FILES["csv_file"]
-	        #data = {'results':csv_file}
+	        data = {'results':csv_file}
 	    except Exception as e:
 	        print(e)
 
-	return render(request, "upload_csv.html", context=csv_file)
+	return render(request, "upload_csv.html", data)
 
 	        #infile = df_target(infile)
 		#supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor"]
