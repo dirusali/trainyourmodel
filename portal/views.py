@@ -204,7 +204,7 @@ def upload_csv(request):
 	    except Exception as e:
 	        print(e)
 
-	return render(request, "upload_csv.html", csv_file)
+	return render(request, "upload_csv.html", context=csv_file)
 
 	        #infile = df_target(infile)
 		#supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor"]
