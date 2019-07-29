@@ -113,7 +113,8 @@ def contacto(request):
 
 def upload_csv(request):
     if request.method == 'POST':
-        csv = request.FILES["file"]
+        infile = request.FILES["file"]
+	csv = pd.read_csv(infile)
 	data = {'results':csv}
         return render(request, "upload_csv.html", context=data)
 
