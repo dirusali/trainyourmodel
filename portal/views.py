@@ -228,9 +228,10 @@ def SVM(df,results):
     grid = GridSearchCV(SVC(),param_grid,verbose=3)
     grid.fit(X_train,y_train)
     grid_predictions = grid.predict(X_test)
-    print(confusion_matrix(y_test,grid_predictions))
-    print('\n')
-    print(classification_report(y_test,grid_predictions))
+    matrix = (confusion_matrix(y_test,grid_predictions))
+    report = classification_report(y_test,grid_predictions))
+    return (matrix,report) 	
+	
 	
 def NB(df,results):
     X = df
@@ -239,9 +240,9 @@ def NB(df,results):
     gnb = GaussianNB()
     gnb.fit(X_train,y_train)
     pred = gnb.predict(X_test)
-    print(confusion_matrix(y_test,pred))
-    print('\n')
-    print(classification_report(y_test,pred))	
+    matrix = confusion_matrix(y_test,pred))
+    report = (classification_report(y_test,pred))	
+    return (matrix,report)
 
 def LM(df,results):
     X = df
@@ -253,9 +254,11 @@ def LM(df,results):
     lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
     plt.scatter(y_test,pred)
-    print('MAE:', metrics.mean_absolute_error(y_test,pred))
-    print('MAE:', metrics.mean_squared_error(y_test,pred))
-    print('MAE:', np.sqrt(metrics.mean_squared_error(y_test,pred)))	
+    a = print('MAE:', metrics.mean_absolute_error(y_test,pred))
+    b = print('MAE:', metrics.mean_squared_error(y_test,pred))
+    c = print('MAE:', np.sqrt(metrics.mean_squared_error(y_test,pred)))	  
+    return (a,b,c)	
+	
 	
  
 def KNN(df,results):
@@ -270,11 +273,12 @@ def KNN(df,results):
     kmeans.cluster_centers_
     kmeans.labels_
     fig, (ax1,ax2) = plt.subplots(1,2, sharey=True,figsize=(10,6))
-    ax1.set_title('Original')
-    ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
-    ax2.set_title('Model')
-    ax2.scatter(data[0][:,0],data[0][:,1],c=kmeans.labels_)	
-	
+    a = ax1.set_title('Original')
+    b= ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
+    c = ax2.set_title('Model')
+    d = ax2.scatter(data[0][:,0],data[0][:,1],c=kmeans.labels_)	
+    return d
+
 def dtree(df,results):
     X = df
     y = np.array(results)
@@ -282,11 +286,11 @@ def dtree(df,results):
     dtree = DecisionTreeClassifier()
     dtree.fit(X_train,y_train)
     pred = dtree.predict(X_test)
-    print(confusion_matrix(y_test,pred))
-    print('\n')
-    print(classification_report(y_test,pred)	
-	  
-def Kmeans(X,y):
+    a= print(confusion_matrix(y_test,pred))
+    c = print(classification_report(y_test,pred)	 
+    return(a,c)	      
+	      	  
+def kmeans(X,y):
     X = df
     long = len(df.head(0)) - 1
     header = list(df)[0:long]
@@ -298,8 +302,11 @@ def Kmeans(X,y):
     kmeans.fit(df)
     kmeans.cluster_centers_
     kmeans.labels_
-    fig, (ax1,ax2) = plt.subplots(1,2, sharey=True,figsize=(10,6))
-    ax1.set_title('Original')
-    ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
-    ax2.set_title('Model')
-    ax2.scatter(data[0][:,0],data[0][:,1],c=kmeans.labels_)
+    a = fig, (ax1,ax2) = plt.subplots(1,2, sharey=True,figsize=(10,6))
+    b = ax1.set_title('Original')
+    c= ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
+    d = ax2.set_title('Model')
+    e = ax2.scatter(data[0][:,0],data[0][:,1],c=kmeans.labels_)
+    return e	      
+	      
+	      
