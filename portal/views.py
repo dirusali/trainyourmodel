@@ -111,18 +111,7 @@ def contacto(request):
         
         return render(request, 'contacto.html', context)      
 
-def upload_csv(request):
-    try:	
-        if request.method == 'POST' and request.FILES["file"]:
-	    data = {}
-            infile = request.FILES["file"]
-	    csv = pd.read_csv(infile)
-	    data = {'results':csv}
-            return render(request, "upload_csv.html", context)
-         else:
-             return render(request, "upload_csv.html", context={'results':'no hay file') 
-    except Exception as e:
-        print(e)
+
 		
 def successView(request):
     context={}
@@ -184,7 +173,17 @@ def successView(request):
 
         return render(request, 'success.html', context)
 
-
+def upload_csv(request):
+    try:	
+        if request.method == 'POST' and request.FILES["file"]:
+            infile = request.FILES["file"]
+	    csv = pd.read_csv(infile)
+	    data = {'results':csv}
+            return render(request, "upload_csv.html", context)
+         else:
+             return render(request, "upload_csv.html", context={'results':'no hay file') 
+    except Exception as e:
+        print(e)
 
 def df_target(infile):  
         infile = data	
