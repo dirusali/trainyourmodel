@@ -174,16 +174,16 @@ def successView(request):
         return render(request, 'success.html', context)
 
 def upload_csv(request):
-    try:	
-        if request.method == 'POST' and request.FILES["file"]:
-            infile = request.FILES["file"]
-	    csv = pd.read_csv(infile)
-	    data = {'results':csv}
-            return render(request, "upload_csv.html", context)
-         else:
-             return render(request, "upload_csv.html", context={'results':'no hay file') 
-    except Exception as e:
-        print(e)
+	if "POST" == request.method:
+	    try:
+	        csv_file = request.FILES["csv_file"]
+	        infile = pd.read_csv(csv_file)
+	        data = {'results': infile}
+	    except Exception as e:
+	        print(e)
+		
+	return render(request, "upload_csv.html", context=data)
+
 
 def df_target(infile):  
         infile = data	
