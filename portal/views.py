@@ -197,11 +197,11 @@ def df_target(infile):
     return variables
 
 def upload_csv(request):
-	if "POST" == request.method:
-	    try:
-	        csv_file = request.FILES["csv_file"]
-	        infile = pd.read_csv(csv_file)
-		data={'results':infile}
+    if "POST" == request.method:
+        infile = pd.read_csv("csv_file")
+        data={'results':infile}
+    return render(request, "upload_csv.html", context=data)
+
 	        #infile = df_target(infile)
 		#supervised = ["Support Vector machine", "Linear Regression", "Random Trees", "K-Nearest Neighbor"]
 		#if algo in supervised:
@@ -216,10 +216,8 @@ def upload_csv(request):
 		#	results = KNN(data)
 		#if algo == "Kmeans":
 		#	results = KNN(data)						
-	    except Exception as e:
-	        print(e)
+	    
 
-	return render(request, "upload_csv.html", context=data)
 
 
 def SVM(df,results):
