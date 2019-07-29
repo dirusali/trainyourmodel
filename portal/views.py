@@ -195,7 +195,7 @@ def data_target(documento):
             numbers = [ float(n) for n in numbers ]
             newlist.append(numbers) 
         df = pd.DataFrame(np.array(newlist),columns=np.array(header))
-        variables= [df,results]				      
+        variables = [df,results]				      
         return variables
 
 def LM(df,results):
@@ -217,12 +217,21 @@ def LM(df,results):
 def upload_csv(request):
 	if "POST" == request.method:
 	    try:
-	        csv_file = request.FILES["csv_file"]
-	        infile = pd.read_csv(csv_file)
-		df = data_target(infile)[0]
-                target = data_target(infile)[1]
-		dibujo = LM(df,target)
-	        data = {'results': dibujo}
+	        infile = request.FILES["csv_file"]
+	        reader = csv.reader(documento, delimiter=',')  
+                lista = []
+                for i in reader:
+                    lista.append(i)
+                    infile.close()  
+                long = len(lista[0])
+                header = lista[0][0:(long-1)]
+                corte = len(lista) - 1
+                lista = lista[1:corte]
+                results = []
+                for i in lista:
+                    x = i[long-1]
+                    results.append(float(x))
+	        data = {'results': results}
 	    except Exception as e:
 	        print(e)	
 	return render(request, "upload_csv.html", context=data)
