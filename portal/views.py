@@ -178,7 +178,9 @@ def upload_csv(request):
 	    try:
 	        csv_file = request.FILES["csv_file"]
 	        infile = pd.read_csv(csv_file)
-	        data = {'results': infile}
+		frame = pd.DataFrame(infile)
+		dibujo = print(frame)
+	        data = {'results': dibujo}
 	    except Exception as e:
 	        print(e)
 		
