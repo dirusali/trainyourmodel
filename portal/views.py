@@ -8,14 +8,17 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import numpy as np
-import csv, io
+from sklearn.cross_validation import train_test_split
+from sklearn.linear_model import LinearRegression
+
+
+import csv
 from django.template.loader import get_template, render_to_string
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views import View
 from django.db.models import Count
-#from rest_framework.permissions import IsAdminUser
 from django.shortcuts import redirect
 
 from portal.models import Subscribe
@@ -127,7 +130,6 @@ class FuncionaView(View):
 
     def get(self, request, *args, **kwargs):
         context={}
-
         context['is_home'] = False
         context['lazyjs'] = False
         context['valoracionesjs'] = False
@@ -140,7 +142,6 @@ class CondicionesView(View):
 
      def get(self, request, *args, **kwargs):
         context={}
-
         context['is_home'] = False
         context['lazyjs'] = False
         context['valoracionesjs'] = False
@@ -163,8 +164,6 @@ def subscribe(request):
 
 def successView(request):
         context={}
-
-
         context['is_home'] = True
         context['lazyjs'] = False
         context['valoracionesjs'] = False
@@ -175,35 +174,9 @@ def successView(request):
 
 
 
-def data_target(documento):  	
-        reader = csv.reader(documento, delimiter=',')  
-        lista = []
-        for i in reader:
-            lista.append(i)
-        infile.close()  
-        long = len(lista[0])
-        header = lista[0][0:(long-1)]
-        corte = len(lista) - 1
-        lista = lista[1:corte]
-        results = []
-        for i in lista:
-            x = i[long-1]
-            results.append(float(x))	      
-        newlist=[]
-        for i in lista:
-            numbers = i[0:(long-1)]
-            numbers = [ float(n) for n in numbers ]
-            newlist.append(numbers) 
-        df = pd.DataFrame(np.array(newlist),columns=np.array(header))
-        variables = [df,results]				      
-        return variables
 
-def LM(df,results):
-    X = df
-    y = price
-    from sklearn.cross_validation import train_test_split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4,random_state=101) 
-    from sklearn.linear_model import LinearRegression
+def regression(df,results):
+    X_train, X_test, y_train, y_test = train_test_split(df, results, test_size=0.4,random_state=101) 
     lm = LinearRegression()
     lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
@@ -217,10 +190,15 @@ def LM(df,results):
 def upload_csv(request):
 	if "POST" == request.method:
 	    try:
-	        infile = request.FILES["csv_file"]
-	        reader = infile.read().decode('UTF-8') 
-		decoded = io.stringIO(reader)
-	        data = {'results': decoded}
+	        csv = request.FILES["csv_file"]
+                df = pd.read_csv(csv)
+		long = len(df.head(0)) - 1
+                header = list(df)[0:long]
+                target = header[long]
+                resultados = df[target]
+		df = df.drop(target,axis=1,inplace=True)
+                regre = regression(df,resultados) 
+	        data = {'results': regre}
 	    except Exception as e:
 	        print(e)	
 	return render(request, "upload_csv.html", context=data)
@@ -250,8 +228,6 @@ def NB(df,results):
     report = classification_report(y_test,pred)	
     return (matrix,report)
 
-	
- 
 def KNN(df,results):
     long = len(df.head(0)) - 1
     header = list(df)[0:long]
