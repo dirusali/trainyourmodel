@@ -287,7 +287,7 @@ def dtree(df,results):
     dtree.fit(X_train,y_train)
     pred = dtree.predict(X_test)
     a= print(confusion_matrix(y_test,pred))
-    c = print(classification_report(y_test,pred)	 
+    c = print(classification_report(y_test,pred))	 
     return(a,c)	      
 	      	  
 def kmeans(X,y):
