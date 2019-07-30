@@ -197,7 +197,6 @@ def upload_csv(request):
 	        data = {'results': df.to_html()}
 	    except Exception as e:
 	        print(e)
-	    data = {'results': figura} 	
 	return render(request, "upload_csv.html", context=data)
 
 def SVM(df,results):
