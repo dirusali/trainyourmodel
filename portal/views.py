@@ -29,7 +29,6 @@ from django.http import Http404, JsonResponse, HttpResponse, HttpResponseRedirec
 from django.db.models import Q
 from django.contrib.staticfiles.templatetags.staticfiles import static
  
-
 class HomeView(View):
     def get(self, request, *args, **kwargs):
         context={}
