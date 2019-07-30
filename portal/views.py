@@ -194,14 +194,14 @@ def upload_csv(request):
 		X = df.values
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
-			X_train, X_test, y_train, y_test = train_test_split(df, target, test_size=0.4,random_state=101) 
-                        lm = LinearRegression()
-                        model = lm.fit(X_train,y_train)
-                        pred = lm.predict(X_test)
-                        MAE = metrics.mean_absolute_error(y_test,pred)
-                        MSE = metrics.mean_squared_error(y_test,pred)
-                        MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-                        results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	)
+			X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4,random_state=101) 
+			lm = LinearRegression()
+			model = lm.fit(X_train,y_train)
+			pred = lm.predict(X_test)
+			MAE = metrics.mean_absolute_error(y_test,pred)
+			MSE = metrics.mean_squared_error(y_test,pred)
+			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
+			results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
 			plt.scatter(y_test,pred)
 			f = plt.figure()
 			buf =io.BytesIO()
