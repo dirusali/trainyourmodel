@@ -170,21 +170,30 @@ def successView(request):
 
         return render(request, 'success.html', context)
 
-
+def plot(request):
+	f = plt.figure()
+	axes.plot(X, y
+        axes.set_xlabel("X")
+        axes.set_ylabel("Y")
+        axes.set_title("Scatter Plot")
+        buf = io.BytesIO()
+	canvas = FigureCanvasAgg(f)
+        canvas.print_png(buf)
+        response = HttpResponse(buf.getvalue(), content_type='image/png')
+        f.clear()
+	response['Content-Length'] = str(len(response.content))
+        return response
+		  
 def regression(df,target):
     X_train, X_test, y_train, y_test = train_test_split(df, target, test_size=0.4,random_state=101) 
     lm = LinearRegression()
     model = lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
-    plt.scatter(y_test,pred)
-    f = plt.figure()
-    buf = io.BytesIO()
-    canvas = FigureCanvasAgg(f)
-    dibu = canvas.print_png(buf)	
+    plot = plot(request)
     MAE = metrics.mean_absolute_error(y_test,pred)
     MSE = metrics.mean_squared_error(y_test,pred)
     MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-    results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, buf.getvalue(), pred)
+    results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, plot, pred)
     return results
 
 def upload_csv(request):	
