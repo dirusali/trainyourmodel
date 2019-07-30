@@ -175,7 +175,7 @@ def regression(df,target):
     model = lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
     buf = BytesIO()
-    plt.scatter(y_test,pred)
+    plot = plt.scatter(y_test,pred)
     plt.savefig(buf, format='png', dpi=300)
     image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
     buf.close()
