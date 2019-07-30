@@ -188,10 +188,9 @@ def regression(df,results):
     #c = print('MAE:', np.sqrt(metrics.mean_squared_error(y_test,pred)))	  
     return plot	
 
-
 def upload_csv(request):
     if "POST" == request.method:
-	try:
+        try:
 	    csv_file = request.FILE['csv_file']
             data = {'results': csv_file}
         except Exception as e:
