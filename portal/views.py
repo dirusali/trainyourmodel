@@ -198,7 +198,7 @@ def upload_csv(request):
 			lm = LinearRegression()
 			model = lm.fit(X_train,y_train)
 			pred = lm.predict(X_test)
-			plt.scatter(y_test,y_pred)
+			plt.scatter(y_test,pred)
 			f = plt.figure()
 			buf =io.Bytes.IO()
 			canvas=FigureCanvasAgg(f)
