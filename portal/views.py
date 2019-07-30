@@ -172,16 +172,10 @@ def successView(request):
 
 def plot(request):
 	f = plt.figure()
-	axes.plot(X, y
-        axes.set_xlabel("X")
-        axes.set_ylabel("Y")
-        axes.set_title("Scatter Plot")
         buf = io.BytesIO()
 	canvas = FigureCanvasAgg(f)
         canvas.print_png(buf)
         response = HttpResponse(buf.getvalue(), content_type='image/png')
-        f.clear()
-	response['Content-Length'] = str(len(response.content))
         return response
 		  
 def regression(df,target):
