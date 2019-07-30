@@ -201,7 +201,6 @@ def upload_csv(request):
 		if algo == 'Linear Regression':
 			results = regression(X,y)
 		data = {'results': results}
-		f.clear()
 	return render(request, "upload_csv.html", context=data)	
  
 	
