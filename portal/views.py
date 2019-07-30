@@ -176,14 +176,15 @@ def regression(df,target):
     lm = LinearRegression()
     model = lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
-    plt.scatter(y_test,pred)
-    f = plt.figure()
-    buf =io.Bytes.IO()
-    canvas=FigureCanvasAgg(f)
     MAE = metrics.mean_absolute_error(y_test,pred)
     MSE = metrics.mean_squared_error(y_test,pred)
     MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
     results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)
+    plt.scatter(y_test,pred)
+    f = plt.figure()
+    buf =io.Bytes.IO()
+    canvas=FigureCanvasAgg(f) 
+    response = HttpResponse(buf.getvalue(), content_type='image/png')	
     return results
 
 def upload_csv(request):	
@@ -196,13 +197,11 @@ def upload_csv(request):
 		y = np.array(df[target])
 		df.drop(target,axis=1,inplace=True)
 		X = df.values
-		X_train, X_test, y_train, y_test = train_test_split(df, target, test_size=0.4,random_state=101) 
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
 			regresion(X,y)
-			response = HttpResponse(buf.getvalue(), content_type='image/png')
-			f.clear()
 		data = {'results': results}
+		f.clear()
 	return render(request, "upload_csv.html", context=data)	
  
 	
