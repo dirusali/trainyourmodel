@@ -204,6 +204,7 @@ def upload_csv(request):
 			canvas=FigureCanvasAgg(f)
 			canvas.print_png(bug)
 			response = HttpResponse(buf.getvalue(), content_type='image/png')
+			f.clear()
 		data = {'results': results}
 	return render(request, "upload_csv.html", context=data)	
  
