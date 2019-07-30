@@ -170,11 +170,7 @@ def successView(request):
 
         return render(request, 'success.html', context)
 
-def plot(self):
-	f = plt.figure()
-	buf = io.BytesIO()
-	canvas = FigureCanvasAgg(f)
-	canvas.print_png(buf)
+	
 	response = HttpResponse(buf.getvalue(), content_type='image/png')
 	return response
 		  
@@ -187,7 +183,7 @@ def regression(df,target):
     MAE = metrics.mean_absolute_error(y_test,pred)
     MSE = metrics.mean_squared_error(y_test,pred)
     MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-    results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, r, pred)
+    results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)
     return results
 
 def upload_csv(request):	
@@ -204,6 +200,11 @@ def upload_csv(request):
 		if algo == 'Linear Regression':
 			results = regression(X,y)
 		data = {'results': results}
+		f = plt.figure()
+	        buf = io.BytesIO()
+	        canvas = FigureCanvasAgg(f)
+	        canvas.print_png(buf)
+		response = HttpResponse(buf.getvalue(), content_type='image/png')
 	return render(request, "upload_csv.html", context=data)	
  
 	
