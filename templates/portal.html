@@ -35,9 +35,10 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
     </header>    
     <div class="container">{% comment %}<!-- section home-intro" -->{% endcomment %}
       <section class="home-upload">
-            <h2 class="tit1">Upload your Data and Select Your Algorithm</h2>  
-            <p class="feat">We run most popular machine learning algorithms with only one click.<br>
-            Just upload a csv file and select a supervised or unsupervised algorithm. In case of selecting a supervised algorithm the target variable should be placed in the last column of your csv file.
+            <h2 class="tit1">Upload Your Data</h2>  
+            <p class="feat">Please select one algorithm and upload your data in csv format.<br>
+            If you wish to run a supervised algorithm then your target variable should be placed in the last column of your csv file.<br>
+            Unsupervised algorithms obviously don't need a target column. 
             </p>
     <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" align= "center" class="form-horizontal"> 
     {% csrf_token %}
