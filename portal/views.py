@@ -174,7 +174,7 @@ def regression(df,results):
 
 
 def upload_csv(request):
-	if request.method == POST:
+	if request.method == "POST":
 		algo = request.POST['algoritmo']
 		data = {'results': algo}
 	return render(request, "upload_csv.html", context=data)	
