@@ -176,7 +176,7 @@ def regression(df,results):
 def upload_csv(request):
     if request.method == POST:
 	    csv_file = request.FILE['csv_file']
-        data = {'results': csv_file}
+            data = {'results': csv_file}
     return render(request, "upload_csv.html", context=data)
 
 def SVM(df,results):
