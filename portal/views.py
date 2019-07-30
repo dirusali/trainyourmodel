@@ -182,7 +182,7 @@ def regression(df,target):
     results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)
     plt.scatter(y_test,pred)
     f = plt.figure()
-    buf =io.Bytes.IO()
+    buf =io.BytesIO()
     canvas=FigureCanvasAgg(f) 
     response = HttpResponse(buf.getvalue(), content_type='image/png')	
     return results
