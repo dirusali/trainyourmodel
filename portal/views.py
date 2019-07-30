@@ -184,7 +184,7 @@ def regression(df,target):
     MAE = metrics.mean_absolute_error(y_test,pred)
     MSE = metrics.mean_squared_error(y_test,pred)
     MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-    results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, dibu, pred)
+    results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, buf.getvalue(), pred)
     return results
 
 def upload_csv(request):	
