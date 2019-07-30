@@ -180,13 +180,11 @@ def regression(df,target):
     f = plt.figure()
     buf = io.BytesIO()
     canvas = FigureCanvasAgg(f)
-    canvas.print_png(buf)
-    response = HttpResponse(buf.getvalue(), content_type='image/png')
-    f.clear()
+    dibu = canvas.print_png(buf)	
     MAE = metrics.mean_absolute_error(y_test,pred)
     MSE = metrics.mean_squared_error(y_test,pred)
     MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-    results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, response, pred)
+    results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, dibu, pred)
     return results
 
 def upload_csv(request):	
@@ -204,7 +202,8 @@ def upload_csv(request):
 			results = regression(X,y)
 		data = {'results': results}
 	return render(request, "upload_csv.html", context=data)	
- 		
+ 
+	
 def SVM(df,results):
     X = df
     y= np.array(results)
