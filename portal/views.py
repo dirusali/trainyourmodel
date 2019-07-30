@@ -191,6 +191,12 @@ def regression(df,results):
 
 def upload_csv(request):
 	if "POST" == request.method:
+	    try:
+	        csv_file = request.FILES["csv_file"]
+	        df = pd.read_csv(csv_file)
+	        data = {'results': df.to_html()}
+	    except Exception as e:
+	        print(e)
 	    data = {'results': figura} 	
 	return render(request, "upload_csv.html", context=data)
 
