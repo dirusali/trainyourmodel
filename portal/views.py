@@ -196,12 +196,12 @@ def upload_csv(request):
 		if algo == 'Linear Regression':
 			results = regression(X,y)
 			plt.scatter(y_test,pred)
-                        f = plt.figure()
-                        buf =io.BytesIO()
-                        canvas=FigureCanvasAgg(f) 
-                        response = HttpResponse(buf.getvalue(), content_type='image/png')
+			f = plt.figure()
+			buf =io.BytesIO()
+			canvas=FigureCanvasAgg(f) 
 		data = {'results': results}
-	return render(request, "upload_csv.html", context=data)	
+		graph = {'drawing': HttpResponse(buf.getvalue(), content_type='image/png')
+	return render(request, "upload_csv.html", context=data,graph)	
  
 	
 def SVM(df,results):
