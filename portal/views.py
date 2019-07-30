@@ -175,14 +175,14 @@ def regression(df,target):
     model = lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
     buf = BytesIO()
-    plot = plt.scatter(y_test,pred)
+    plt.scatter(y_test,pred)
     plt.savefig(buf, format='png', dpi=300)
     image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
     buf.close()
     MAE = metrics.mean_absolute_error(y_test,pred)
     MSE = metrics.mean_squared_error(y_test,pred)
     MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-    results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, plot.figure, pred)
+    results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, image_base64, pred)
     return results
 
 def upload_csv(request):	
