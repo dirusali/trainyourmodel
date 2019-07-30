@@ -199,9 +199,9 @@ def upload_csv(request):
 			f = plt.figure()
 			buf =io.BytesIO()
 			canvas=FigureCanvasAgg(f) 
-		data = {'results': results}
-		graph = {'drawing': HttpResponse(buf.getvalue(), content_type='image/png')
-	return render(request, "upload_csv.html", context=data,graph)	
+		response = HttpResponse(buf.getvalue(), content_type='image/png')
+	        data = {'results': results, 'graph': response}
+	return render(request, "upload_csv.html", context=data)	
  
 	
 def SVM(df,results):
