@@ -172,10 +172,10 @@ def successView(request):
 
 def plot(request):
 	f = plt.figure()
-        buf = io.BytesIO()
+	buf = io.BytesIO()
 	canvas = FigureCanvasAgg(f)
-        canvas.print_png(buf)
-        response = HttpResponse(buf.getvalue(), content_type='image/png')
+	canvas.print_png(buf)
+	response = HttpResponse(buf.getvalue(), content_type='image/png')
         return response
 		  
 def regression(df,target):
