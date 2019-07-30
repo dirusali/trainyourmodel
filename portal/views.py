@@ -174,9 +174,8 @@ def regression(df,target):
     lm = LinearRegression()
     model = lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
-    plot = plt.scatter(y_test,pred)  
     buf = BytesIO()
-    plt.savefig(buf, format='png', dpi=300)
+    plot = plt.scatter(y_test,pred).savefig(buf, format='png', dpi=300)
     image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
     buf.close()
     MAE = metrics.mean_absolute_error(y_test,pred)
@@ -185,8 +184,7 @@ def regression(df,target):
     results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, plot.figure, pred)
     return results
 
-def upload_csv(request):
-	
+def upload_csv(request):	
 	if request.method == "POST":
 		csv = request.FILES['csv_file']
 		df = pd.read_csv(csv)
