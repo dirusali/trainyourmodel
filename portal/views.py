@@ -198,9 +198,9 @@ def upload_csv(request):
 		data = {'results': results}
 		f = plt.figure()
 		plt.scatter(y_test,pred)
-	        buf = io.BytesIO()
-	        canvas = FigureCanvasAgg(f)
-	        canvas.print_png(buf)
+		buf = io.BytesIO()
+		canvas = FigureCanvasAgg(f)
+		canvas.print_png(buf)
 		response = HttpResponse(buf.getvalue(), content_type='image/png')
 	return render(request, "upload_csv.html", context=data)	
  
