@@ -170,16 +170,12 @@ def successView(request):
 
         return render(request, 'success.html', context)
 
-	
-	response = HttpResponse(buf.getvalue(), content_type='image/png')
-	return response
-		  
+			  
 def regression(df,target):
     X_train, X_test, y_train, y_test = train_test_split(df, target, test_size=0.4,random_state=101) 
     lm = LinearRegression()
     model = lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
-    r = plot()
     MAE = metrics.mean_absolute_error(y_test,pred)
     MSE = metrics.mean_squared_error(y_test,pred)
     MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
@@ -201,6 +197,7 @@ def upload_csv(request):
 			results = regression(X,y)
 		data = {'results': results}
 		f = plt.figure()
+		plt.scatter(y_test,pred)
 	        buf = io.BytesIO()
 	        canvas = FigureCanvasAgg(f)
 	        canvas.print_png(buf)
