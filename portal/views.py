@@ -192,16 +192,19 @@ def upload_csv(request):
 		y = np.array(df[target])
 		df.drop(target,axis=1,inplace=True)
 		X = df.values
+		X_train, X_test, y_train, y_test = train_test_split(df, target, test_size=0.4,random_state=101) 
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
-			results = regression(X,y)
+			lm = LinearRegression()
+                        model = lm.fit(X_train,y_train)
+			pred = lm.predict(X_test)
+			plt.scatter(y_test,y_pred)
+			f = plt.figure()
+			buf =io.Bytes.IO()
+			canvas=FigureCanvasAgg(f)
+			canvas.print_png(bug)
+			response = HttpResponse(buf.getvalue(), content_type='image/png')
 		data = {'results': results}
-		f = plt.figure()
-		plt.scatter(y_test,pred)
-		buf = io.BytesIO()
-		canvas = FigureCanvasAgg(f)
-		canvas.print_png(buf)
-		response = HttpResponse(buf.getvalue(), content_type='image/png')
 	return render(request, "upload_csv.html", context=data)	
  
 	
