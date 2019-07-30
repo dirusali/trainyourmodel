@@ -183,7 +183,7 @@ def regression(df,target):
     lm = LinearRegression()
     model = lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
-    r = plot(request)
+    r = plot()
     MAE = metrics.mean_absolute_error(y_test,pred)
     MSE = metrics.mean_squared_error(y_test,pred)
     MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
