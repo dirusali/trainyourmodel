@@ -195,9 +195,11 @@ def upload_csv(request):
 	        csv_file = request.FILES["csv_file"]
 	        df = pd.read_csv(csv_file)
 	        data = {'results': df.to_html()}
+		algo = request.POST['algoritmo']
+		my_dict= {'tipo': algo}
 	    except Exception as e:
 	        print(e)
-	return render(request, "upload_csv.html", context=data)
+	return render(request, "upload_csv.html", context=my_dict)
 
 def SVM(df,results):
     X = df
