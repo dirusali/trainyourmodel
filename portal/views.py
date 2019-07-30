@@ -10,6 +10,7 @@ import seaborn as sns
 import numpy as np
 from sklearn.cross_validation import train_test_split
 from sklearn.linear_model import LinearRegression
+from sklearn import metrics
 
 
 import csv
@@ -164,19 +165,32 @@ def successView(request):
         return render(request, 'success.html', context)
 
 
-def regression(df,results):
-    X_train, X_test, y_train, y_test = train_test_split(df, results, test_size=0.4,random_state=101) 
+def regression(df,target):
+    X_train, X_test, y_train, y_test = train_test_split(df, target, test_size=0.4,random_state=101) 
     lm = LinearRegression()
-    lm.fit(X_train,y_train)
+    model = lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
     plot = plt.scatter(y_test,pred)  
-    return plot	
-
+    MAE = metrics.mean_absolute_error(y_test,pred)
+    MSE = metrics.mean_squared_error(y_test,pred)
+    MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
+    results = "Your model is %s, with MAE: %s MSE: %s . Predictions for your dataset are: %s" % (model, MAE, MSE, pred)
+    return results
 
 def upload_csv(request):
 	if request.method == "POST":
+		csv = request.FILE['csv_file']
+		df = pd.read_csv(csv)
+		long = len(list(df.head(0)))
+                header = list(df[0:long])
+                target = header[long-1]
+                y = np.array(df[target])
+                df.drop(target,axis=1,inplace=True)
+                X = df.values
 		algo = request.POST['algoritmo']
-		data = {'results': algo}
+		if algo == 'Linear Regression':
+			resultS = regression(X,Y)
+		data = {'results': results}
 	return render(request, "upload_csv.html", context=data)	
  		
 def SVM(df,results):
