@@ -190,12 +190,12 @@ def regression(df,results):
 
 
 def upload_csv(request):
-    try:
-	if "POST" == request.method:			
+    if "POST" == request.method:
+	try:
 	    csv_file = request.FILE['csv_file']
             data = {'results': csv_file}
-    except Exception as e:
-        print(e)
+        except Exception as e:
+            print(e)
     return render(request, "upload_csv.html", context=data)
 
 def SVM(df,results):
