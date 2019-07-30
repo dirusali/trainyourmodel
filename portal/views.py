@@ -196,7 +196,7 @@ def upload_csv(request):
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
 			lm = LinearRegression()
-                        model = lm.fit(X_train,y_train)
+			model = lm.fit(X_train,y_train)
 			pred = lm.predict(X_test)
 			plt.scatter(y_test,y_pred)
 			f = plt.figure()
