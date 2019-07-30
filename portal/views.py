@@ -176,7 +176,7 @@ def plot(request):
 	canvas = FigureCanvasAgg(f)
 	canvas.print_png(buf)
 	response = HttpResponse(buf.getvalue(), content_type='image/png')
-        return response
+	return response
 		  
 def regression(df,target):
     X_train, X_test, y_train, y_test = train_test_split(df, target, test_size=0.4,random_state=101) 
