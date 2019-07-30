@@ -172,14 +172,13 @@ def regression(df,results):
     plot = plt.scatter(y_test,pred)  
     return plot	
 
-def upload_csv(request):
-    if request.method == POST:
-        csv_file = request.FILE['csv_file']
-        file = {'resultados': csv_file}
-	    algo = request.POST['algoritmo']
-	    data = {'results': algo}
-    return render(request, "upload_csv.html", context=data)
 
+def upload_csv(request):
+	if request.method == POST:
+		algo = request.POST['algoritmo']
+		data = {'results': algo}
+	return render(request, "upload_csv.html, context=data)	
+ 		
 def SVM(df,results):
     X = df
     y= np.array(results)
