@@ -189,7 +189,7 @@ def upload_csv(request):
 		X = df.values
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
-			resultS = regression(X,y)
+			results = regression(X,y)
 		data = {'results': results}
 	return render(request, "upload_csv.html", context=data)	
  		
