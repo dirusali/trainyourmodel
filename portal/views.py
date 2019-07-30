@@ -190,13 +190,13 @@ def regression(df,results):
 
 
 def upload_csv(request):
-	if "POST" == request.method:
 	    try:
-		algo = request.POST['algoritmo']
-		my_dict= {'results': algo}
+                if "POST" == request.method:			
+		    algo = request.POST['algoritmo']
+		    data = {'results': algo}
 	    except Exception as e:
 	        print(e)
-	return render(request, "upload_csv.html", context=my_dict)
+	return render(request, "upload_csv.html", context=data)
 
 def SVM(df,results):
     X = df
