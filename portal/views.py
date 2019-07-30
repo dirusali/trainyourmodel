@@ -1,17 +1,21 @@
 # This Python file uses the following encoding in format utf-8
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+from io import BytesIO
+import base64
 import functools
 import operator
 import random
 import unicodedata
 import datetime
-import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import numpy as np
 from sklearn.cross_validation import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn import metrics
-
 
 import csv
 from django.template.loader import get_template, render_to_string
