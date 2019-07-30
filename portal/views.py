@@ -181,9 +181,9 @@ def upload_csv(request):
 	if request.method == "POST":
 		csv = request.FILE['csv_file']
 		df = pd.read_csv(csv)
-		long = len(list(df.head(0)))
-		header = list(df[0:long])
-		target = header[long-1]
+		lon = len(list(df.head(0)))
+		header = list(df[0:lon])
+		target = header[lon-1]
 		y = np.array(df[target])
 		df.drop(target,axis=1,inplace=True)
 		X = df.values
