@@ -170,7 +170,7 @@ def successView(request):
 
         return render(request, 'success.html', context)
 
-def plot(request):
+def plot(self):
 	f = plt.figure()
 	buf = io.BytesIO()
 	canvas = FigureCanvasAgg(f)
