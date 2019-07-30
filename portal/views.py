@@ -29,20 +29,10 @@ from django.http import Http404, JsonResponse, HttpResponse, HttpResponseRedirec
 from django.db.models import Q
 from django.contrib.staticfiles.templatetags.staticfiles import static
  
-N = 500
-x = np.random.rand(N)
-y = np.random.rand(N)
-colors = (0,0,0)
-area = np.pi*3
-sca = plt.scatter(x, y)
-figura = plt.show()
-
 
 class HomeView(View):
-
     def get(self, request, *args, **kwargs):
         context={}
-
         context['is_home'] = True
         context['lazyjs'] = True
         context['valoracionesjs'] = False
@@ -56,7 +46,6 @@ class ContactoView(View):
 
     def get(self, request, *args, **kwargs):
         context={}
-
         context['is_home'] = False
         context['lazyjs'] = False
         context['valoracionesjs'] = False
@@ -69,7 +58,6 @@ class PrivacidadView(View):
 
      def get(self, request, *args, **kwargs):
         context={}
-
         context['is_home'] = False
         context['lazyjs'] = False
         context['valoracionesjs'] = False
@@ -182,19 +170,13 @@ def regression(df,results):
     lm = LinearRegression()
     lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
-    plot = plt.scatter(y_test,pred)
-    #a = print('MAE:', metrics.mean_absolute_error(y_test,pred))
-    #b = print('MAE:', metrics.mean_squared_error(y_test,pred))
-    #c = print('MAE:', np.sqrt(metrics.mean_squared_error(y_test,pred)))	  
+    plot = plt.scatter(y_test,pred)  
     return plot	
 
 def upload_csv(request):
-    if "POST" == request.method:
-        try:
+    if request.method == POST:
 	    csv_file = request.FILE['csv_file']
-            data = {'results': csv_file}
-        except Exception as e:
-            print(e)
+        data = {'results': csv_file}
     return render(request, "upload_csv.html", context=data)
 
 def SVM(df,results):
