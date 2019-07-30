@@ -179,12 +179,7 @@ def regression(df,target):
     MAE = metrics.mean_absolute_error(y_test,pred)
     MSE = metrics.mean_squared_error(y_test,pred)
     MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-    results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)
-    plt.scatter(y_test,pred)
-    f = plt.figure()
-    buf =io.BytesIO()
-    canvas=FigureCanvasAgg(f) 
-    response = HttpResponse(buf.getvalue(), content_type='image/png')	
+    results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
     return results
 
 def upload_csv(request):	
@@ -200,6 +195,11 @@ def upload_csv(request):
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
 			results = regression(X,y)
+			plt.scatter(y_test,pred)
+                        f = plt.figure()
+                        buf =io.BytesIO()
+                        canvas=FigureCanvasAgg(f) 
+                        response = HttpResponse(buf.getvalue(), content_type='image/png')
 		data = {'results': results}
 	return render(request, "upload_csv.html", context=data)	
  
