@@ -200,7 +200,7 @@ def upload_csv(request):
 			buf =io.BytesIO()
 			canvas=FigureCanvasAgg(f) 
 		response = HttpResponse(buf.getvalue(), content_type='image/png')
-	        data = {'results': results, 'graph': response}
+		data = {'results': results, 'graph': response}
 	return render(request, "upload_csv.html", context=data)	
  
 	
