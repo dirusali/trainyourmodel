@@ -183,11 +183,11 @@ def regression(df,target):
     lm = LinearRegression()
     model = lm.fit(X_train,y_train)
     pred = lm.predict(X_test)
-    plot = plot(request)
+    r = plot(request)
     MAE = metrics.mean_absolute_error(y_test,pred)
     MSE = metrics.mean_squared_error(y_test,pred)
     MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-    results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, plot, pred)
+    results = "Your model is %s, with MAE: %s MSE: %s. Plot: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, r, pred)
     return results
 
 def upload_csv(request):	
