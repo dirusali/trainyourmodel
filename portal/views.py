@@ -8,6 +8,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 import io
+import csv
 from io import BytesIO
 import base64
 import functools
@@ -18,11 +19,20 @@ import datetime
 import pandas as pd
 import seaborn as sns
 import numpy as np
-from sklearn.cross_validation import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn import metrics
 
-import csv
+from sklearn import metrics
+from sklearn.cross_validation import train_test_split
+from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.cluster import KMeans
+from sklearn.svm import SVC
+from sklearn.grid_search import GridSearchCV
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LinearRegression
+from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
+
+import tensorflow as tf
+
 from django.template.loader import get_template, render_to_string
 from django.shortcuts import render
 from django.views.generic import TemplateView
