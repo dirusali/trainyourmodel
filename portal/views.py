@@ -236,7 +236,7 @@ def upload_csv(request):
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
 		if algo == 'K-Means':
-			model = KMeans.fit(X)
+			model = KMeans.fit(X_train)
 			clusters = kmeans.cluster_centers_
 			labels = kmeans.labels_
 			fig = ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
