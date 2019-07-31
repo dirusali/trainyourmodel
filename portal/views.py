@@ -205,10 +205,9 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
 			fig, ax = plt.subplots()
-                        ax.plot(y_test, pred)
-                        ax.set(xlabel='time (s)', ylabel='voltage (mV)',
-                        title='About as simple as it gets, folks')
-                        ax.grid()
+			ax.plot(y_test, pred)
+			ax.set(xlabel='X', ylabel='voltage (Y)')
+			ax.grid()
 			response = HttpResponse(content_type = 'image/png')
 			canvas=FigureCanvasAgg(f) 
 			canvas.print_png(buf)
