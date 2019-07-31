@@ -208,8 +208,8 @@ def upload_csv(request):
 			results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
 			fig = go.Figure(data=go.Bar(y=[2, 3, 1]))
 			graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
-		#data = {'results': results, 'graph': response}
-	return render(request, "upload_csv.html", context = graph_div)	
+		        data = {'results': results, 'graph': graph_div}
+	return render(request, "upload_csv.html", context = data)	
  
 	
 def SVM(df,results):
