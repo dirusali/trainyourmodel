@@ -4,6 +4,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 import plotly
+import plotly.express as px
 import plotly.graph_objects as go
 
 import io
@@ -206,7 +207,7 @@ def upload_csv(request):
 			MSE = metrics.mean_squared_error(y_test,pred)
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
-			fig = go.Figure(data=go.Bar(y=[2, 3, 1]))
+                        fig = go.Figure(go.Scatter(y_test,pred))
 			graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 			data = {'results': results, 'graph_div': graph_div}
 	return render(request, "upload_csv.html", context = data)	
