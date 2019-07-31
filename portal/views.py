@@ -209,8 +209,8 @@ def upload_csv(request):
 			ax.set(xlabel='X', ylabel='voltage (Y)')
 			ax.grid()
 			response = HttpResponse(content_type = 'image/png')
-			canvas=FigureCanvasAgg(f) 
-			canvas.print_png(buf)
+			canvas=FigureCanvasAgg(fig) 
+			canvas.print_png(response)
 		data = {'results': results, 'graph': response}
 	return render(request, "upload_csv.html", context=data)	
  
