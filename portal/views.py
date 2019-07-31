@@ -226,7 +226,7 @@ def upload_csv(request):
 			model = grid.fit(X_train,y_train)
 			pred = grid.predict(X_test)
 			cm = confusion_matrix(y_test,pred)
-			report = classification_report(y_test,grid_pred)
+			report = classification_report(y_test,pred)
 		if algo == 'K-Means':
 			model = kmeans.fit(X)
 			clusters = kmeans.cluster_centers_
