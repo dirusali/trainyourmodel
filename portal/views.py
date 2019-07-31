@@ -271,7 +271,7 @@ def upload_csv(request):
 			report = classification_report(y_test,pred)
 		if algo == 'Random Forest':
 			rfc = RandomForestClassifier()
-		        model = rfc.fit(X_train,y_train)
+			model = rfc.fit(X_train,y_train)
 			pred = dtree.predict(X_test)
 			MAE = metrics.mean_absolute_error(y_test,pred)
 			MSE = metrics.mean_squared_error(y_test,pred)
