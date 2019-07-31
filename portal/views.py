@@ -23,6 +23,8 @@ import numpy as np
 from sklearn import metrics
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix
+
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.cluster import KMeans
 from sklearn.svm import SVC
 from sklearn.grid_search import GridSearchCV
@@ -205,7 +207,7 @@ def upload_csv(request):
 		y = np.array(df[target])
 		df.drop(target,axis=1,inplace=True)
 		X = df.values
-		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4,random_state=101) 
+		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,random_state=101) 
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
 			lm = LinearRegression()
@@ -215,7 +217,7 @@ def upload_csv(request):
 			MSE = metrics.mean_squared_error(y_test,pred)
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			cm = confusion_matrix(y_test,grid_predictions)
-                        report = classification_report(y_test,grid_predictions)	
+			report = classification_report(y_test,grid_predictions)	
 	           	#results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
 			fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
 			fig.update_xaxes(title="Test Sample")
@@ -240,6 +242,24 @@ def upload_csv(request):
 			pred = knn.predict(X_test)
 			cm = confusion_matrix(y_test,grid_predictions)
 			report = classification_report(y_test,grid_predictions)	
+		if algo == 'Naive Bayes':
+			gnb = GaussianNB()
+			model = gnb.fit(X_train,y_train)
+			pred = gnb.predict(X_test)
+			matrix = confusion_matrix(y_test,pred)
+			report = classification_report(y_test,pred)	
+                if algo == 'Decision Trees':
+			dtree = DecisionTreeClassifier()
+			model = dtree.fit(X_train,y_train)
+			pred = dtree.predict(X_test)
+			matrix = confusion_matrix(y_test,pred)
+			report = classification_report(y_test,pred)
+		if algo == 'Random Forest':
+			rfc = RandomForestClassifier
+			model = rfc.fit(X_train,y_train)
+                        pred = dtree.predict(X_test)
+			matrix = confusion_matrix(y_test,pred)
+			report = classification_report(y_test,pred)
 		results = "Your model is %s, with MAE: %s MSE: %s. Predictions: %s. Confusion Matrix: %s. Report:%s" % (model, MAE, MSE, pred,matrix,report)	
 		context = {'results': results, 'graph_div': graph_div}
 	return render(request, "upload_csv.html", context)	
@@ -248,26 +268,6 @@ def upload_csv(request):
  	
 	
 	
-def NB(df,results):
-    X = df
-    y = np.array(results)
-    X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=101)
-    gnb = GaussianNB()
-    gnb.fit(X_train,y_train)
-    pred = gnb.predict(X_test)
-    matrix = confusion_matrix(y_test,pred)
-    report = classification_report(y_test,pred)	
-    return (matrix,report)
 
 
-def dtree(df,results):
-    X = df
-    y = np.array(results)
-    X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=101)
-    dtree = DecisionTreeClassifier()
-    dtree.fit(X_train,y_train)
-    pred = dtree.predict(X_test)
-    a= print(confusion_matrix(y_test,pred))
-    c = print(classification_report(y_test,pred))	 
-    return(a,c)	      
-	      	  
+ 
