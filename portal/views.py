@@ -229,19 +229,17 @@ def upload_csv(request):
 			pred = grid.predict(X_test)
 			cm = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,grid_pred)
-                if algo == 'K-Means':
+		if algo == 'K-Means':
 			model = kmeans.fit(X)
 			clusters = kmeans.cluster_centers_
 			labels = kmeans.labels_
 			fig = ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
-                if algo == 'K-Nearest Neighbor':
+		if algo == 'K-Nearest Neighbor':
 			knn = KNeighborsclassifier(n_neighbors=1)
 			model = knn.fit(X_train,y_train)
 			pred = knn.predict(X_test)
 			cm = confusion_matrix(y_test,grid_predictions)
-			report = classification_report(y_test,grid_predictions)
-
-					
+			report = classification_report(y_test,grid_predictions)		
 		context = {'results': results, 'graph_div': graph_div}
 	return render(request, "upload_csv.html", context)	
  
