@@ -207,8 +207,9 @@ def upload_csv(request):
 			MSE = metrics.mean_squared_error(y_test,pred)
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
-			fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
-			graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
+			fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers', width=800, height=400))
+			fig.update_layout(title=go.layout.Title(text="Your Sample vs Predictions"),xaxis=go.layout.XAxis(title=go.layout.xaxis.Title(text="Test Sample")),yaxis=go.layout.YAxis(title=go.layout.yaxis.Title(text="Predictions")))
+  			graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 			data = {'results': results, 'graph_div': graph_div}
 	return render(request, "upload_csv.html", context = data)	
  
