@@ -248,7 +248,7 @@ def upload_csv(request):
 			pred = gnb.predict(X_test)
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)	
-                if algo == 'Decision Trees':
+		if algo == 'Decision Trees':
 			dtree = DecisionTreeClassifier()
 			model = dtree.fit(X_train,y_train)
 			pred = dtree.predict(X_test)
