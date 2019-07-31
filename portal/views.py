@@ -209,6 +209,9 @@ def upload_csv(request):
 		X = df.values
 		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,random_state=101) 
 		graph_div = ''
+		matrix = ''
+		report = ''
+		pred = ''
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
 			lm = LinearRegression()
@@ -217,8 +220,6 @@ def upload_csv(request):
 			MAE = metrics.mean_absolute_error(y_test,pred)
 			MSE = metrics.mean_squared_error(y_test,pred)
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			matrix = confusion_matrix(y_test,pred)
-			report = classification_report(y_test,grid_predictions)	
 	           	#results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
 			fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
 			fig.update_xaxes(title="Test Sample")
