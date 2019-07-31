@@ -237,7 +237,8 @@ def upload_csv(request):
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
 		if algo == 'K-Means':
-			model = KMeans.fit(X_train)
+			kmeans = KMeans(n_clusters=4)
+			model = kmeans.fit(X_train)
 			clusters = kmeans.cluster_centers_
 			labels = kmeans.labels_
 			fig = ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
@@ -269,8 +270,8 @@ def upload_csv(request):
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
 		if algo == 'Random Forest':
-			rfc = RandomForestClassifier
-			model = rfc.fit(X_train,y_train)
+			rfc = RandomForestClassifier()
+		        model = rfc.fit(X_train,y_train)
 			pred = dtree.predict(X_test)
 			MAE = metrics.mean_absolute_error(y_test,pred)
 			MSE = metrics.mean_squared_error(y_test,pred)
