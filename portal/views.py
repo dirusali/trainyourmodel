@@ -227,7 +227,7 @@ def upload_csv(request):
 			grid = GridSearchCV(SVC(),param_grid,verbose=3)
 			model = grid.fit(X_train,y_train)
 			pred = grid.predict(X_test)
-                        cm = confusion_matrix(y_test,pred)
+			cm = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,grid_pred)
                 if algo == 'K-Means':
 			model = kmeans.fit(X)
