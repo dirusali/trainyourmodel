@@ -257,7 +257,7 @@ def upload_csv(request):
 		if algo == 'Random Forest':
 			rfc = RandomForestClassifier
 			model = rfc.fit(X_train,y_train)
-                        pred = dtree.predict(X_test)
+			pred = dtree.predict(X_test)
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
 		results = "Your model is %s, with MAE: %s MSE: %s. Predictions: %s. Confusion Matrix: %s. Report:%s" % (model, MAE, MSE, pred,matrix,report)	
