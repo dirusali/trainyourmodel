@@ -3,6 +3,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg
+import plotly.graph_objects as go
 
 import io
 from io import BytesIO
@@ -204,16 +205,10 @@ def upload_csv(request):
 			MSE = metrics.mean_squared_error(y_test,pred)
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
-			fig, ax = plt.subplots()
-			ax.plot(y_test, pred)
-			ax.set(xlabel='X', ylabel='voltage (Y)')
-			ax.grid()
-			response = HttpResponse(content_type = 'image/png')
-			canvas=FigureCanvasAgg(fig) 
-			canvas.print_png(response)
-			graph = {'graph': response}
+			fig = go.Figure(data=go.Bar(y=[2, 3, 1]))
+			graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		#data = {'results': results, 'graph': response}
-	return render(request, "upload_csv.html", context = graph)	
+	return render(request, "upload_csv.html", context = graph_div)	
  
 	
 def SVM(df,results):
