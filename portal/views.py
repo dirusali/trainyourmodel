@@ -211,8 +211,8 @@ def upload_csv(request):
 			response = HttpResponse(content_type = 'image/png')
 			canvas=FigureCanvasAgg(fig) 
 			canvas.print_png(response)
-		data = {'results': results, 'graph': response}
-	return render(request, "upload_csv.html", context=data)	
+		#data = {'results': results, 'graph': response}
+	return render(request, "upload_csv.html", response)	
  
 	
 def SVM(df,results):
