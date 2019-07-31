@@ -197,9 +197,9 @@ def upload_csv(request):
 		y = np.array(df[target])
 		df.drop(target,axis=1,inplace=True)
 		X = df.values
+	        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4,random_state=101) 
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
-			X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4,random_state=101) 
 			lm = LinearRegression()
 			model = lm.fit(X_train,y_train)
 			pred = lm.predict(X_test)
@@ -212,21 +212,31 @@ def upload_csv(request):
 			fig.update_yaxes(title="Predictions")
 			fig.update_layout(autosize=False, width=800,height=500)
 			graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
+		if algo == 'Support Vector Machine':
+			param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
+			grid = GridSearchCV(SVC(),param_grid,verbose=3)
+			model = grid.fit(X_train,y_train)
+			pred = grid.predict(X_test)
+                        cm = confusion_matrix(y_test,pred)
+			report = classification_report(y_test,grid_pred)
+                if algo == 'K-Means':
+			model = kmeans.fit(X)
+			clusters = kmeans.cluster_centers_
+			labels = kmeans.labels_
+			fig = ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
+                if algo == 'K-Nearest Neighbor':
+			knn = KNeighborsclassifier(n_neighbors=1)
+			model = knn.fit(X_train,y_train)
+			pred = knn.predict(X_test)
+			cm = confusion_matrix(y_test,grid_predictions)
+			report = classification_report(y_test,grid_predictions)
+
+					
 		context = {'results': results, 'graph_div': graph_div}
 	return render(request, "upload_csv.html", context)	
  
 	
-def SVM(df,results):
-    X = df
-    y= np.array(results)
-    X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=101)
-    param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
-    grid = GridSearchCV(SVC(),param_grid,verbose=3)
-    grid.fit(X_train,y_train)
-    grid_predictions = grid.predict(X_test)
-    matrix = confusion_matrix(y_test,grid_predictions)
-    report = classification_report(y_test,grid_predictions)
-    return (matrix,report) 	
+ 	
 	
 	
 def NB(df,results):
@@ -240,23 +250,6 @@ def NB(df,results):
     report = classification_report(y_test,pred)	
     return (matrix,report)
 
-def KNN(df,results):
-    long = len(df.head(0)) - 1
-    header = list(df)[0:long]
-    labels = header[long]
-    results = df[labels]
-    data = df.drop('resultados',axis=1,inplace=True)
-    df = df.values
-    data = (df,resultados) # necesita una tuple con dos arrays, el input y los labels xq los kiero pintar y comparar
-    kmeans.fit(df)
-    kmeans.cluster_centers_
-    kmeans.labels_
-    fig, (ax1,ax2) = plt.subplots(1,2, sharey=True,figsize=(10,6))
-    a = ax1.set_title('Original')
-    b= ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
-    c = ax2.set_title('Model')
-    d = ax2.scatter(data[0][:,0],data[0][:,1],c=kmeans.labels_)	
-    return d
 
 def dtree(df,results):
     X = df
@@ -269,23 +262,3 @@ def dtree(df,results):
     c = print(classification_report(y_test,pred))	 
     return(a,c)	      
 	      	  
-def kmeans(X,y):
-    X = df
-    long = len(df.head(0)) - 1
-    header = list(df)[0:long]
-    labels = header[long]
-    results = df[labels]
-    data = df.drop('resultados',axis=1,inplace=True)
-    df = df.values
-    data = (df,resultados) # necesita una tuple con dos arrays, el input y los labels xq los kiero pintar y comparar
-    kmeans.fit(df)
-    kmeans.cluster_centers_
-    kmeans.labels_
-    a = fig, (ax1,ax2) = plt.subplots(1,2, sharey=True,figsize=(10,6))
-    b = ax1.set_title('Original')
-    c= ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
-    d = ax2.set_title('Model')
-    e = ax2.scatter(data[0][:,0],data[0][:,1],c=kmeans.labels_)
-    return e	      
-	      
-	      
