@@ -232,7 +232,7 @@ def upload_csv(request):
 			MAE = metrics.mean_absolute_error(y_test,pred)
 			MSE = metrics.mean_squared_error(y_test,pred)
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			cm = confusion_matrix(y_test,pred)
+			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
 		if algo == 'K-Means':
 			model = kmeans.fit(X)
@@ -246,7 +246,7 @@ def upload_csv(request):
 			MAE = metrics.mean_absolute_error(y_test,pred)
 			MSE = metrics.mean_squared_error(y_test,pred)
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			cm = confusion_matrix(y_test,grid_predictions)
+			matrix = confusion_matrix(y_test,grid_predictions)
 			report = classification_report(y_test,grid_predictions)	
 		if algo == 'Naive Bayes':
 			gnb = GaussianNB()
@@ -275,7 +275,7 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
-		results = "Your model is %s, with MAE: %s MSE: %s. Predictions: %s. Confusion Matrix: %s. Report:%s" % (model, MAE, MSE, pred,matrix,report)	
+		results = "Your model is %s, with MAE: %s MSE: %s. Predictions: %s. Confusion Matrix: %s. Report:%s" % (model, MAE, MSE, pred, matrix, report)	
 		context = {'results': results, 'graph_div': graph_div}
 	return render(request, "upload_csv.html", context)	
  
