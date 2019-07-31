@@ -31,8 +31,6 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LinearRegression
 from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
 
-import tensorflow as tf
-
 from django.template.loader import get_template, render_to_string
 from django.shortcuts import render
 from django.views.generic import TemplateView
