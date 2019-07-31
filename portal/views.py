@@ -204,13 +204,15 @@ def upload_csv(request):
 			MSE = metrics.mean_squared_error(y_test,pred)
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
-			plt.scatter(y_test,pred)
-			f = plt.figure()
-			buf =io.BytesIO()
+			fig, ax = plt.subplots()
+                        ax.plot(y_test, pred)
+                        ax.set(xlabel='time (s)', ylabel='voltage (mV)',
+                        title='About as simple as it gets, folks')
+                        ax.grid()
+			response = HttpResponse(content_type = 'image/png')
 			canvas=FigureCanvasAgg(f) 
 			canvas.print_png(buf)
-			response = HttpResponse(buf.getvalue(), content_type='image/png')
-		data = {'results': results, 'graph': canvas.print_png(buf)}
+		data = {'results': results, 'graph': response}
 	return render(request, "upload_csv.html", context=data)	
  
 	
