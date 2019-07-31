@@ -210,6 +210,7 @@ def upload_csv(request):
 			fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers',width=800, height=400))
 			fig.update_xaxes(title="Test Sample")
 			fig.update_yaxes(title="Predictions")
+			fig.update_layout(autosize=False, width=800,height=500)
 			graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		context = {'results': results, 'graph_div': graph_div}
 	return render(request, "upload_csv.html", context)	
