@@ -208,6 +208,7 @@ def upload_csv(request):
 		df.drop(target,axis=1,inplace=True)
 		X = df.values
 		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,random_state=101) 
+		graph_div = ''
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
 			lm = LinearRegression()
