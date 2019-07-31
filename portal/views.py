@@ -182,6 +182,8 @@ def regression(df,target):
     results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
     return results
 
+
+
 def upload_csv(request):	
 	if request.method == "POST":
 		csv = request.FILES['csv_file']
@@ -206,7 +208,8 @@ def upload_csv(request):
 			f = plt.figure()
 			buf =io.BytesIO()
 			canvas=FigureCanvasAgg(f) 
-		data = {'results': results, 'graph': buf.getvalue()}
+			foto = canvas.print_png(buf)
+		data = {'results': results, 'graph': canvas}
 	return render(request, "upload_csv.html", context=data)	
  
 	
