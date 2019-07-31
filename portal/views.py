@@ -104,15 +104,15 @@ def contacto(request):
         if name and message and email:
             try:
                 #email_message.send()
-                send_mail('The Best 5 :: Formulario Web', body, 'admin@thebest5.es', ['admin@thebest5.es'])
-                send_mail('The Best 5', 'Buenos días. Hemos recibido tu mensaje correctamente. Recibirás una respuesta lo antes posible.', 'admin@thebest5.es', [email])
+                send_mail('Feedmedata :: Formulario Web', body, 'dirusali@gmail.com', ['dirusali@gmail.com'])
+                send_mail('Feedmedata', 'Your email was sent, I will try to respond asap', 'dirusali@gmail.com', [email])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return HttpResponseRedirect('/mensaje-enviado/')
+            return HttpResponseRedirect('/message-sent/')
         else:
             # In reality we'd use a form class
             # to get proper validation errors.
-            return HttpResponse('Asegúrate de que has rellenado correctamente los campos.')
+            return HttpResponse('Please check you filled all fields correctly.')
     else:
         context={}
         context['is_home'] = False
