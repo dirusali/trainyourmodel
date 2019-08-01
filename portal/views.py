@@ -201,6 +201,7 @@ def upload_csv(request):
 	if request.method == "POST":
 		csv = request.FILES['csv_file']
 		df = pd.read_csv(csv)
+		df_target = df
 		lon = len(list(df.head(0)))
 		header = list(df[0:lon])
 		target = header[lon-1]
@@ -212,6 +213,11 @@ def upload_csv(request):
 		matrix = ''
 		report = ''
 		pred = ''
+		grafica = request.POST['graph']
+		if grafica == 'pairplot':
+			fig = px.scatter_matrix(df_target)
+			scatter_plot = plotly.offline.plot(fig, auto_open = False, output_type="div")
+			return render(request, "pairplot.html", context)			
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
 			lm = LinearRegression()
