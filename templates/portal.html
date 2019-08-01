@@ -37,9 +37,9 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
      <section class="home-upload">
      <h2 class="tit1">Machine Learning Made Easy</h2>  
      <p class="feat">Please upload your data in csv format. You can choose one of the following options:</p>     		
-     <p style="margin-left: 40px">- Explore your data: choose a type of graph and visualize your variables.</p>
-     <p style="margin-left: 40px">- Unsupervised algorithms: useful when no data is available about your target variable.</p>
-     <p style="margin-left: 40px">- Supervised algorithms: if you have training data please place your target variable in the last column.</p>    
+     <p style="margin-left: 40px"; "font size: 2";>- Explore your data: choose a type of graph and visualize your variables.</p>
+     <p style="margin-left: 40px"; "font size: 2";>- Unsupervised algorithms: useful when no data is available about your target variable.</p>
+     <p style="margin-left: 40px"; "font size: 2";>- Supervised algorithms: if you have training data please place your target variable in the last column.</p>    
     
     <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" align= "center" class="form-horizontal"> 
     {% csrf_token %}
