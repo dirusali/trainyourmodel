@@ -195,8 +195,6 @@ def regression(df,target):
     results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
     return results
 
-
-
 def upload_csv(request):	
 	if request.method == "POST":
 		csv = request.FILES['csv_file']
