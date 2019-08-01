@@ -36,27 +36,33 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
     <div class="container">{% comment %}<!-- section home-intro" -->{% endcomment %}
      <section class="home-upload">
      <h2 class="tit1">Machine Learning Made Easy</h2>  
-     <p class="feat">Please upload your data in csv format. You can choose one of the following options:</p>     		
-         <p style="margin-left: 500px";>- <strong>Explore your data:</strong> choose a type of graph and visualize your variables.</p>
-         <p style="margin-left: 500px";>- <strong>Unsupervised algorithms</strong>: useful when no data is available about your target variable.</p>
-         <p style="margin-left: 500px";>- <strong>Supervised algorithms</strong>: if you have training data please place your target variable in the last column.</p>    
-    
-    <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" align= "center" class="form-horizontal"> 
-    {% csrf_token %}
-    <div class="col-md-8">
-        <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
-        </div>
+     <p class="feat">Please upload your data in csv format. You can choose one of the following options:</p>    
+     <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" align= "center" class="form-horizontal"> 
+        {% csrf_token %}
+     <div class="col-md-8">
+     <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
+         
+     </div>
+         
+        <p style="margin-left: 500px";>- <strong>Explore your data:</strong> choose a type of graph and visualize your variables.</p>    
+   
         <div class="form-group"> 
         <select name="graficas">
                 <option value="Scatter Plot">Scatter Plot</option>
         </select>
-        </div>        
+        </div>  
+     
+        <p style="margin-left: 500px";>- <strong>Unsupervised algorithms</strong>: useful when no data is available about your target variable.</p>
+        
         <div class="form-group"> 
         <select name="unsupervised">
                <option value="K-Means">K-Means</option>
         </select>
         </div>
-        <div class="form-group"> 
+        
+        <p style="margin-left: 500px";>- <strong>Supervised algorithms</strong>: if you have training data please place your target variable in the last column.</p>    
+        
+         <div class="form-group"> 
              <select name="supervised">
                 <option value="Linear Regression">Linear Regression</option>
                 <option value="Support Vector Machine">Support Vector Machine</option>
