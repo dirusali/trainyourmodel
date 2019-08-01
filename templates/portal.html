@@ -35,22 +35,30 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
     </header>    
     <div class="container">{% comment %}<!-- section home-intro" -->{% endcomment %}
       <section class="home-upload">
-            <h2 class="tit1">Machine Learning Made Easy</h2>  
-            <p class="feat">Please select one algorithm and upload your data in csv format.<br>
-            If you wish to run a supervised algorithm then your target variable should be placed in the last column of your csv file.<br>
-            Unsupervised algorithms obviously don't need a target column. 
-            </p>
+     <h2 class="tit1">Machine Learning Made Easy</h2>  
+     <p class="feat">Please select one algorithm and upload your data in csv format.</p>       
     <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" align= "center" class="form-horizontal"> 
     {% csrf_token %}
     <div class="col-md-8">
         <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
-        </div>     
-    <div class="form-group"> 
-             <select name="algoritmo">
+        </div>
+    <p class="feat">Explore your data: choose a type of graph and visualize your variables.</p>  
+        <div class="form-group"> 
+        <select name="graficas">
+                <option value="Scatter Plot">Scatter Plot</option>
+        </select>
+        </div>        
+     <p class="feat">Unsupervised algorithms: useful when no data is available about your target variable.</p>  
+        <div class="form-group"> 
+        <select name="unsupervised">
+               <option value="K-Means">K-Means</option>
+        </select>
+        </div>        
+        <div class="form-group"> 
+             <select name="supervised">
                 <option value="Linear Regression">Linear Regression</option>
                 <option value="Support Vector Machine">Support Vector Machine</option>
                 <option value="K-Nearest Neighbor">K-Nearest Neighbor</option>
-                <option value="K-Means">K-Means</option>
                 <option value="Decision Trees">Decision Trees</option> 
                 <option value="Random Trees">Random Forest</option> 
                 <option value="Random Trees">Naive Bayes</option> 
@@ -65,7 +73,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
     </div> 
     <section class="explanation"> 
     <div class="logo" align="center"><a href="/"><img src="{% static 'images/carousel/image4.png' %}"/></a></div>
-    <p><br></p><p><br></p>
+    <p><br></p><p><br></p>  
     </section>          
 {% endblock %}
         
