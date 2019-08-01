@@ -40,7 +40,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
      <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" align= "center" class="form-horizontal"> 
         {% csrf_token %}
      <div class="col-md-8">
-     <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
+     <input type="file" name="csv_file" id="csv_file" required="True" align= "center" class="form-control">
          
      </div>
      <p style="margin-left: 500px";>- <strong>Explore your data:</strong> choose a type of graph and visualize your variables.</p>    
