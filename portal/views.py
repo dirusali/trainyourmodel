@@ -247,7 +247,7 @@ def upload_csv(request):
 			labels = kmeans.labels_
 			fig = ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
 		if algo == 'K-Nearest Neighbor':
-			knn = KNeighborsclassifier(n_neighbors=1)
+			knn = KNeighborsClassifier(n_neighbors=1)
 			model = knn.fit(X_train,y_train)
 			pred = knn.predict(X_test)
 			MAE = metrics.mean_absolute_error(y_test,pred)
