@@ -32,36 +32,42 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
                 </a>          
             </div>          
             </div> 
-    </header>    
+    </header>   
+
     <div class="container" align="center">{% comment %}<!-- section home-intro" -->{% endcomment %}
      <section class="home-upload">
      <h2 class="tit1">Machine Learning Made Easy</h2>  
+         
      <p class="feat"> Please upload your data in csv format. You can choose one of the following options:   
+     
      <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
         {% csrf_token %}
      <div class="col-md-8">
-     <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
-         
+     <input type="file" name="csv_file" id="csv_file" required="True" class="form-control"> 
      </div>
-      <p></p><p></p><p></p><p></p><p></p><p></p>       
+     <p></p><p></p><p></p><p></p><p></p><p></p>       
      <p>- <strong>Explore your data:</strong> choose a type of graph and visualize your variables.</p>    
      <div class="form-group"> 
         <select name="graficas">
                 <option value="Scatter Plot">Scatter Plot</option>
-        </select>
-        </div>  
-         <p></p><p></p><p></p>
-        <p>- <strong>Unsupervised algorithms</strong>: useful when no data is available about your target variable.</p>
-        
-        <div class="form-group">
+                </select>
+            <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+            <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Run </button>
+            </div>
+            <p></p><p></p><p></p>
+            <p>- <strong>Unsupervised algorithms</strong>: useful when no data is available about your target variable.</p>
+     </div>
+     <div class="form-group">
         <select name="unsupervised">
                <option value="K-Means">K-Means</option>
-        </select>
-        </div>
-         <p></p><p></p><p></p>
-        <p>- <strong>Supervised algorithms</strong>: if you have training data please place your target variable in the last column.</p>    
-        
-         <div class="form-group"> 
+            </select>
+            <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+            <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Run </button>
+            </div>
+            <p></p><p></p><p></p>
+            <p>- <strong>Supervised algorithms</strong>: if you have training data please place your target variable in the last column.</p>    
+     </div>
+     <div class="form-group"> 
              <select name="supervised">
                 <option value="Linear Regression">Linear Regression</option>
                 <option value="Support Vector Machine">Support Vector Machine</option>
@@ -70,11 +76,11 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
                 <option value="Random Trees">Random Forest</option> 
                 <option value="Random Trees">Naive Bayes</option> 
                 <option value="Neural Networks">Neural Networks</option> 
-             </select>
-        </div>        
-    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
-        <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
-        </div> 
+             </select>        
+             <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+             <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Run </button>
+             </div>
+     </div> 
     </form> 
     </section>  
     </p>      
