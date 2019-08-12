@@ -215,7 +215,7 @@ def plot_graphs(request):
 		grafica = request.POST['graph']
 		if grafica == 'pairplot':
 			fig = px.scatter_matrix(df_target)
-			scatter_plot = plotly.offline.plot(fig, auto_open = False, output_type="div"
+			scatter_plot = plotly.offline.plot(fig, auto_open = False, output_type="div")
         return render(request, "scatter_plot.html", context)	
 						   
 
