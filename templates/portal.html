@@ -44,14 +44,14 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
         {% csrf_token %}
      <input type="file" name="csv_file" id="csv_file" required="True" class="form-control"> 
      <p></p><p></p><p></p><p></p><p></p><p></p>       
-     <p>- <strong>Explore your data:</strong> choose a type of graph and visualize your variables.</p>    
+           <p>- <strong>Visualize your data:</strong> choose a type of graph and and plot your data.</p>    
      <div class="form-group"> 
         <select name="graficas">
                 <option value="Scatter Plot">Scatter Plot</option>
                 </select>
             <button class="btn btn-xs">Upload </button>
             <p></p><p></p><p></p>
-            <p>- <strong>Unsupervised algorithms</strong>: useful when no data is available about your target variable.</p>
+            <p>- <strong>Unsupervised algorithms</strong>: find hidden patterns in unlabeled data.</p>
      </div>
      <div class="form-group">
         <select name="unsupervised">
@@ -59,7 +59,8 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
             </select>
             <button class="btn btn-xs">Upload </button>
             <p></p><p></p><p></p>
-            <p>- <strong>Supervised algorithms</strong>: if you have training data please place your target variable in the last column.</p>    
+            <p>- <strong>Supervised algorithms</strong>:use labeled training data to make predictions.</br>
+            Please place your target variable in the last column of your training dataset csv file.</p>    
      </div>
      <div class="form-group"> 
              <select name="supervised">
