@@ -36,7 +36,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
     <div class="container">{% comment %}<!-- section home-intro" -->{% endcomment %}
      <section class="home-upload">
      <h2 class="tit1">Machine Learning Made Easy</h2>  
-     <p class="feat">Please upload your data in csv format. You can choose one of the following options:</p>    
+     <p class="feat">Please upload your data in csv format. You can choose one of the following options:   
      <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
         {% csrf_token %}
      <div class="col-md-8">
@@ -75,7 +75,8 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
         <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
         </div> 
     </form> 
-    </section>                                                                             
+    </section>  
+    </p>      
     </div> 
     <section class="explanation"> 
     <div class="logo" align="center"><a href="/"><img src="{% static 'images/carousel/image4.png' %}"/></a></div>
