@@ -196,31 +196,6 @@ def regression(df,target):
     return results
 
 
-def plot_graphs(request):
-	if request.method == "POST":
-		csv = request.FILES['csv_file']
-		df = pd.read_csv(csv)
-		df_target = df
-		lon = len(list(df.head(0)))
-		header = list(df[0:lon])
-		target = header[lon-1]
-		y = np.array(df[target])
-		df.drop(target,axis=1,inplace=True)
-		X = df.values
-		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,random_state=101) 
-		graph_div = ''
-		matrix = ''
-		report = ''
-		pred = ''
-		grafica = request.POST['graph']
-		if grafica == 'pairplot':
-			fig = px.scatter_matrix(df_target)
-			scatter_plot = plotly.offline.plot(fig, auto_open = False, output_type="div")
-			return render(request, "scatterplot.html", context)
-
-
-
-
 def upload_csv(request):	
 	if request.method == "POST":
 		csv = request.FILES['csv_file']
@@ -238,6 +213,10 @@ def upload_csv(request):
 		report = ''
 		pred = ''			
 		algo = request.POST['algoritmo']
+		grafica = request.POST['graph']
+		if grafica == 'pairplot':
+			fig = px.scatter_matrix(df_target)
+			scatter_plot = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		if algo == 'Linear Regression':
 			lm = LinearRegression()
 			model = lm.fit(X_train,y_train)
