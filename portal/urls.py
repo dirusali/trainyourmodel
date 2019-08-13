@@ -15,6 +15,5 @@ urlpatterns = [
         url(r'^contact/$', ContactoView.as_view(), name='contacto'),
         url(r'^results/$', upload_csv, name='upload_csv'),
         url(r'^graphs/$', plotter, name='plotter'),
-        #urls(r'^results/$, Results.as_view(), name='results')
 ]
 
