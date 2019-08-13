@@ -38,20 +38,17 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
      <section class="home-upload">
      <h2 class="tit1">Machine Learning Made Easy</h2>         
      <p class="feat"> Please upload your data in csv format. You can choose one of the following options: </p>      
-   
-     <input type="file" name="csv_file" id="csv_file" required="True" class="form-control"> 
-         
+           
      <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
         {% csrf_token %} 
+     <input type="file" name="csv_file" id="csv_file" required="True" class="form-control"> 
+
          <p>- <strong>Visualize your data:</strong> choose a type of graph and and plot your data.</p>    
         <select name="graficas">
                 <option value="scatter">Scatter Plot</option>
         </select>
-        <button class="btn btn-xs">PLOT </button>
-     </form> 
+        <button name="plot" value="plot">PLOT </button>
          
-     <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
-         {% csrf_token %} 
          <p>- <strong>Run Algorithms</strong>: choose your desired supervised or unsupervided algorihtm.</p>
             <select name="algoritmo">
                 <option value="K-Means">K-Means</option>
@@ -63,7 +60,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
                 <option value="Naive Bayes">Naive Bayes</option> 
                 <option value="Neural Networks">Neural Networks</option> 
              </select>        
-             <button class="btn btn-xs">RUN </button>
+             <button name="algo" value="algo">RUN </button>
      </form> 
     </section>  
     </div> 
