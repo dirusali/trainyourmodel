@@ -270,7 +270,7 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
-                if algo == 'Random Forest':
+		if algo == 'Random Forest':
 			forest = RandomForestClassifier(n_estimators=100)
 			model = fores.fit(X_train,y_train)
 			pred = rfc.predict(X_test)
