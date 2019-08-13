@@ -196,6 +196,24 @@ def regression(df,target):
     return results
 
 	
+def plottings(request):
+	csv = request.FILES['csv_file']
+	df = pd.read_csv(csv)
+	df_target = df
+	lon = len(list(df.head(0)))
+	header = list(df[0:lon])
+	target = header[lon-1]
+	y = np.array(df[target])
+	df.drop(target,axis=1,inplace=True)
+        X = df.values
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,random_state=101) 
+	graph_div = ''
+	grafica = request.POST['graficas']
+	if grafica == "scatter":
+            fig = px.scatter_matrix(df_target)
+            graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
+            context = {'graph_div': graph_div}
+            return render (request, "plottings.html", context)
 	
 def upload_csv(request):	
 	if request.method == "POST":
@@ -213,16 +231,6 @@ def upload_csv(request):
 		matrix = ''
 		report = ''
 		pred = ''
-		grafica = request.POST['graficas']
-		if grafica == "scatter":
-		    #fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
-		    #fig.update_xaxes(title="Test Sample")
-		    #fig.update_yaxes(title="Predictions")
-		    #fig.update_layout(autosize=False, width=800,height=500)
-		    fig = px.scatter_matrix(df_target)
-		    graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
-		    context = {'graph_div': graph_div}
-		    return render (request, "plottings.html", context) 
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
 			lm = LinearRegression()
