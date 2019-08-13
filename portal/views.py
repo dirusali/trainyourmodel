@@ -251,9 +251,6 @@ def upload_csv(request):
 			model = kmeans.fit(X_train)
 			clusters = kmeans.cluster_centers_
 			labels = kmeans.labels_
-			fig = ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
-			context = {'matrix': matrix, 'report': report}
-			return render(request, "upload_csv.html", context)
 		if algo == 'K-Nearest Neighbor':
 			knn = KNeighborsClassifier(n_neighbors=1)
 			model = knn.fit(X_train,y_train)
