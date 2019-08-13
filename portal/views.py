@@ -233,79 +233,79 @@ def upload_csv(request):
 		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
-	if '_super' in request.POST:	
-		algo = request.POST['algoritmo']
-		if algo == 'Linear Regression':
-			lm = LinearRegression()
-			model = lm.fit(X_train,y_train)
-			pred = lm.predict(X_test)
-			MAE = metrics.mean_absolute_error(y_test,pred)
-			MSE = metrics.mean_squared_error(y_test,pred)
-			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			matrix = confusion_matrix(y_test,pred)
-			report = classification_report(y_test,pred)
-			context = {'matrix': matrix, 'report': report}
-			return render(request, "upload_csv.html", context)
-		if algo == 'Support Vector Machine':
-			param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
-			grid = GridSearchCV(SVC(),param_grid,verbose=3)
-			model = grid.fit(X_train,y_train)
-			pred = grid.predict(X_test)
-			MAE = metrics.mean_absolute_error(y_test,pred)
-			MSE = metrics.mean_squared_error(y_test,pred)
-			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			matrix = confusion_matrix(y_test,pred)
-			report = classification_report(y_test,pred)
-			context = {'matrix': matrix, 'report': report}
-			return render(request, "upload_csv.html", context)
-		if algo == 'K-Means':
-			kmeans = KMeans(n_clusters=4)
-			model = kmeans.fit(X_train)
-			clusters = kmeans.cluster_centers_
-			labels = kmeans.labels_
-		if algo == 'K-Nearest Neighbor':
-			knn = KNeighborsClassifier(n_neighbors=1)
-			model = knn.fit(X_train,y_train)
-			pred = knn.predict(X_test)
-			MAE = metrics.mean_absolute_error(y_test,pred)
-			MSE = metrics.mean_squared_error(y_test,pred)
-			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			matrix = confusion_matrix(y_test,pred)
-			report = classification_report(y_test,pred)	
-			context = {'matrix': matrix, 'report': report}
-			return render(request, "upload_csv.html", context)
-		if algo == 'Naive Bayes':
-			gnb = GaussianNB()
-			pred = gnb.fit(X_train, y_train).predict(X_test)
-			MAE = metrics.mean_absolute_error(y_test,pred)
-			MSE = metrics.mean_squared_error(y_test,pred)
-			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			matrix = confusion_matrix(y_test,pred)
-			report = classification_report(y_test,pred)	
-			context = {'matrix': matrix, 'report': report}
-			return render(request, "upload_csv.html", context)
-		if algo == 'Decision Trees':
-			dtree = DecisionTreeClassifier()
-			model = dtree.fit(X_train,y_train)
-			pred = dtree.predict(X_test)
-			MAE = metrics.mean_absolute_error(y_test,pred)
-			MSE = metrics.mean_squared_error(y_test,pred)
-			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			matrix = confusion_matrix(y_test,pred)
-			report = classification_report(y_test,pred)
-			context = {'matrix': matrix, 'report': report}
-			return render(request, "upload_csv.html", context)
-		if algo == 'Random Forest':
-			forest = RandomForestClassifier(n_estimators=200)
-			model = forest.fit(X_train,y_train)
-			pred = forest.predict(X_test)
-			MAE = metrics.mean_absolute_error(y_test,pred)
-			MSE = metrics.mean_squared_error(y_test,pred)
-			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			matrix = confusion_matrix(y_test,pred)
-			report = classification_report(y_test,pred)
-			context = {'matrix': matrix, 'report': report}
-			return render(request, "upload_csv.html", context)	
+	    if '_super' in request.POST:	
+		    algo = request.POST['algoritmo']
+		    if algo == 'Linear Regression':
+			    lm = LinearRegression()
+			    model = lm.fit(X_train,y_train)
+			    pred = lm.predict(X_test)
+			    MAE = metrics.mean_absolute_error(y_test,pred)
+			    MSE = metrics.mean_squared_error(y_test,pred)
+			    MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
+			    matrix = confusion_matrix(y_test,pred)
+			    report = classification_report(y_test,pred)
+			    context = {'matrix': matrix, 'report': report}
+			    return render(request, "upload_csv.html", context)
+		    if algo == 'Support Vector Machine':
+			    param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
+			    grid = GridSearchCV(SVC(),param_grid,verbose=3)
+			    model = grid.fit(X_train,y_train)
+			    pred = grid.predict(X_test)
+			    MAE = metrics.mean_absolute_error(y_test,pred)
+			    MSE = metrics.mean_squared_error(y_test,pred)
+			    MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
+			    matrix = confusion_matrix(y_test,pred)
+			   report = classification_report(y_test,pred)
+			   context = {'matrix': matrix, 'report': report}
+			   return render(request, "upload_csv.html", context)
+		    if algo == 'K-Means':
+			    kmeans = KMeans(n_clusters=4)
+			    model = kmeans.fit(X_train)
+			    clusters = kmeans.cluster_centers_
+			    labels = kmeans.labels_
+		    if algo == 'K-Nearest Neighbor':
+			    knn = KNeighborsClassifier(n_neighbors=1)
+			    model = knn.fit(X_train,y_train)
+			    pred = knn.predict(X_test)
+			    MAE = metrics.mean_absolute_error(y_test,pred)
+			    MSE = metrics.mean_squared_error(y_test,pred)
+			    MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
+			    matrix = confusion_matrix(y_test,pred)
+			    report = classification_report(y_test,pred)	
+			    context = {'matrix': matrix, 'report': report}
+			    return render(request, "upload_csv.html", context)
+		    if algo == 'Naive Bayes':
+			    gnb = GaussianNB()
+			    pred = gnb.fit(X_train, y_train).predict(X_test)
+			    MAE = metrics.mean_absolute_error(y_test,pred)
+			    MSE = metrics.mean_squared_error(y_test,pred)
+			    MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
+			    matrix = confusion_matrix(y_test,pred)
+			    report = classification_report(y_test,pred)	
+			    context = {'matrix': matrix, 'report': report}
+			    return render(request, "upload_csv.html", context)
+		    if algo == 'Decision Trees':
+			    dtree = DecisionTreeClassifier()
+			    model = dtree.fit(X_train,y_train)
+			    pred = dtree.predict(X_test)
+			    MAE = metrics.mean_absolute_error(y_test,pred)
+			    MSE = metrics.mean_squared_error(y_test,pred)
+			    MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
+			    matrix = confusion_matrix(y_test,pred)
+			    report = classification_report(y_test,pred)
+			    context = {'matrix': matrix, 'report': report}
+			    return render(request, "upload_csv.html", context)
+		    if algo == 'Random Forest':
+			    forest = RandomForestClassifier(n_estimators=200)
+		    	model = forest.fit(X_train,y_train)
+			    pred = forest.predict(X_test)
+			    MAE = metrics.mean_absolute_error(y_test,pred)
+			    MSE = metrics.mean_squared_error(y_test,pred)
+			    MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
+			    matrix = confusion_matrix(y_test,pred)
+			    report = classification_report(y_test,pred)
+			    context = {'matrix': matrix, 'report': report}
+			    return render(request, "upload_csv.html", context)	
  
 	
  	
