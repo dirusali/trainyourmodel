@@ -297,7 +297,7 @@ def upload_csv(request):
 			    return render(request, "upload_csv.html", context)
 		    if algo == 'Random Forest':
 			    forest = RandomForestClassifier(n_estimators=200)
-		    	model = forest.fit(X_train,y_train)
+			    model = forest.fit(X_train,y_train)
 			    pred = forest.predict(X_test)
 			    MAE = metrics.mean_absolute_error(y_test,pred)
 			    MSE = metrics.mean_squared_error(y_test,pred)
