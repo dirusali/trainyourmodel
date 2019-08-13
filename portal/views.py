@@ -212,8 +212,8 @@ def plottings(request):
 	if grafica == "scatter":
 	    fig = px.scatter_matrix(df_target)
 	    graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
-            context = {'graph_div': graph_div}
-            return render (request, "plottings.html", context)
+	    context = {'graph_div': graph_div}
+	    return render (request, "plottings.html", context)
 	
 def upload_csv(request):	
 	if request.method == "POST":
