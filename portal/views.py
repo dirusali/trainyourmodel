@@ -213,7 +213,7 @@ def upload_csv(request):
 		report = ''
 		pred = ''
 		grafica = request.POST['algoritmo']
-                unsupervised = request.POST['algoritmo']
+		unsupervised = request.POST['algoritmo']
 		supervised = request.POST['algoritmo']
 		if supervised == 'Linear Regression':
 			lm = LinearRegression()
