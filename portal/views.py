@@ -31,7 +31,7 @@ from sklearn.grid_search import GridSearchCV
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LinearRegression
-from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
+from sklearn.naive_bayes import GaussianNB
 
 from django.template.loader import get_template, render_to_string
 from django.shortcuts import render
@@ -253,7 +253,7 @@ def upload_csv(request):
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)	
 		if algo == 'Naive Bayes':
-			gnb = GaussianNB()
+			nb = GaussianNB()
 			model = gnb.fit(X_train,y_train)
 			pred = gnb.predict(X_test)
 			MAE = metrics.mean_absolute_error(y_test,pred)
@@ -270,10 +270,9 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
-		if algo == 'Random Forest':
-			from sklearn.ensemble import RandomForestClassifier
-			rfc = RandomForestClassifier(n_estimators=200)
-			model = rfc.fit(X_train,y_train)
+                if algo == 'Random Forest':
+			forest = RandomForestClassifier(n_estimators=100)
+			model = fores.fit(X_train,y_train)
 			pred = rfc.predict(X_test)
 			MAE = metrics.mean_absolute_error(y_test,pred)
 			MSE = metrics.mean_squared_error(y_test,pred)
