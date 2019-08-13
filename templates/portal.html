@@ -51,27 +51,17 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
         <select name="graficas">
                 <option value="Scatter Plot">Scatter Plot</option>
                 </select>
-            <button class="btn btn-xs">Upload </button>
-         
+            <button class="btn btn-xs">PLOT </button>
             <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-
-            <p>- <strong>Unsupervised algorithms</strong>: find hidden patterns in unlabeled data.</p>
-            <p></p>
      </div>
      <div class="form-group">
-        <select name="unsupervised">
-               <option value="K-Means">K-Means</option>
-            </select>
-            <button class="btn btn-xs">Upload </button>
-         
-            <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-            
-            <p>- <strong>Supervised algorithms</strong>:use labeled training data to make predictions.</br>
-            Please place your target variable in the last column of your training dataset csv file.</p> 
-            <p></p>
-     </div>
-     <div class="form-group"> 
+        <select name="algoritmo">
+            <p>- <strong>Run Algorithms</strong>: choose your desired supervised or unsupervided algorihtm.
+            <p>- Unsupervised algorithms can classify unlabeled data. You can use them to find hidden patterns.
+            <p>- Supervised algorithms need a labeled training dataset. You can use them to make predictions.</br>
+            <p>- Please place your target variable in the last column of your training dataset csv file.</p> 
              <select name="supervised">
+                <option value="K-Means">K-Means</option>
                 <option value="Linear Regression">Linear Regression</option>
                 <option value="Support Vector Machine">Support Vector Machine</option>
                 <option value="K-Nearest Neighbor">K-Nearest Neighbor</option>
@@ -80,7 +70,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
                 <option value="Random Trees">Naive Bayes</option> 
                 <option value="Neural Networks">Neural Networks</option> 
              </select>        
-             <button class="btn btn-xs">Upload </button>
+             <button class="btn btn-xs">RUN </button>
         </div> 
      </div> 
     </form> 
