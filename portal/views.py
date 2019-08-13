@@ -214,25 +214,25 @@ def upload_csv(request):
 	if request.method == "POST":
 	    if '_plot' in request.POST:
 	        csv = request.FILES['csv_file']
-		df = pd.read_csv(csv)
-		df_target = df
-		lon = len(list(df.head(0)))
-		header = list(df[0:lon])
-		target = header[lon-1]
-		y = np.array(df[target])
-		df.drop(target,axis=1,inplace=True)
-		X = df.values
-		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,random_state=101) 
-		graph_div = ''
-		matrix = ''
-		report = ''
-		pred = ''
-		grafica = request.POST['graficas']
-		if grafica == "scatter":
-			fig = px.scatter_matrix(df_target)
-			graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
-			context = {'graph_div': graph_div}
-	                return render (request, "plottings.html", context)
+	        df = pd.read_csv(csv)
+	        df_target = df
+	        lon = len(list(df.head(0)))
+	        header = list(df[0:lon])
+	        target = header[lon-1]
+	        y = np.array(df[target])
+	        df.drop(target,axis=1,inplace=True)
+	        X = df.values
+	        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,random_state=101) 
+	        graph_div = ''
+	        matrix = ''
+	        report = ''
+	        pred = ''
+	        grafica = request.POST['graficas']
+	        if grafica == "scatter":
+		    fig = px.scatter_matrix(df_target)
+		    graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
+		    context = {'graph_div': graph_div}
+	            return render (request, "plottings.html", context)
 	if '_super' in request.POST:	
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
