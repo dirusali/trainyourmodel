@@ -232,7 +232,7 @@ def upload_csv(request):
 		    fig = px.scatter_matrix(df_target)
 		    graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		    context = {'graph_div': graph_div}
-	            return render (request, "plottings.html", context)
+		    return render (request, "plottings.html", context)
 	if '_super' in request.POST:	
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
