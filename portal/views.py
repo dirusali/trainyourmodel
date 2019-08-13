@@ -240,7 +240,7 @@ def upload_csv(request):
 		report = ''
 		pred = ''
 		grafica = request.POST['graph']
-		if grafica = "pairplot":
+		if grafica == "pairplot":
 		    fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
 		    fig.update_xaxes(title="Test Sample")
 		    fig.update_yaxes(title="Predictions")
