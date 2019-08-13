@@ -213,6 +213,7 @@ def upload_csv(request):
 	    matrix = ''
 	    report = ''
 	    pred = ''
+            algo = request.POST['algoritmo']	
 	    grafica = request.POST['graficas']	
 	    if request.POST['plot'] == '_plot': 
 	        if grafica == "scatter":
@@ -221,7 +222,6 @@ def upload_csv(request):
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
 	    if request.POST['super'] == '_super': 	
-		    algo = request.POST['algoritmo']
 		    if algo == 'Linear Regression':
 			    lm = LinearRegression()
 			    model = lm.fit(X_train,y_train)
