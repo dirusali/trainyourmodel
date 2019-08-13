@@ -213,9 +213,8 @@ def upload_csv(request):
 		report = ''
 		pred = ''
 		grafica = request.POST['algoritmo']
-		unsupervised = request.POST['algoritmo']
-		supervised = request.POST['algoritmo']
-		if supervised == 'Linear Regression':
+		algo = request.POST['algoritmo']
+		if algo == 'Linear Regression':
 			lm = LinearRegression()
 			model = lm.fit(X_train,y_train)
 			pred = lm.predict(X_test)
@@ -228,7 +227,7 @@ def upload_csv(request):
 			fig.update_yaxes(title="Predictions")
 			fig.update_layout(autosize=False, width=800,height=500)
 			graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
-		if supervised == 'Support Vector Machine':
+		if algo == 'Support Vector Machine':
 			param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
 			grid = GridSearchCV(SVC(),param_grid,verbose=3)
 			model = grid.fit(X_train,y_train)
@@ -238,13 +237,13 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
-		if unsupervised == 'K-Means':
+		if algo == 'K-Means':
 			kmeans = KMeans(n_clusters=4)
 			model = kmeans.fit(X_train)
 			clusters = kmeans.cluster_centers_
 			labels = kmeans.labels_
 			fig = ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
-		if supervised == 'K-Nearest Neighbor':
+		if algo == 'K-Nearest Neighbor':
 			knn = KNeighborsClassifier(n_neighbors=1)
 			model = knn.fit(X_train,y_train)
 			pred = knn.predict(X_test)
@@ -253,7 +252,7 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)	
-		if supervised == 'Naive Bayes':
+		if algo == 'Naive Bayes':
 			gnb = GaussianNB()
 			model = gnb.fit(X_train,y_train)
 			pred = gnb.predict(X_test)
@@ -262,7 +261,7 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)	
-		if supervised == 'Decision Trees':
+		if algo == 'Decision Trees':
 			dtree = DecisionTreeClassifier()
 			model = dtree.fit(X_train,y_train)
 			pred = dtree.predict(X_test)
@@ -271,7 +270,7 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
-		if supervised == 'Random Forest':
+		if algo == 'Random Forest':
 			from sklearn.ensemble import RandomForestClassifier
 			rfc = RandomForestClassifier(n_estimators=200)
 			model = rfc.fit(X_train,y_train)
