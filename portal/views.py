@@ -213,7 +213,7 @@ def upload_csv(request):
 	    matrix = ''
 	    report = ''
 	    pred = ''
-            algo = request.POST['algoritmo']	
+	    algo = request.POST['algoritmo']	
 	    grafica = request.POST['graficas']	
 	    if request.POST['plot'] == '_plot': 
 	        if grafica == "scatter":
