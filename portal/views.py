@@ -240,6 +240,14 @@ def upload_csv(request):
 		report = ''
 		pred = ''
 		grafica = request.POST['graph']
+		if grafica = "pairplot":
+		    fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
+		    fig.update_xaxes(title="Test Sample")
+		    fig.update_yaxes(title="Predictions")
+		    fig.update_layout(autosize=False, width=800,height=500)
+		    graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
+		    context = {'graph_div': graph_div}
+		    return render (request, "plottings.html", context) 
 		algo = request.POST['algoritmo']
 		if algo == 'Linear Regression':
 			lm = LinearRegression()
@@ -250,11 +258,8 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
-			fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
-			fig.update_xaxes(title="Test Sample")
-			fig.update_yaxes(title="Predictions")
-			fig.update_layout(autosize=False, width=800,height=500)
-			graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
+			context = {'matrix': matrix, 'report': report}
+	                return render(request, "upload_csv.html", context)
 		if algo == 'Support Vector Machine':
 			param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
 			grid = GridSearchCV(SVC(),param_grid,verbose=3)
@@ -265,12 +270,16 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
+			context = {'matrix': matrix, 'report': report}
+	                return render(request, "upload_csv.html", context)
 		if algo == 'K-Means':
 			kmeans = KMeans(n_clusters=4)
 			model = kmeans.fit(X_train)
 			clusters = kmeans.cluster_centers_
 			labels = kmeans.labels_
 			fig = ax1.scatter(data[0][:,0],data[0][:,1],c=resultados)
+			context = {'matrix': matrix, 'report': report}
+	                return render(request, "upload_csv.html", context)
 		if algo == 'K-Nearest Neighbor':
 			knn = KNeighborsClassifier(n_neighbors=1)
 			model = knn.fit(X_train,y_train)
@@ -280,6 +289,8 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)	
+			context = {'matrix': matrix, 'report': report}
+	                return render(request, "upload_csv.html", context)
 		if algo == 'Naive Bayes':
 			gnb = GaussianNB()
 			pred = gnb.fit(X_train, y_train).predict(X_test)
@@ -288,6 +299,8 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)	
+			context = {'matrix': matrix, 'report': report}
+	                return render(request, "upload_csv.html", context)
 		if algo == 'Decision Trees':
 			dtree = DecisionTreeClassifier()
 			model = dtree.fit(X_train,y_train)
@@ -297,6 +310,8 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
+			context = {'matrix': matrix, 'report': report}
+	                return render(request, "upload_csv.html", context)
 		if algo == 'Random Forest':
 			forest = RandomForestClassifier(n_estimators=200)
 			model = forest.fit(X_train,y_train)
@@ -306,8 +321,8 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
-		context = {'matrix': matrix, 'report': report}
-	return render(request, "upload_csv.html", context)	
+		        context = {'matrix': matrix, 'report': report}
+	                return render(request, "upload_csv.html", context)	
  
 	
  	
