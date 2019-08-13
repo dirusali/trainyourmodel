@@ -13,7 +13,6 @@ urlpatterns = [
         url(r'^how-it-works/$', FuncionaView.as_view(), name='funciona'),
         url(r'^subscribe/', subscribe, name="subscribe"),
         url(r'^contact/$', ContactoView.as_view(), name='contacto'),
-        url(r'^results/$', upload_csv, name='upload_csv'),
-        url(r'^graphs/$', plotter, name='plotter'),
+        url(r'^results/$', results, name='results'),
 ]
 
