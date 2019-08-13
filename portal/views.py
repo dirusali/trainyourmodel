@@ -215,10 +215,11 @@ def upload_csv(request):
 		pred = ''
 		grafica = request.POST['graficas']
 		if grafica == "scatter":
-		    fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
-		    fig.update_xaxes(title="Test Sample")
-		    fig.update_yaxes(title="Predictions")
-		    fig.update_layout(autosize=False, width=800,height=500)
+		    #fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
+		    #fig.update_xaxes(title="Test Sample")
+		    #fig.update_yaxes(title="Predictions")
+		    #fig.update_layout(autosize=False, width=800,height=500)
+		    fig = px.scatter_matrix(df_target)
 		    graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		    context = {'graph_div': graph_div}
 		    return render (request, "plottings.html", context) 
