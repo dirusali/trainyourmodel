@@ -254,9 +254,8 @@ def upload_csv(request):
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)	
 		if algo == 'Naive Bayes':
-			nb = GaussianNB()
-			model = gnb.fit(X_train,y_train)
-			pred = gnb.predict(X_test)
+			gnb = GaussianNB()
+			pred = gnb.fit(X_train, y_train).predict(X_test)
 			MAE = metrics.mean_absolute_error(y_test,pred)
 			MSE = metrics.mean_squared_error(y_test,pred)
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
