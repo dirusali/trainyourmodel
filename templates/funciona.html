@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load extra_tags %}
 {% load static %}
-{% block title %}How does Feedmedata 5 work?{% endblock %}
+{% block title %}How does Feedmedata work?{% endblock %}
 {% block meta %}
 <meta property="og:title" content="How does Feedmedata work?">
-<meta property="og:site_name" content="Feedmedata 5">
+<meta property="og:site_name" content="Feedmedata">
 <meta property="og:url" content="http://165.22.154.175/how-it-works/">
-<meta property="og:description" content="We run algorithms for you to get results in one click.">
+<meta property="og:description" content="Run algorithms and analyze data in one click.">
 <meta property="og:type" content="website" />
-<meta property="og:image" content="/static/images/logo-the-best-5-recomendador-inteligente.jpg">
+<meta property="og:image" content="/static/images/Logo-feedmedata.png">
 <meta property="og:locale" content="en_US" />
 <link rel="canonical" href="https://www.feedmedata.me/how-it-works/" />
 <meta name="robots" content="index, follow">
@@ -21,8 +21,8 @@
 		{% include "header.html" %}
 		{% comment %}<!-- ./shared header -->
 		<!-- en background-image podemos sobreescribir la imagen -->{% endcomment %}
-		<div class="head-bg" style="background-image: url({% static 'images/the-best-5-como-funciona-header-bg.jpg' %}); background-position: 50% 90%">		
-			<div class="title-tag-wrapper"><h1 class="title-tag">How does the best 5 work?</h1></div>
+		<div class="head-bg" style="background-image: url({% static 'images/Logo-feedmedata.png' %}); background-position: 50% 90%">		
+			<div class="title-tag-wrapper"><h1 class="title-tag">How does Feedmedata work?</h1></div>
 		</div>
 	</header>
 	{% comment %}<!-- ./header -->
@@ -34,6 +34,6 @@
 	        Generally, we speak about Unsupervised algorithms can classify unlabeled data. You can use them to find hidden patterns.
 		On the other hand, Supervised algorithms need a labeled training dataset as input. You can use them to make predictions.
                 Please if you are uploading a supervised training dataset place your target variable in the last column of your csv file.
-			</p>
+		</p>
 	
 {% endblock %}
