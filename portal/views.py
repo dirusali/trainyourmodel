@@ -251,8 +251,8 @@ def upload_csv(request):
 			MAE = metrics.mean_absolute_error(y_test,pred)
 			MSE = metrics.mean_squared_error(y_test,pred)
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			matrix = confusion_matrix(y_test,grid_predictions)
-			report = classification_report(y_test,grid_predictions)	
+			matrix = confusion_matrix(y_test,pred)
+			report = classification_report(y_test,pred)	
 		if supervised == 'Naive Bayes':
 			gnb = GaussianNB()
 			model = gnb.fit(X_train,y_train)
@@ -272,7 +272,7 @@ def upload_csv(request):
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
 		if supervised == 'Random Forest':
-			rfc = RandomForestClassifier()
+			rfc = RandomForestClassifier(n_estimators=200)
 			model = rfc.fit(X_train,y_train)
 			pred = rfc.predict(X_test)
 			MAE = metrics.mean_absolute_error(y_test,pred)
