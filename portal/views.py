@@ -279,7 +279,7 @@ def upload_csv(request):
 			MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
-		results = "Your model is %s, with MAE: %s MSE: %s. Predictions: %s. Confusion Matrix: %s. Report:%s" % (model, MAE, MSE, pred, matrix, report)	
+		results = "Your results are: Confusion Matrix: %s. Classification Report:%s" % (matrix, report)	
 		context = {'results': results, 'graph_div': graph_div}
 	return render(request, "upload_csv.html", context)	
  
