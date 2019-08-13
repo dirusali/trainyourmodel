@@ -272,6 +272,7 @@ def upload_csv(request):
 			matrix = confusion_matrix(y_test,pred)
 			report = classification_report(y_test,pred)
 		if supervised == 'Random Forest':
+			from sklearn.ensemble import RandomForestClassifier
 			rfc = RandomForestClassifier(n_estimators=200)
 			model = rfc.fit(X_train,y_train)
 			pred = rfc.predict(X_test)
