@@ -196,7 +196,6 @@ def regression(df,target):
     return results
 
 
-
 def upload_csv(request):	
 	if request.method == "POST":
 		csv = request.FILES['csv_file']
