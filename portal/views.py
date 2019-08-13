@@ -255,9 +255,9 @@ def upload_csv(request):
 			    MSE = metrics.mean_squared_error(y_test,pred)
 			    MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			    matrix = confusion_matrix(y_test,pred)
-			   report = classification_report(y_test,pred)
-			   context = {'matrix': matrix, 'report': report}
-			   return render(request, "upload_csv.html", context)
+			    report = classification_report(y_test,pred)
+			    context = {'matrix': matrix, 'report': report}
+			    return render(request, "upload_csv.html", context)
 		    if algo == 'K-Means':
 			    kmeans = KMeans(n_clusters=4)
 			    model = kmeans.fit(X_train)
