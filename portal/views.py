@@ -213,7 +213,7 @@ def plottings(request):
 def upload_csv(request):	
 	if request.method == "POST":
 	    if '_plot' in request.POST:
-		csv = request.FILES['csv_file']
+	        csv = request.FILES['csv_file']
 		df = pd.read_csv(csv)
 		df_target = df
 		lon = len(list(df.head(0)))
