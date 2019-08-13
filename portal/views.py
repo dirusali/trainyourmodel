@@ -218,7 +218,7 @@ def plotting(request):
 		fig.update_yaxes(title="Predictions")
 		fig.update_layout(autosize=False, width=800,height=500)
 		graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
-	        context = {'results': results, 'graph_div': graph_div}
+		context = {'graph_div': graph_div}
         return render(request, "scatterplot.html", context)	
 
 	
