@@ -291,7 +291,7 @@ def upload_csv(request):
 			    fila1 = report[0:52]
 			    fila2 = report[54:106]
 			    fila3 = report[107:169]
-		        fila4 = report[160:213]		
+		            fila4 = report[160:213]		
 			    context = {'matrix': matrix, 'report': report}
 			    return render(request, "upload_csv.html", context)	
  
