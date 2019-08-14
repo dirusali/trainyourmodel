@@ -9,7 +9,7 @@ register = template.Library()
 
 
 @register.simple_tag
-def print(x):
+def printer(x):
     x = print(x)
     return x
 
