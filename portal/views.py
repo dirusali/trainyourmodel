@@ -215,13 +215,13 @@ def upload_csv(request):
 	    pred = ''
 	    algo = request.POST['algoritmo']	
 	    grafica = request.POST['graficas']	
-	    if request.POST['plot'] == '_plot': 
+	    if request.POST['submit'] == '_plot': 
 	        if grafica == "scatter":
 		        fig = px.scatter_matrix(df_target)
 		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
-	    if request.POST['super'] == '_super': 	
+	    if request.POST['submit'] == '_super': 	
 		    if algo == 'Linear Regression':
 			    lm = LinearRegression()
 			    model = lm.fit(X_train,y_train)
