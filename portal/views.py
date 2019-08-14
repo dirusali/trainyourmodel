@@ -289,7 +289,7 @@ def upload_csv(request):
 			    matrix = confusion_matrix(y_test,pred)	
 			    report = classification_report(y_test,pred)
 			    fila1 = report[0:52]
-                            fila2 = report[54:106]
+			    fila2 = report[54:106]
 			    fila3 = report[107:169]
 		            fila4 = report[160:213]		
 			    context = {'matrix': matrix, 'report': report}
