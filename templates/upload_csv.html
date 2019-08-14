@@ -1,7 +1,6 @@
 {% load extra_tags %}
-<link href="//files.realpython.com" rel="dns-prefetch">
-<link href="//fonts.googleapis.com" rel="dns-prefetch">
-<link href="//fonts.gstatic.com" rel="dns-prefetch"
+{% extends "base.html" %}
+{% load extra_tags %}
 <html> 
   <body style="background-color:#E4FDE1";"font size: 5";font-style: verdana";"align: center";>
   <h2>These are the results for your dataset and selected algorithm</h2>
@@ -10,12 +9,10 @@
   <p>Classification Report:</p>  
    {% report %}  
   <p>Mean Absolute Error:</p> 
-     {{MAE}}                                                                                       
+     {{ MAE }}                                                                                       
   <p>Mean Squared Error:</p> 
-     {{MSE}}
+     {{ MSE }}
   <p>Root Mean Squared Error:</p> 
-     {{RMSE}}
-  <p> R squared </p>
-     {{RS}}                                                                                
+     {{ RMSE }}                                                                                
   </body>
 </html>
