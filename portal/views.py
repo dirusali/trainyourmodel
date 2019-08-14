@@ -226,8 +226,13 @@ def upload_csv(request):
 			    mae = metrics.mean_absolute_error(y_test,pred)
 			    mse = metrics.mean_squared_error(y_test,pred)
 			    rmse = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			    matrix = confusion_matrix(y_test,pred)
-			    report = classification_report(y_test,pred)
+			    fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
+			    fig.update_xaxes(title="Test Sample")
+			    fig.update_yaxes(title="Predictions")
+			    fig.update_layout(autosize=False, width=800,height=500)
+			    graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")	
+			    context = {'graph_div': graph_div, 'mae': mae, 'mse': mse, 'rmse': rmse}           
+                            return render(request, "regression.html", context)	
 		    if algo == 'Support Vector Machine':
 			    param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
 			    grid = GridSearchCV(SVC(),param_grid,verbose=3)
