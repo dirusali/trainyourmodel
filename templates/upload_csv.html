@@ -3,8 +3,14 @@
   <body style="background-color:#E4FDE1";"font size: 5";font-style: verdana";"align: center";>
   <h2> These are the results for your dataset and selected algorithm</h2>
   <h4>Confusion Matrix:</h4>
+  <p>A confusion matrix is a table describing the performance of a classificatiom algorithm on your set of test data. This is how to read it:<br>
    {{ matrix }}
   <h4>Classification Report:</h4>  
+  <p> The classification report shows the main classification metrics on a per-class basis:<br>
+  <p>- Precision: shows what percentage of all instances classified as positive, was actually positive.<br>
+  <p>- Recall: shows what percentage of real positives was classified as positive.<br>
+  <p>- F1 Score: The F1 score is a weighted mean of precision and recall such as 1.0 is best and 0.0 is worst.<br>
+  <p>- Support: Support is the number of actual occurrences of the class in the specified dataset.                                                                                         
   <p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{ f1 }}</p> 
   <p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               {{ f2 }}</p> 
   <p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               {{ f3 }}</p><br>                                                                                     
