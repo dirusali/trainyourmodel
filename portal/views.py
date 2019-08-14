@@ -298,8 +298,8 @@ def upload_csv(request):
 		    if red == 'Binary Crossentropy':
 			    model = Sequential()
 			    model.add(Dense(500, input_dim=260, activation='relu'))
-				model.add(Dense(260, activation='relu'))
-				model.add(Dense(1, activation='sigmoid'))
+			    model.add(Dense(260, activation='relu'))
+			    model.add(Dense(1, activation='sigmoid'))
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
 			    pred = model.predict(X_test)
