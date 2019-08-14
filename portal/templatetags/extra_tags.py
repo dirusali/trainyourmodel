@@ -7,6 +7,12 @@ import ast
 register = template.Library()
 
 
+
+@register.simple_tag
+def print(x):
+    x = print(x)
+    return x
+
 @register.filter(name='getlist')
 def getlist(value):
     return ast.literal_eval(value)
