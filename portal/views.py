@@ -33,6 +33,12 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LinearRegression
 from sklearn.naive_bayes import GaussianNB
 
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.optimizers import RMSprop
+
 from django.template.loader import get_template, render_to_string
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -285,7 +291,31 @@ def upload_csv(request):
 			    report = classification_report(y_test,pred)		
 		    context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
 		    return render(request, "upload_csv.html", context)	
- 
+		if request.POST['submit'] == '_neural': 
+		    if algo == 'binary_crossentropy':	
+			model = Sequential()
+                        model.add(Dense(500, input_dim=260, activation='relu'))
+                        model.add(Dense(260, activation='relu'))
+                        model.add(Dense(1, activation='sigmoid'))
+                        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+                        model.fit(x=X,y=y,batch_size=100, epochs=10,shuffle=True)
+                        pred = model.predict(X_test)
+			matrix = confusion_matrix(y_test,pred)	
+			report = classification_report(y_test,pred)
+			context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
+                        return render(request, "upload_csv.html", context)	
+                    if algo == 'mean_squared_error':
+			model = Sequential()
+                        model.add(Dense(500, input_dim=260, activation='relu'))
+                        model.add(Dense(260, activation='relu'))
+                        model.add(Dense(1, activation='sigmoid'))
+                        model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
+                        model.fit(x=X,y=y,batch_size=100, epochs=10,shuffle=True)
+                        pred = model.predict(X_test)
+			matrix = confusion_matrix(y_test,pred)	
+			report = classification_report(y_test,pred)
+			context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
+                        return render(request, "scatter.html", context)
 	
  	
 	
