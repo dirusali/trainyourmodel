@@ -4,9 +4,24 @@
   <h2> These are the results for your dataset and selected algorithm</h2>
   <h4>Confusion Matrix:</h4>
   <p>A confusion matrix is a table describing the performance of a classificatiom algorithm on your set of test data. This is how to read it:<br>
-   <p>&nbsp;&nbsp;&nbsp;&nbsp; Predicted: NO &nbsp;&nbsp;&nbsp;&nbsp; Predicted Yes
-   <p>Actual NO:{{ matrix0}}
-   <p>Actual YES: {{ matrix1}}                                                                                        
+  <table>
+  <tr>
+    <th>          </th>                                                                                        
+    <th>Predicted: NO</th>
+    <th>Predicted: YES</th>
+  </tr>
+  <tr>
+    <td>Actual: NO</td>
+    <td>matrix00</td>
+    <td>matrix01</td>
+  </tr>
+  <tr>
+    <td>Actual: YES</td>
+    <td>matrix10</td>
+    <td>matrix11</td>
+  </tr>
+</table>
+                                                                                        
   <h4>Classification Report:</h4>  
   <p> The classification report shows the main classification metrics on a per-class basis:<br>
   <p>- Precision: shows what percentage of all instances classified as positive, was actually positive.<br>
