@@ -293,8 +293,8 @@ def upload_csv(request):
 		    return render(request, "upload_csv.html", context)	
 	    if request.POST['submit'] == '_neural':
 		    red = request.POST['red']
-		    epoch = float(request.POST['epoch'])
-		    batch = float(request.POST['batch'])
+		    epoch = int(request.POST['epoch'])
+		    batch = int(request.POST['batch'])
 		    if red == 'Binary Crossentropy':
 			    model = Sequential()
 			    model.add(Dense(500, input_dim=260, activation='relu'))
