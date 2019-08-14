@@ -288,7 +288,7 @@ def upload_csv(request):
 			    rmse = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			    matrix = confusion_matrix(y_test,pred)	
 			    report = classification_report(y_test,pred)		
-		    context = {'matrix': matrix, 'mae': mae, 'mse': mse, 'rmse': rmse, f1': report[0:52], 'f2': report[54:106], 'f3': report[107:169] , 'f4': report[160:213]}           
+		    context = {'matrix': matrix, 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:169] , 'f4': report[160:213]}           
 		    return render(request, "upload_csv.html", context)	
  
 	
