@@ -232,7 +232,7 @@ def upload_csv(request):
 			    fig.update_layout(autosize=False, width=800,height=500)
 			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")	
 			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse}           
-                            return render(request, "scatter.html", context)	
+			    return render(request, "scatter.html", context)	
 		    if algo == 'Support Vector Machine':
 			    param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
 			    grid = GridSearchCV(SVC(),param_grid,verbose=3)
