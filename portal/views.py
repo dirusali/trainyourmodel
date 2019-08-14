@@ -241,8 +241,8 @@ def upload_csv(request):
 			    MAE = metrics.mean_absolute_error(y_test,pred)
 			    MSE = metrics.mean_squared_error(y_test,pred)
 			    MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			    matrix = confusion_matrix(y_test,pred)
-			    report = classification_report(y_test,pred)
+			    matrix = print(confusion_matrix(y_test,pred))
+			    report = print(classification_report(y_test,pred))
 			    context = {'matrix': matrix, 'report': report}
 			    return render(request, "upload_csv.html", context)
 		    if algo == 'K-Means':
