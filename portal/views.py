@@ -293,9 +293,9 @@ def upload_csv(request):
 		    return render(request, "upload_csv.html", context)	
 	    if request.POST['submit'] == '_neural': 
 	        red = request.POST['red']
-		    epoch = request.POST['epoch']
-		    batch = request.POST['batch']
-		    if red == 'Binary Crossentropy':	
+		epoch = request.POST['epoch']
+		batch = request.POST['batch']
+		if red == 'Binary Crossentropy':	
 			    model = Sequential()
                             model.add(Dense(500, input_dim=260, activation='relu'))
                             model.add(Dense(260, activation='relu'))
@@ -307,7 +307,7 @@ def upload_csv(request):
 			    report = classification_report(y_test,pred)
 			    context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
                             return render(request, "upload_csv.html", context)	
-                    if red == 'Mean Squared Error':
+	        if red == 'Mean Squared Error':
 			    model = Sequential()
                             model.add(Dense(500, input_dim=260, activation='relu'))
                             model.add(Dense(260, activation='relu'))
