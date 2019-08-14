@@ -210,8 +210,6 @@ def upload_csv(request):
 	    X = df.values
 	    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,random_state=101) 
 	    graph_div = ''
-	    matrix = ''
-	    report = ''
 	    pred = ''
 	    algo = request.POST['algoritmo']	
 	    grafica = request.POST['graficas']	
@@ -289,8 +287,9 @@ def upload_csv(request):
 			    MAE = metrics.mean_absolute_error(y_test,pred)
 			    MSE = metrics.mean_squared_error(y_test,pred)
 			    MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			    matrix = confusion_matrix(y_test,pred)
+			    matrix = confusion_matrix(y_test,pred)	
 			    report = classification_report(y_test,pred)
+			    report = '%s' % str(report)
 			    context = {'matrix': matrix, 'report': report}
 			    return render(request, "upload_csv.html", context)	
  
