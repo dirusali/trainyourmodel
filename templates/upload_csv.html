@@ -6,8 +6,16 @@
   <body style="background-color:#E4FDE1";"font size: 5";font-style: verdana";"align: center";>
   <h2>These are the results for your dataset and selected algorithm</h2>
   <p>Confusion Matrix:</p>
-   {{ matrix }}
+   {% print matrix %}
   <p>Classification Report:</p>  
-   {{ report }}                                                                                                                                                                                 
+   {% report %}  
+  <p>Mean Absolute Error:</p> 
+     {{MAE}}                                                                                       
+  <p>Mean Squared Error:</p> 
+     {{MSE}}
+  <p>Root Mean Squared Error:</p> 
+     {{RMSE}}
+  <p> R squared </p>
+     {{RS}}                                                                                
   </body>
 </html>
