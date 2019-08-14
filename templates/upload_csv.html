@@ -1,14 +1,14 @@
 {% load extra_tags %}
 <html> 
   <body style="background-color:#E4FDE1";"font size: 5";font-style: verdana";"align: center";>
-  <h3> These are the results for your dataset and selected algorithm</h2>
+  <h2> These are the results for your dataset and selected algorithm</h2>
   <h4>Confusion Matrix:</h4>
    {{ matrix }}
   <h4>Classification Report:</h4>  
-  <p>  &nbsp;&nbsp; &nbsp;&nbsp&nbsp;&nbsp;   {{ f1 }}</p> 
-  <p>  &nbsp;&nbsp;&nbsp;&nbsp;               {{ f2 }}</p> 
-  <p>  &nbsp;&nbsp; &nbsp;&nbsp;              {{ f3 }}</p><br>                                                                                     
-  <p>  &nbsp;&nbsp;                           {{ f4 }}</p> 
+  <p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{ f1 }}</p> 
+  <p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{ f2 }}</p> 
+  <p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{ f3 }}</p><br>                                                                                     
+  <p>  &nbsp;&nbsp;                                       {{ f4 }}</p> 
   <h4>Mean Absolute Error:</h4>   {{ mae }}                                                                                     
   <h4>Mean Squared Error:</h4>   {{ mse }}   
   <h4>Root Mean Squared Error:</h4>   {{ rmse }}                                                                  
