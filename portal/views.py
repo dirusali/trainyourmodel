@@ -213,7 +213,7 @@ def upload_csv(request):
 		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
-	    if reques.POST['submit'] == '_unsuper':
+	    if request.POST['submit'] == '_unsuper':
 		    clasi = reques.POST['clasi']
 		    if clasi == 'K-Means':
 			    nclusters = request.POST['clusters']
