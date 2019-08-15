@@ -189,18 +189,7 @@ def successView(request):
 
         return render(request, 'success.html', context)
 
-			  
-def regression(df,target):
-    X_train, X_test, y_train, y_test = train_test_split(df, target, test_size=0.4,random_state=101) 
-    lm = LinearRegression()
-    model = lm.fit(X_train,y_train)
-    pred = lm.predict(X_test)
-    MAE = metrics.mean_absolute_error(y_test,pred)
-    MSE = metrics.mean_squared_error(y_test,pred)
-    MSAE = np.sqrt(metrics.mean_squared_error(y_test,pred))
-    results = "Your model is %s, with MAE: %s MSE: %s. Predictions for your dataset are: %s" % (model, MAE, MSE, pred)	
-    return results
-
+		
 	
 def upload_csv(request):	
 	if request.method == "POST":
@@ -224,6 +213,25 @@ def upload_csv(request):
 		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
+	    if reques.POST['submit'] == '_unsuper':
+		    clasi = reques.POST['clasi']
+		    if clasi == 'K-Means':
+			nclusters = request.POST['nclusters']
+			kmeans = KMeans(n_clusters=clusters)
+			scaler = MinMaxScaler()
+                        X = scaler.fit_transform(X_train)
+			model = kmeans.fit(X)
+			clusters = kmean.clusters_centers_
+			labels = kmeans.labels_
+			correct = 0
+			for i in range(len(X)):
+				predict_me = np.array(X[i].astype(float))
+				predict_me = predict_me.reshape(-1, len(predict_me))
+				prediction = kmeans.predict(predict_me)
+				if prediction[0] == y[i]:
+					correct += 1
+			 context = {'correct': correct, 'clusters': clusters, 'nclusters': nclusters}           
+			 return render(request, "kmeans.html", context)					
 	    if request.POST['submit'] == '_super': 	
 		    if algo == 'Linear Regression':
 			    lm = LinearRegression()
@@ -249,11 +257,6 @@ def upload_csv(request):
 			    rmse = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			    matrix = print(confusion_matrix(y_test,pred))
 			    report = print(classification_report(y_test,pred))
-		    if algo == 'K-Means':
-			    kmeans = KMeans(n_clusters=4)
-			    model = kmeans.fit(X_train)
-			    clusters = kmeans.cluster_centers_
-			    labels = kmeans.labels_
 		    if algo == 'K-Nearest Neighbor':
 			    knn = KNeighborsClassifier(n_neighbors=1)
 			    model = knn.fit(X_train,y_train)
