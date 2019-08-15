@@ -216,20 +216,20 @@ def upload_csv(request):
 	    if reques.POST['submit'] == '_unsuper':
 		    clasi = reques.POST['clasi']
 		    if clasi == 'K-Means':
-			nclusters = request.POST['clusters']
-			kmeans = KMeans(n_clusters=clusters)
-			scaler = MinMaxScaler()
-                        X = scaler.fit_transform(X_train)
-			model = kmeans.fit(X)
-			clusters = kmean.clusters_centers_
-			labels = kmeans.labels_
-			correct = 0
-			for i in range(len(X)):
-				predict_me = np.array(X[i].astype(float))
-				predict_me = predict_me.reshape(-1, len(predict_me))
-				prediction = kmeans.predict(predict_me)
-				if prediction[0] == y[i]:
-					correct += 1
+				nclusters = request.POST['clusters']
+				kmeans = KMeans(n_clusters=clusters)
+				scaler = MinMaxScaler()
+				X = scaler.fit_transform(X_train)
+				model = kmeans.fit(X)
+				clusters = kmean.clusters_centers_
+				labels = kmeans.labels_
+				correct = 0
+				for i in range(len(X)):
+					predict_me = np.array(X[i].astype(float))
+					predict_me = predict_me.reshape(-1, len(predict_me))
+					prediction = kmeans.predict(predict_me)
+					if prediction[0] == y[i]:
+						correct += 1
 			 context = {'correct': correct, 'clusters': clusters, 'nclusters': nclusters}           
 			 return render(request, "kmeans.html", context)					
 	    if request.POST['submit'] == '_super': 	
