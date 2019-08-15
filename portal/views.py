@@ -225,7 +225,7 @@ def upload_csv(request):
 			    labels = kmeans.labels_
 			    correct = 0
 			    for i in range(len(X)):
-			        predict_me = np.array(X[i].astype(float))
+				    predict_me = np.array(X[i].astype(float))
 				    predict_me = predict_me.reshape(-1, len(predict_me))
 				    prediction = kmeans.predict(predict_me)
 				    if prediction[0] == y[i]:
