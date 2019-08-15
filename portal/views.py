@@ -216,7 +216,7 @@ def upload_csv(request):
 	    if reques.POST['submit'] == '_unsuper':
 		    clasi = reques.POST['clasi']
 		    if clasi == 'K-Means':
-			nclusters = request.POST['nclusters']
+			nclusters = request.POST['clusters']
 			kmeans = KMeans(n_clusters=clusters)
 			scaler = MinMaxScaler()
                         X = scaler.fit_transform(X_train)
