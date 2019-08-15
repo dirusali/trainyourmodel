@@ -1,1 +1,11 @@
-			 context = {'correct': correct, 'clusters': clusters, 'nclusters': nclusters}           
+{% load extra_tags %}
+<html> 
+  <body style="background-color:#E4FDE1";"font size: 5";font-style: verdana";"align: center";>
+  <h2> These are the results for your dataset and selected algorithm</h2>
+  <h4>Number of clusters:</h4>
+  <p>The percentage of correct predictions for the selected {{ nclusters }} is {{ correct }}%.<br>
+  The centroids for your clusters are: {{ clusters }}.</p>
+</body>
+<html>
+
+
