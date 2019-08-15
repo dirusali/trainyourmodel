@@ -230,8 +230,8 @@ def upload_csv(request):
 					prediction = kmeans.predict(predict_me)
 					if prediction[0] == y[i]:
 						correct += 1
-			 context = {'correct': correct, 'clusters': clusters, 'nclusters': nclusters}           
-			 return render(request, "kmeans.html", context)					
+			    context = {'correct': correct, 'clusters': clusters, 'nclusters': nclusters}           
+			    return render(request, "kmeans.html", context)					
 	    if request.POST['submit'] == '_super': 	
 		    if algo == 'Linear Regression':
 			    lm = LinearRegression()
