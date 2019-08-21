@@ -189,7 +189,7 @@ def successView(request):
 
         return render(request, 'success.html', context)
 
-def upload_csv(request):	
+def neural(request):	
 	if request.method == "POST":
 	    csv = request.FILES['csv_file']
 	    df = pd.read_csv(csv)
@@ -209,7 +209,7 @@ def upload_csv(request):
 	    batch = int(request.POST['batch'])
 	    if red == 'Binary Crossentropy':
 			    model = Sequential()
-			    model.add(Dense(500, input_dim=260, activation='relu'))
+			    model.add(Dense(500, input_dim=2, activation='relu'))
 			    model.add(Dense(260, activation='relu'))
 			    model.add(Dense(1, activation='sigmoid'))
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -219,8 +219,45 @@ def upload_csv(request):
 			    report = classification_report(y_test,pred)
 			    context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
 			    return render(request, "upload_csv.html", context)	
-		
-	
+	    if red == 'Mean Squared Error':
+			    model = Sequential()
+			    model.add(Dense(500, input_dim=260, activation='relu'))
+			    model.add(Dense(260, activation='relu'))
+			    model.add(Dense(1, activation='sigmoid'))
+			    model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
+			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
+			    pred = model.predict(X_test)
+			    _, train_acc = model.evaluate(trainX, trainy, verbose=0)
+			    _, test_acc = model.evaluate(testX, testy, verbose=0)
+			    accuracy = 'Train: %.3f, Test: %.3f' % (train_acc, test_acc)
+			    mae = metrics.mean_absolute_error(y_test,pred)
+			    mse = metrics.mean_squared_error(y_test,pred)
+			    rmse = np.sqrt(metrics.mean_squared_error(y_test,pred))
+			    fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
+			    fig.update_xaxes(title="Test Sample")
+			    fig.update_yaxes(title="Predictions")
+			    fig.update_layout(autosize=False, width=800,height=500)
+			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")	
+			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse}
+			    return render(request, "scatter.html", context)
+	    if red == 'Multiclass Crossentropy':
+		            model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy']
+	                    model = Sequential()
+	                    model.add(Dense(50, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
+		            model.add(Dense(3, activation='softmax'))	
+	                    opt = SGD(lr=0.01, momentum=0.9)
+	                    model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
+	                    history = model.fit(trainX, trainy, validation_data=(testX, testy), epochs=100, verbose=0)
+	                    _, train_acc = model.evaluate(trainX, trainy, verbose=0)
+	                    _, test_acc = model.evaluate(testX, testy, verbose=0)
+		            matrix = confusion_matrix(y_test,pred)
+			    report = classification_report(y_test,pred)
+			    context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
+			    return render(request, "upload_csv.html", context)			  
+					  
+					  
+	       		      
+			       	
 def upload_csv(request):	
 	if request.method == "POST":
 	    csv = request.FILES['csv_file']
