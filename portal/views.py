@@ -189,6 +189,36 @@ def successView(request):
 
         return render(request, 'success.html', context)
 
+def upload_csv(request):	
+	if request.method == "POST":
+	    csv = request.FILES['csv_file']
+	    df = pd.read_csv(csv)
+	    df_target = df
+	    lon = len(list(df.head(0)))
+	    header = list(df[0:lon])
+	    target = header[lon-1]
+	    y = np.array(df[target])
+	    df.drop(target,axis=1,inplace=True)
+	    X = df.values
+	    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,random_state=101) 
+	    graph_div = ''
+	    pred = ''
+	    algo = request.POST['algoritmo']:
+	    red = request.POST['red']
+	    epoch = int(request.POST['epoch'])
+	    batch = int(request.POST['batch'])
+	    if red == 'Binary Crossentropy':
+			    model = Sequential()
+			    model.add(Dense(500, input_dim=260, activation='relu'))
+			    model.add(Dense(260, activation='relu'))
+			    model.add(Dense(1, activation='sigmoid'))
+			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
+			    pred = model.predict(X_test)
+			    matrix = confusion_matrix(y_test,pred)
+			    report = classification_report(y_test,pred)
+			    context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
+			    return render(request, "upload_csv.html", context)	
 		
 	
 def upload_csv(request):	
