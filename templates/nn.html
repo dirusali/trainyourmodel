@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load extra_tags %}
+{% load static %}
+{% block title %}Feedmedata, deep learning algorithms as a service for business insights.{% endblock %}
+{% block meta %}
+<meta name="description" content="
+Machine Learning as a Software is an Online tool you can use for Data Science and Artificial Intelligence">
+<meta property="og:title" content="Deep Learning as a Service">
+<meta property="og:site_name" content="Feedmedata">
+<meta property="og:url" content="www.feedmedata.me/">
+<meta property="og:description" content="Run Deep Learning Algorithms with Only One Click">
+<meta property="og:type" content="website" />
+<meta property="og:image" content="/static/images/Logo-feedmedata.png">
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://www.feedmedata.me" />
+<meta name="robots" content="index, follow">
+{% endblock %}
+{% block content %}
+<body class="home" style="background-color:#80ffbf; width:100%"> 
+    <div id="top"></div>
+    <header id="header-home" style="background-color:#80ffbf">    
+        <div id="menu-mobile" style="background-color:#80ffbf;"></div>
+            <div class="nav-home" style="background-color:#80ffbf;">
+                <div class="logo"><a href="/"><img src="{% static 'images/logo-feedmedata.png' %}" alt="Logo feedmedata" width="200" height="75"/></a></div>
+                <nav>
+                    {% include "menu.html" %}
+                </nav>
+                <a href="#" class="toggle-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>          
+            </div>          
+            </div> 
+    </header>   
+
+    <div class="container" align="center">{% comment %}<!-- section home-intro" -->{% endcomment %}
+     <section class="home-upload">
+     <h2 class="tit1">Deep Learning Made Easy</h2>         
+     <p class="feat"> Please upload your data in csv format. You can choose one of the following options: </p>      
+
+     <form action="{% url "portal:neural" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
+     <input type="file" name="csv_file" id="csv_file" required="True" class="form-control"> 
+        {% csrf_token %} 
+        <br><br>
+         <p>- <strong>Neural Networks</strong>: choose your desired deep learning algorihtm.</p>
+            <select name="algoritmo">
+                <option value="Mean Squared Error">Mean Squared Error</option>
+                <option value="Binary Cross-Entropy">Decision Trees</option> 
+                <option value="Multi-Class Cross-Entropy Loss">Random Forest</option> 
+             </select>        
+             <button class="btn btn-xs" name = "submit" value="_super">RUN </button>
+          <br><br>
+           <select name ="epoch">
+                 <option value="1">epoch = 1</option>
+                 <option value="10">epoch = 10</option>
+                 <option value="100">epoch = 100</option>
+                 <option value="1000">epoch = 1000</option>
+            </select>    
+            <select name ="batch">
+            <option value="30">batch = 30</option>
+            <option value="100">batch = 100</option>
+            <option value="500">batch = 500</option>
+            <option value="1000">batch = 1000</option>
+            </select>   <br>
+             <button class="btn btn-xs" name = "submit" value="_neural">RUN </button>
+
+    </form> 
+    </section>  
+    </div> 
+    
+    <section class="explanation"> 
+    <div class="logo" align="center"><a href="/"><img src="{% static 'images/carousel/image4.png' %}"/></a></div>
+    <p><br></p><p><br></p>  
+    </section>          
+{% endblock %}
