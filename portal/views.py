@@ -204,8 +204,9 @@ def neural(request):
 	    df = pd.read_csv(file)
 	    df_target = df
 	    lon = len(list(df.head(0)))
+            dim = lon-1
 	    header = list(df[0:lon])
-	    target = header[lon-1]
+	    target = header[dim]
 	    y = np.array(df[target])
 	    df.drop(target,axis=1,inplace=True)
 	    X = df.values
@@ -213,12 +214,14 @@ def neural(request):
 	    graph_div = ''
 	    pred = ''
 	    red = request.POST['red']
-	    dense = int(request.POST['dense'])
+	    dense = int(request.POST['epoch'])	
 	    epoch = int(request.POST['epoch'])
 	    batch = int(request.POST['batch'])
+	    nodes = int(request.POST['categories'])
 	    if red == 'Binary Crossentropy':
 			    model = Sequential()
-			    model.add(Dense(dense, input_dim=2, activation='relu'))
+			    model.add(Dense(dense, input_dim=dim, activation='relu'))
+		            model.add(Dense(dim-1, activation='relu'))
 			    model.add(Dense(1, activation='sigmoid'))
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
@@ -229,7 +232,7 @@ def neural(request):
 			    return render(request, "upload_csv.html", context)
 	    if red == 'Mean Squared Error':
 			    model = Sequential()
-			    model.add(Dense(dense, input_dim=260, activation='relu'))
+			    model.add(Dense(dense, input_dim=dim, activation='relu'))
 			    model.add(Dense(1, activation='linear'))
 			    model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
@@ -246,8 +249,8 @@ def neural(request):
 			    return render(request, "scatter.html", context)
 	    if red == 'Multiclass Crossentropy': 
 			    model = Sequential() 
-			    model.add(Dense(dense, input_dim=2, activation='relu'))
-			    model.add(Dense(3, activation='softmax'))
+			    model.add(Dense(dense, input_dim=dim, activation='relu'))
+			    model.add(Dense(nodes, activation='softmax'))
 			    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
 			    pred = model.predict(X_test)
