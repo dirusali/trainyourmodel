@@ -240,7 +240,7 @@ def neural(request):
 			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse}
 			    return render(request, "neural.html", context)
 	    if red == 'Multiclass Crossentropy':
-		            model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy']
+		            model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 	                    model = Sequential()
 	                    model.add(Dense(50, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
 		            model.add(Dense(3, activation='softmax'))	
