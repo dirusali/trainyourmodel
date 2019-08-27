@@ -5,7 +5,7 @@ from django.views.generic.base import RedirectView
 from portal import views as portal_views
 
 app_name = 'portal'
-from .views import HomeView, upload_csv, FuncionaView, ContactoView,neural, CondicionesView, PrivacidadView, subscribe, successView, contacto
+from .views import HomeView, upload_csv, FuncionaView, ContactoView, neural, CondicionesView, PrivacidadView, subscribe, successView, contacto
 
 
 urlpatterns = [
