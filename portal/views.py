@@ -231,7 +231,7 @@ def neural(request):
 			    return render(request, "neural.html", context)	
 	    if red == 'Mean Squared Error':
 			    model = Sequential()
-			    model.add(Dense(25, input_dim=20, activation='relu', kernel_initializer='he_uniform')
+			    model.add(Dense(25, input_dim=20, activation='relu', kernel_initializer='he_uniform'))
 			    model.add(Dense(1, activation='linear'))
 			    opt = SGD(lr=0.01, momentum=0.9)
 			    model.compile(loss='mean_squared_error', optimizer=opt))
