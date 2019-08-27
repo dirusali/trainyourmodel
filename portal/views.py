@@ -1,4 +1,8 @@
 # This Python file uses the following encoding in format utf-8
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_agg import FigureCanvasAgg
 import plotly
 import plotly.express as px
 import plotly.graph_objects as go
