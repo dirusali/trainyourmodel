@@ -14,6 +14,6 @@ urlpatterns = [
         url(r'^subscribe/', subscribe, name="subscribe"),
         url(r'^contact/$', ContactoView.as_view(), name='contacto'),
         url(r'^results/$', upload_csv, name='upload_csv'),
-        url(r'^deep-learning/$', neural.as_view(), name='neural')
+        url(r'^deep-learning/$', neural, name='neural')
 ]
 
