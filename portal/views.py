@@ -224,7 +224,7 @@ def neural(request):
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
 			    pred = model.predict(X_test)
-		            _, train_acc = model.evaluate(X_train, y_train, verbose=0)
+			    _, train_cc = model.evaluate(X_train, y_test, verbose = 0)	
 			    _, test_acc = model.evaluate(X_test, y_test, verbose=0)
 			    accuracy = 'Train: %.3f, Test: %.3f' % (train_acc, test_acc)
 			    context = {'train_acc': train_acc, 'test_acc': tes_acc}
