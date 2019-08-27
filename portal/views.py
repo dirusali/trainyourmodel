@@ -221,7 +221,7 @@ def neural(request):
 	    if red == 'Binary Crossentropy':
 			    model = Sequential()
 			    model.add(Dense(dense, input_dim=dim, activation='relu'))
-		            model.add(Dense(dim-1, activation='relu'))
+			    model.add(Dense(dim-1, activation='relu'))
 			    model.add(Dense(1, activation='sigmoid'))
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
