@@ -154,19 +154,18 @@ class FuncionaView(View):
         context['normal_footer_cat'] = True
 
         return render(request, 'funciona.html', context)
-
-class NeuralView(View):
 	
-    def get(self, request, *args, **kwargs):
-	context={}
-	context['is_home']=False
-	contet['lazyjs']
-	context['valoracionesjs'] = False
-	context['valoracionesTiendajs'] = False
-	context['normal_footer_cat'] = True
-		
-	return render(request, 'nn.html', context)
+class NeuralView(View):
 
+    def get(self, request, *args, **kwargs):
+        context={}
+        context['is_home'] = False
+        context['lazyjs'] = False
+        context['valoracionesjs'] = False
+        context['valoracionesTiendajs'] = False
+        context['normal_footer_cat'] = True
+
+        return render(request, 'nn.html', context)
 
 
 class CondicionesView(View):
