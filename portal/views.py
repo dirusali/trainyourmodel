@@ -225,11 +225,10 @@ def neural(request):
 			    model.add(Dense(1, activation='sigmoid'))
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
-			    pred = model.predict(X_test)
-			    matrix = confusion_matrix(y_test,pred)
-			    report = classification_report(y_test,pred)
-			    context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
-			    return render(request, "upload_csv.html", context)
+			    _, accuracy = model.evaluate(X, y)
+                            accu = print('Accuracy: %.2f' % (accuracy*100))
+			    context = {'accu': accu}           
+			    return render(request, "neural.html", context)
 	    if red == 'Mean Squared Error':
 			    model = Sequential()
 			    model.add(Dense(dense, input_dim=dim, activation='relu'))
@@ -253,11 +252,10 @@ def neural(request):
 			    model.add(Dense(nodes, activation='softmax'))
 			    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
-			    pred = model.predict(X_test)
-			    matrix = confusion_matrix(y_test,pred)
-			    report = classification_report(y_test,pred)
-			    context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
-			    return render(request, "upload_csv.html", context)
+			     _, accuracy = model.evaluate(X, y)
+                            accu = print('Accuracy: %.2f' % (accuracy*100))
+			    context = {'accu': accu}           
+			    return render(request, "neural.html", context)
 				  	       		      
 			       	
 def upload_csv(request):	
