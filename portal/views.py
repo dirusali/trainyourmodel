@@ -239,21 +239,26 @@ def neural(request):
 			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")	
 			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse}
 			    return render(request, "neural.html", context)
-	    if red == 'Multiclass Crossentropy':
-		            model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
-		            model = Sequential()
-			    model.add(Dense(50, input_dim=2, activation='relu',	kernel_initializer='he_uniform'))
-		            model.add(Dense(3, activation='softmax'))			
-		            opt = SGD(lr=0.01, momentum=0.9)			
-			    model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy']
-	                    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
-		            pred = model.predict(X_test)
-			    _, train_acc = model.evaluate(X_train, y_train, verbose=0)
-			    _, test_acc = model.evaluate(X_test, y_test, verbose=0)
-		            matrix = confusion_matrix(y_test,pred)
-			    report = classification_report(y_test,pred)
-			    context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
-			    return render(request, "neural.html", context)			  
+	    if red == 'Multiclass Crossentropy': 
+			model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
+			model = Sequential() 
+			model.add(Dense(50, input_dim=2, activation='relu',kernel_initializer='he_uniform'))
+			model.add(Dense(3, activation='softmax'))
+			opt = SGD(lr=0.01, momentum=0.9)
+			model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
+			model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
+			pred = model.predict(X_test)
+			_, train_acc = model.evaluate(X_train, y_train, verbose=0)
+			_, test_acc = model.evaluate(X_test, y_test, verbose=0)
+			matrix = confusion_matrix(y_test,pred)
+			report = classification_report(y_test,pred)
+			context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
+			return render(request, "neural.html", context)			  
+
+
+
+
+			
 					  
 					  	       		      
 			       	
