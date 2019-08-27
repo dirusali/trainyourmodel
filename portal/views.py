@@ -218,22 +218,20 @@ def neural(request):
 	    batch = int(request.POST['batch'])
 	    if red == 'Binary Crossentropy':
 			    model = Sequential()
-			    model.add(Dense(dense, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
+			    model.add(Dense(dense, input_dim=2, activation='relu'))
 			    model.add(Dense(1, activation='sigmoid'))
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
 			    pred = model.predict(X_test)
-			    _, train_cc = model.evaluate(X_train, y_test, verbose = 0)	
-			    _, test_acc = model.evaluate(X_test, y_test, verbose=0)
-			    accuracy = 'Train: %.3f, Test: %.3f' % (train_acc, test_acc)
-			    context = {'train_acc': train_acc, 'test_acc': tes_acc}
-			    return render(request, "neural.html", context)	
+			    matrix = confusion_matrix(y_test,pred)
+			    report = classification_report(y_test,pred)
+			    context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
+			    return render(request, "upload_csv.html", context)
 	    if red == 'Mean Squared Error':
 			    model = Sequential()
-			    model.add(Dense(dense, input_dim=20, activation='relu', kernel_initializer='he_uniform'))
+			    model.add(Dense(dense, input_dim=260, activation='relu'))
 			    model.add(Dense(1, activation='linear'))
-			    opt = SGD(lr=0.01, momentum=0.9)
-			    model.compile(loss='mean_squared_error', optimizer=opt)
+			    model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
 			    pred = model.predict(X_test)
 			    mae = metrics.mean_absolute_error(y_test,pred)
@@ -247,21 +245,17 @@ def neural(request):
 			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse}           
 			    return render(request, "scatter.html", context)
 	    if red == 'Multiclass Crossentropy': 
-			    model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 			    model = Sequential() 
-			    model.add(Dense(dense, input_dim=2, activation='relu',kernel_initializer='he_uniform'))
+			    model.add(Dense(dense, input_dim=2, activation='relu'))
 			    model.add(Dense(3, activation='softmax'))
-			    opt = SGD(lr=0.01, momentum=0.9)
-			    model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
+			    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
 			    pred = model.predict(X_test)
-			    _, train_acc = model.evaluate(X_train, y_train, verbose=0)
-			    _, test_acc = model.evaluate(X_test, y_test, verbose=0)
-			    context = {'train_acc': train_acc, 'test_acc': tes_acc}
-			    return render(request, "neural.html", context)
-
-
-					  	       		      
+			    matrix = confusion_matrix(y_test,pred)
+			    report = classification_report(y_test,pred)
+			    context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
+			    return render(request, "upload_csv.html", context)
+				  	       		      
 			       	
 def upload_csv(request):	
 	if request.method == "POST":
