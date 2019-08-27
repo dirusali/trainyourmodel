@@ -252,7 +252,7 @@ def neural(request):
 			    model.add(Dense(nodes, activation='softmax'))
 			    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
-			     _, accuracy = model.evaluate(X, y)
+			    _, accuracy = model.evaluate(X, y)
 			    accu = print('Accuracy: %.2f' % (accuracy*100))
 			    context = {'accu': accu}           
 			    return render(request, "neural.html", context)
