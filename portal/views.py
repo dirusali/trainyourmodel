@@ -1,6 +1,4 @@
 # This Python file uses the following encoding in format utf-8
-import matplotlib
-import matplotlib.pyplot as plt
 import plotly
 import plotly.express as px
 import plotly.graph_objects as go
