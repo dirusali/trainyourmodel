@@ -234,7 +234,7 @@ def neural(request):
 			    model.add(Dense(25, input_dim=20, activation='relu', kernel_initializer='he_uniform'))
 			    model.add(Dense(1, activation='linear'))
 			    opt = SGD(lr=0.01, momentum=0.9)
-			    model.compile(loss='mean_squared_error', optimizer=opt))
+			    model.compile(loss='mean_squared_error', optimizer=opt)
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
 			    pred = model.predict(X_test)
 			    _, train_acc = model.evaluate(X_train, y_train, verbose=0)
