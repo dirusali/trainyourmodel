@@ -213,11 +213,12 @@ def neural(request):
 	    graph_div = ''
 	    pred = ''
 	    red = request.POST['red']
+	    dense = request.POST['dense']
 	    epoch = int(request.POST['epoch'])
 	    batch = int(request.POST['batch'])
 	    if red == 'Binary Crossentropy':
 			    model = Sequential()
-			    model.add(Dense(50, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
+			    model.add(Dense(dense, input_dim=2, activation='relu', kernel_initializer='he_uniform'))
 			    model.add(Dense(1, activation='sigmoid'))
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
@@ -229,7 +230,7 @@ def neural(request):
 			    return render(request, "neural.html", context)	
 	    if red == 'Mean Squared Error':
 			    model = Sequential()
-			    model.add(Dense(25, input_dim=20, activation='relu', kernel_initializer='he_uniform'))
+			    model.add(Dense(dense, input_dim=20, activation='relu', kernel_initializer='he_uniform'))
 			    model.add(Dense(1, activation='linear'))
 			    opt = SGD(lr=0.01, momentum=0.9)
 			    model.compile(loss='mean_squared_error', optimizer=opt)
@@ -251,7 +252,7 @@ def neural(request):
 	    if red == 'Multiclass Crossentropy': 
 			    model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 			    model = Sequential() 
-			    model.add(Dense(50, input_dim=2, activation='relu',kernel_initializer='he_uniform'))
+			    model.add(Dense(dense, input_dim=2, activation='relu',kernel_initializer='he_uniform'))
 			    model.add(Dense(3, activation='softmax'))
 			    opt = SGD(lr=0.01, momentum=0.9)
 			    model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
