@@ -204,7 +204,7 @@ def neural(request):
 	    df = pd.read_csv(file)
 	    df_target = df
 	    lon = len(list(df.head(0)))
-            dim = lon-1
+	    dim = long -1	
 	    header = list(df[0:lon])
 	    target = header[dim]
 	    y = np.array(df[target])
