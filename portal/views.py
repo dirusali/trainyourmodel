@@ -200,8 +200,8 @@ def successView(request):
 
 def neural(request):	
 	if request.method == "POST":
-	    csv = request.FILES['csv_file']
-	    df = pd.read_csv(csv)
+	    file = request.FILES['file']
+	    df = pd.read_csv(file)
 	    df_target = df
 	    lon = len(list(df.head(0)))
 	    header = list(df[0:lon])
@@ -213,7 +213,7 @@ def neural(request):
 	    graph_div = ''
 	    pred = ''
 	    red = request.POST['red']
-	    dense = request.POST['dense']
+	    dense = int(request.POST['dense'])
 	    epoch = int(request.POST['epoch'])
 	    batch = int(request.POST['batch'])
 	    if red == 'Binary Crossentropy':
@@ -236,9 +236,6 @@ def neural(request):
 			    model.compile(loss='mean_squared_error', optimizer=opt)
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
 			    pred = model.predict(X_test)
-			    _, train_acc = model.evaluate(X_train, y_train, verbose=0)
-			    _, test_acc = model.evaluate(X_test, y_test, verbose=0)
-			    accuracy = 'Train: %.3f, Test: %.3f' % (train_acc, test_acc)
 			    mae = metrics.mean_absolute_error(y_test,pred)
 			    mse = metrics.mean_squared_error(y_test,pred)
 			    rmse = np.sqrt(metrics.mean_squared_error(y_test,pred))
@@ -247,8 +244,8 @@ def neural(request):
 			    fig.update_yaxes(title="Predictions")
 			    fig.update_layout(autosize=False, width=800,height=500)
 			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")	
-			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse}
-			    return render(request, "neural.html", context)
+			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse}           
+			    return render(request, "scatter.html", context)
 	    if red == 'Multiclass Crossentropy': 
 			    model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 			    model = Sequential() 
