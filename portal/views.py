@@ -274,7 +274,10 @@ def upload_csv(request):
 	    graph_div = ''
 	    pred = ''
 	    algo = request.POST['algoritmo']	
-	    grafica = request.POST['graficas']	
+	    grafica = request.POST['graficas']
+	    cate = request.POST['categorical']	
+	    clasi = request.POST['clasi']
+	    elbow = request.POST['elbow']	
 	    if request.POST['submit'] == '_plot': 
 	        if grafica == "scatter":
 		        fig = px.scatter_matrix(df_target)
@@ -282,7 +285,6 @@ def upload_csv(request):
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
 	    if request.POST['submit'] == '_cate':
-		    cate = request.POST['categorical']
 		    if cate == 'apriori':
 			    transactions = []
 			    with open(csv, 'r', errors = 'ignore') as f:
@@ -293,8 +295,6 @@ def upload_csv(request):
 					    context = {'rules': rules}           	  
 					    return render(request, "apriori.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
-		    clasi = request.POST['clasi']
-		    elbow = request.POST['elbow']
 		    if elbow == 'elbow':
 			    Nc = range(1, 20)
 			    kmeans = [KMeans(n_clusters=i) for i in Nc]
