@@ -282,7 +282,7 @@ def upload_csv(request):
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
 	    if request.POST['submit'] == '_categorical':
-			cate = reques.POST['categorical']
+			cate = request.POST['categorical']
 		if cate == 'apriori':
 			transactions = df_target
 			itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1
