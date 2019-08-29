@@ -284,7 +284,7 @@ def upload_csv(request):
 	    if request.POST['submit'] == '_categorical':
 		cate = reques.POST['categorical']
 		if cate == 'apriori':
-			transactions = X
+			transactions = df_target
 			itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1
 			rules_rhs = filter(lambda rule: len(rule.lhs) == 2 and len(rule.rhs) == 1, rules)
 			rules = sorted(rules_rhs, key=lambda rule: rule.lift)
