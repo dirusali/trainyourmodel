@@ -270,6 +270,7 @@ def upload_csv(request):
 	    y = np.array(df[target])
 	    df.drop(target,axis=1,inplace=True)
 	    X = df.values
+	    Z = X
 	    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,random_state=101) 
 	    graph_div = ''
 	    pred = ''
@@ -299,8 +300,8 @@ def upload_csv(request):
 		    if elbow == 'elbow':
 			    Nc = range(1, 20)
 			    kmeans = [KMeans(n_clusters=i) for i in Nc]
-			    score = [kmeans[i].fit(X).score(X) for i in range(len(kmeans)]
-			    fig = go.Figure(data=go.Scatter(x=list(Nc), y=score, mode='markers'))
+			    score = [kmeans[i].fit(Z).score(Z) for i in range(len(kmeans)]
+			    fig = go.Figure(data=go.Scatter(y=score, x=list(Nc), mode='markers'))
 			    fig.update_xaxes(title="Number of Clusters")
 			    fig.update_yaxes(title="Error")
 			    fig.update_layout(autosize=False, width=800,height=500)
@@ -309,7 +310,7 @@ def upload_csv(request):
 		    if clasi == 'k-means':
 			    nclusters = request.POST['clusters']
 			    kmeans = KMeans(n_clusters=clusters)
-			    model = kmeans.fit(X)
+			    model = kmeans.fit(Z)
 			    clusters = kmean.clusters_centers_
 			    labels = kmeans.labels
 			    context = {'labels':labels}           
