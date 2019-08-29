@@ -282,7 +282,8 @@ def upload_csv(request):
 		        return render (request, "plottings.html", context)
 	    if request.POST['submit'] == '_unsuper':
 		    clasi = reques.POST['clasi']
-		    if clasi == 'elbow':
+		    elbow = reques.POST['elbow']
+		    if elbow == 'elbow':
 			    Nc = range(1, 20)
 			    kmeans = [KMeans(n_clusters=i) for i in Nc]
 			    score = [kmeans[i].fit(Y).score(Y) for i in range(len(kmeans))]
@@ -302,7 +303,7 @@ def upload_csv(request):
 			    model = kmeans.fit(X)
 			    clusters = kmean.clusters_centers_
 			    labels = kmeans.labels
-			    context = {'correct': correct, 'clusters': clusters, 'nclusters': nclusters}           
+			    context = {'labels':labels}           
 			    return render(request, "kmeans.html", context)					
 	    if request.POST['submit'] == '_super': 	
 		    if algo == 'Linear Regression':
