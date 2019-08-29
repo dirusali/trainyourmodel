@@ -307,14 +307,14 @@ def upload_csv(request):
 			    fig.update_layout(autosize=False, width=800,height=500)
 			    context = {'scatter': fig}           
 			    return render(request, "kmeans.html", context)
-		    if clasi == 'k-means':
-			    nclusters = request.POST['clusters']
-			    kmeans = KMeans(n_clusters=clusters)
-			    model = kmeans.fit(Z)
-			    clusters = kmean.clusters_centers_
-			    labels = kmeans.labels
-			    context = {'labels':labels}           
-			    return render(request, "kmeans.html", context)					
+		    #if clasi == 'k-means':
+			#    nclusters = request.POST['clusters']
+			  #  kmeans = KMeans(n_clusters=clusters)
+			   # model = kmeans.fit(Z)
+			    #clusters = kmean.clusters_centers_
+			    #labels = kmeans.labels
+			    #context = {'labels':labels}           
+			    #return render(request, "kmeans.html", context)					
 	    if request.POST['submit'] == '_super': 	
 		    if algo == 'Linear Regression':
 			    lm = LinearRegression()
