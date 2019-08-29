@@ -312,9 +312,7 @@ def upload_csv(request):
 			    nclusters = request.POST['clusters']
 			    kmeans = KMeans(n_clusters=nclusters)
 			    model = kmeans.fit(Z)
-			    labels = []
-			    for i in kmeans.labels:
-					labels.append(i)
+			    labels = kmeans.labels
 			    context = {'labels':labels}           
 			    return render(request, "kmeans.html", context)					
 	    if request.POST['submit'] == '_super': 	
