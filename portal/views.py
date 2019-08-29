@@ -297,7 +297,7 @@ def upload_csv(request):
 				    context = {'rules': rules}           	  
 				    return render(request, "apriori.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
-		    if clasi == 'clasi':
+		    if 2 > 1:
 			    Nc = range(1, 20)
 			    kmeans = [KMeans(n_clusters=i) for i in Nc]
 			    score = [kmeans[i].fit(Z).score(Z) for i in range(len(kmeans))]
@@ -310,7 +310,7 @@ def upload_csv(request):
 			    kmeans = KMeans(n_clusters=nclusters)
 			    model = kmeans.fit(Z)
 			    labels = kmeans.labels_
-			    context = {'graph': graph, 'labels':labels}           
+			    context = {'graph': graph, 'labels': labels}           
 			    return render(request, "kmeans.html", context)					
 	    if request.POST['submit'] == '_super': 	
 		    if algo == 'Linear Regression':
