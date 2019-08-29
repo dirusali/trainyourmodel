@@ -284,10 +284,14 @@ def upload_csv(request):
 	    if request.POST['submit'] == '_categorical':
 		    cate = request.POST['categorical']
 		    if cate == 'apriori':
-			    transactions = df_target
-			    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
-			    context = {'rules': rules}           	  
-			    return render(request, "apriori.html", context)			  
+			    transactions = []
+			    with open(csv, 'r', errors = 'ignore') as f:
+					reader = csv.reader(f, delimiter=',')
+					for r in reader:
+						transactions.append(r)
+						itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
+						context = {'rules': rules}           	  
+						return render(request, "apriori.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
 		    clasi = request.POST['clasi']
 		    elbow = request.POST['elbow']
