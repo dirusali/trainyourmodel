@@ -281,7 +281,7 @@ def upload_csv(request):
 		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
-	    if request.POST['submit'] == '_categorical':
+	    if request.POST['submit'] == '_cate':
 		    cate = request.POST['categorical']
 		    if cate == 'apriori':
 			    transactions = []
@@ -307,7 +307,7 @@ def upload_csv(request):
 			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")	
 			    context = {'scatter': scatter}           
 			    return render(request, "kmeans.html", context)
-		    if clasi == 'K-Means':
+		    if clasi == 'k-means':
 			    nclusters = request.POST['clusters']
 			    kmeans = KMeans(n_clusters=clusters)
 			    scaler = MinMaxScaler()
