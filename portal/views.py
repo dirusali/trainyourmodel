@@ -297,7 +297,7 @@ def upload_csv(request):
 				    context = {'rules': rules}           	  
 				    return render(request, "apriori.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
-		    if elbow == 'elbow':
+		    if clasi == 'clasi':
 			    Nc = range(1, 20)
 			    kmeans = [KMeans(n_clusters=i) for i in Nc]
 			    score = [kmeans[i].fit(Z).score(Z) for i in range(len(kmeans))]
@@ -305,15 +305,12 @@ def upload_csv(request):
 			    fig.update_xaxes(title="Number of Clusters")
 			    fig.update_yaxes(title="Error")
 			    fig.update_layout(autosize=False, width=800,height=500)
-			    graph = plotly.offline.plot(fig, auto_open = False, output_type="div")
-			    context = {'scatter': graph}           
-			    return render(request, "kmeans.html", context)
-		    if clasi == 'k-means':
+			    graph = plotly.offline.plot(fig, auto_open = False, output_type="div")           
 			    nclusters = request.POST['clusters']
 			    kmeans = KMeans(n_clusters=nclusters)
 			    model = kmeans.fit(Z)
-			    labels = kmeans.labels
-			    context = {'labels':labels}           
+			    labels = kmeans.labels_
+			    context = {'graph': graph, 'labels':labels}           
 			    return render(request, "kmeans.html", context)					
 	    if request.POST['submit'] == '_super': 	
 		    if algo == 'Linear Regression':
