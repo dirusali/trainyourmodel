@@ -286,8 +286,7 @@ def upload_csv(request):
 		    if cate == 'apriori':
 			    transactions = df_target
 			    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1
-			    rules = sorted(rules, key=lambda rule: rule.lift)
-			    context = {'scatter': scatter}           	  
+			    context = {'rules': rules}           	  
 			    return render(request, "apriori.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
 		    clasi = request.POST['clasi']
