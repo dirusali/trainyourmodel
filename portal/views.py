@@ -300,7 +300,7 @@ def upload_csv(request):
 		    if elbow == 'elbow':
 			    Nc = range(1, 20)
 			    kmeans = [KMeans(n_clusters=i) for i in Nc]
-			    score = [kmeans[i].fit(Z).score(Z) for i in range(len(kmeans)]
+			    score = [kmeans[i].fit(Z).score(Z) for i in range(len(kmeans))]
 			    fig = go.Figure(data=go.Scatter(y=score, x=list(Nc), mode='markers'))
 			    fig.update_xaxes(title="Number of Clusters")
 			    fig.update_yaxes(title="Error")
