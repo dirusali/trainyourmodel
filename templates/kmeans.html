@@ -3,7 +3,7 @@
   <body style="background-color:#E4FDE1";"font size: 5";font-style: verdana";"align: center";>
   <h2> These are the results for your dataset and selected algorithm</h2>
   <h4>Error vs Number of clusters:</h4>
-  {{ scatter }}
+  {{ graph | safe}}
  <p>The above graph shows how error decreases when a new cluster is added. The elbow method, determines the optimal number of clusters as the one in which the error drops significantly slower</p> 
                                                                                              
  <h4>Labels:</h4>
