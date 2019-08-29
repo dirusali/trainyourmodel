@@ -283,17 +283,17 @@ def upload_csv(request):
 	    if request.POST['submit'] == '_unsuper':
 		    clasi = reques.POST['clasi']
 		    if clasi == 'elbow':
-			Nc = range(1, 20)
-			kmeans = [KMeans(n_clusters=i) for i in Nc]
-			score = [kmeans[i].fit(Y).score(Y) for i in range(len(kmeans))]
-			score = -1 * score
-			fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
-			fig.update_xaxes(title="Number of Clusters")
-			fig.update_yaxes(title="Error")
-			fig.update_layout(autosize=False, width=800,height=500)
-			scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")	
-			context = {'scatter': scatter}           
-			return render(request, "kmeans.html", context)
+			    Nc = range(1, 20)
+			    kmeans = [KMeans(n_clusters=i) for i in Nc]
+			    score = [kmeans[i].fit(Y).score(Y) for i in range(len(kmeans))]
+		    	score = -1 * score
+			    fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
+			    fig.update_xaxes(title="Number of Clusters")
+			    fig.update_yaxes(title="Error")
+			    fig.update_layout(autosize=False, width=800,height=500)
+			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")	
+			    context = {'scatter': scatter}           
+			    return render(request, "kmeans.html", context)
 		    if clasi == 'K-Means':
 			    nclusters = request.POST['clusters']
 			    kmeans = KMeans(n_clusters=clusters)
