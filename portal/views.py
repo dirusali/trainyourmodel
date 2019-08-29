@@ -305,7 +305,7 @@ def upload_csv(request):
 			    fig.update_xaxes(title="Number of Clusters")
 			    fig.update_yaxes(title="Error")
 			    fig.update_layout(autosize=False, width=800,height=500)
-			    graph = plotly.offline.plot(fig, auto_open = False, output_type="div"
+			    graph = plotly.offline.plot(fig, auto_open = False, output_type="div")
 			    context = {'scatter': graph}           
 			    return render(request, "kmeans.html", context)
 		    if clasi == 'k-means':
