@@ -306,7 +306,7 @@ def upload_csv(request):
 			    fig.update_yaxes(title="Error")
 			    fig.update_layout(autosize=False, width=800,height=500)
 			    graph = plotly.offline.plot(fig, auto_open = False, output_type="div")           
-			    nclusters = request.POST['clusters']
+			    nclusters = int(request.POST['clusters'])
 			    kmeans = KMeans(n_clusters=nclusters)
 			    model = kmeans.fit(Z)
 			    labels = kmeans.labels_
