@@ -15,6 +15,7 @@ import datetime
 import pandas as pd
 import seaborn as sns
 import numpy as np
+from efficient_apriori import apriori
 
 from sklearn import metrics
 from sklearn.cross_validation import train_test_split
@@ -280,6 +281,15 @@ def upload_csv(request):
 		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
+	    if request.POST['submit'] == '_categorical':
+		cate = reques.POST['categorical']
+		if cate == 'apriori':
+			transactions = X
+			itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1
+			rules_rhs = filter(lambda rule: len(rule.lhs) == 2 and len(rule.rhs) == 1, rules)
+			rules = sorted(rules_rhs, key=lambda rule: rule.lift)
+		        context = {'scatter': scatter}           	  
+			return render(request, "apriori.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
 		    clasi = request.POST['clasi']
 		    elbow = request.POST['elbow']
