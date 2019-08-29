@@ -45,27 +45,29 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
         {% csrf_token %} 
          <br><br>
          
-         <p>- <strong>Visualize your data:</strong> choose a type of graph and plot your variables.</p>    
+         <p>- <strong>Visualize your data:</strong> choose a type of graph and plot your variables.</p>  
+         <div class="form-group">
         <select name="graficas">
                 <option value="scatter">Scatter Plot</option>
         </select>
         <button class="btn btn-xs" name="submit" value="_plot">PLOT </button>
          <br><br>
-         <p>- <strong>Unsupervised classification:</strong> choose your desired unsupervised algorithm.</p>    
-         <select name="categorical">
-            <option value="Apriori">Apriori</option>
+         
+        <p>- <strong>Unsupervised classification:</strong> choose your desired unsupervised algorithm.</p>    
+        <select name="categorical">
+            <option value="apriori">Apriori</option>
         </select>
-        <button class="btn btn-xs" name = "submit" value="_categorical">RUN </button>
+        <button class="btn btn-xs" name = "submit" value="_cate">RUN </button>
         <br><br>
 
          <p>- <strong>Unsupervised clustering:</strong> choose your desired unsupervised algorithm.</p>    
-         <div class="form-group"> 
+      
         <select name="elbow">
             <option value="elbow">Elbow Method</option>
         </select>
         <button class="btn btn-xs" name = "submit" value="_unsuper">RUN </button>
         <select name="clasi">     
-            <option value="K-means">K-Means</option><input type="number" name="clusters" min="0" max="1000">
+            <option value="k-means">K-Means</option><input type="number" name="clusters" min="0" max="1000">
         </select>                                                                                            
         <button class="btn btn-xs" name = "submit" value="_unsuper">RUN </button>
         <br><br>
