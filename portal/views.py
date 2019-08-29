@@ -282,14 +282,14 @@ def upload_csv(request):
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
 	    if request.POST['submit'] == '_categorical':
-			cate = request.POST['categorical']
-		if cate == 'apriori':
-			transactions = df_target
-			itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1
-			rules_rhs = filter(lambda rule: len(rule.lhs) == 2 and len(rule.rhs) == 1, rules)
-			rules = sorted(rules_rhs, key=lambda rule: rule.lift)
-		        context = {'scatter': scatter}           	  
-			return render(request, "apriori.html", context)			  
+		    cate = request.POST['categorical']
+		    if cate == 'apriori':
+			    transactions = df_target
+			    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1
+			    rules_rhs = filter(lambda rule: len(rule.lhs) == 2 and len(rule.rhs) == 1, rules)
+			    rules = sorted(rules_rhs, key=lambda rule: rule.lift)
+			    context = {'scatter': scatter}           	  
+			    return render(request, "apriori.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
 		    clasi = request.POST['clasi']
 		    elbow = request.POST['elbow']
