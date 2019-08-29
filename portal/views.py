@@ -287,11 +287,10 @@ def upload_csv(request):
 	    if request.POST['submit'] == '_cate':
 		    if cate == 'apriori':
 			    transactions = []
-			    df = pd.read_csv(csv)
-			    header = list(df.head(0))
+			    header = list(df_target.head(0))
 			    transactions.append(list(header))
-			    for i in range(0, len(df)):
-				    a = list(df.iloc[i])
+			    for i in range(0, len(df_target)):
+				    a = list(df_target.iloc[i])
 				    transactions.append(a)
 				    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
 				    context = {'rules': rules}           	  
