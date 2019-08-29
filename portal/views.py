@@ -281,8 +281,8 @@ def upload_csv(request):
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
 	    if request.POST['submit'] == '_unsuper':
-		    clasi = reques.POST['clasi']
-		    elbow = reques.POST['elbow']
+		    clasi = request.POST['clasi']
+		    elbow = request.POST['elbow']
 		    if elbow == 'elbow':
 			    Nc = range(1, 20)
 			    kmeans = [KMeans(n_clusters=i) for i in Nc]
