@@ -286,7 +286,7 @@ def upload_csv(request):
 		    if cate == 'apriori':
 			    transactions = []
 			    with open(csv, 'r', errors = 'ignore') as f:
-			        reader = csv.reader(f, delimiter=',')
+				    reader = csv,reader(f,delimiter=',')    
 				    for r in reader:
 					    transactions.append(r)	
 					    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
