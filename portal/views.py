@@ -285,7 +285,7 @@ def upload_csv(request):
 		    cate = request.POST['categorical']
 		    if cate == 'apriori':
 			    transactions = df_target
-			    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1
+			    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
 			    context = {'rules': rules}           	  
 			    return render(request, "apriori.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
