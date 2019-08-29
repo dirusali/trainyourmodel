@@ -286,7 +286,7 @@ def upload_csv(request):
 			    Nc = range(1, 20)
 			    kmeans = [KMeans(n_clusters=i) for i in Nc]
 			    score = [kmeans[i].fit(Y).score(Y) for i in range(len(kmeans))]
-		    	score = -1 * score
+			    score = -1 * score
 			    fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
 			    fig.update_xaxes(title="Number of Clusters")
 			    fig.update_yaxes(title="Error")
