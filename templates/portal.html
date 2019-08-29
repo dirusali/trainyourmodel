@@ -54,10 +54,13 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
          
          <p>- <strong>Unsupervised algorithms:</strong> choose your desired unsupervised algorithm.</p>    
          <div class="form-group"> 
-        <select name="clasi">
-            <option value="K-Means">K-Means</option>
-            <option value="Apriori">Apriori</option>
+        <select name="elbow">
+            <option value="elbow">Elbow Method</option>
         </select>
+        <button class="btn btn-xs" name = "submit" value="_unsuper">RUN </button>
+        <select name="k-means">     
+            <option value=">K-Means</option> <input type="number" name="clusters" min="0" max="1000">
+        </select>                                                                                            
         <button class="btn btn-xs" name = "submit" value="_unsuper">RUN </button>
         <br><br>
          <p>- <strong>Supervised algorithms</strong>: choose your desired supervised algorihtm.</p>
