@@ -314,7 +314,7 @@ def upload_csv(request):
 			    model = kmeans.fit(Z)
 			    labels = []
 			    for i in kmeans.labels:
-				labels.append(i)
+			            labels.append(i)
 			    context = {'labels':labels}           
 			    return render(request, "kmeans.html", context)					
 	    if request.POST['submit'] == '_super': 	
