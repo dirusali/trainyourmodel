@@ -269,7 +269,7 @@ def upload_csv(request):
 		    t.append(list(h))
 		    for i in range(0, len(df)):
 			    a = list(df.iloc[i])
-		            t.append(a)
+			    t.append(a)
 		    itemsets, rules = apriori(t, min_support=0.2,  min_confidence=1)
 		    context = {'rules': t}           	  
 		    return render(request, "apriori.html", context)	
