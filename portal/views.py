@@ -293,9 +293,9 @@ def upload_csv(request):
 			    for i in range(0, len(df_target)):
 				    a = list(df_target.iloc[i])
 				    transactions.append(a)
-				    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
-				    context = {'rules': rules}           	  
-				    return render(request, "apriori.html", context)			  
+			    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
+			    context = {'rules': rules}           	  
+			    return render(request, "apriori.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
 		    if 2 > 1:
 			    Nc = range(1, 20)
