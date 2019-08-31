@@ -288,14 +288,14 @@ def upload_csv(request):
 		        return render (request, "plottings.html", context)
 	    if request.POST['submit'] == '_cate':
 		    if cate == 'apriori':
-			    transactions = []
-			    header = list(nueva.head(0))
-			    transactions.append(list(header))
+			    t = []
+			    h = list(nueva.head(0))
+			    t.append(list(h))
 			    for i in range(0, len(nueva)):
 				    a = list(nueva.iloc[i])
-				    transactions.append(a)
-			    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
-			    context = {'rules': transactions}           	  
+				    t.append(a)
+			    itemsets, rules = apriori(t, min_support=0.2,  min_confidence=1)
+			    context = {'rules': t}           	  
 			    return render(request, "apriori.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
 		    if 2 > 1:
