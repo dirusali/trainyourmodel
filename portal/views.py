@@ -286,8 +286,10 @@ def upload_csv(request):
 		        return render (request, "plottings.html", context)
 	    if request.POST['submit'] == '_cate':
 		    if 2 > 1:
+			    file = request.FILES['csv_file']
+			    matriz = pd.read_csv(file)
 			    t = []
-			    h = list(nueva.head(0))
+			    header = list(matriz.head(0))
 			    t.append(list(h))
 			    for i in range(0, len(nueva)):
 				    a = list(nueva.iloc[i])
