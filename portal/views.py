@@ -263,7 +263,7 @@ def upload_csv(request):
 	if request.method == "POST":
 	    csv = request.FILES['csv_file']
 	    df = pd.read_csv(csv)
-	    nueva = pd.read_csv(csv)
+	    nueva = df
 	    df_target = df
 	    lon = len(list(df.head(0)))
 	    header = list(df[0:lon])
