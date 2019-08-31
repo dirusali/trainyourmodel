@@ -263,6 +263,7 @@ def upload_csv(request):
 	if request.method == "POST":
 	    csv = request.FILES['csv_file']
 	    df = pd.read_csv(csv)
+	    nueva = pd.read_csv(csv)
 	    df_target = df
 	    lon = len(list(df.head(0)))
 	    header = list(df[0:lon])
@@ -288,10 +289,10 @@ def upload_csv(request):
 	    if request.POST['submit'] == '_cate':
 		    if cate == 'apriori':
 			    transactions = []
-			    header = list(df_target.head(0))
+			    header = list(nueva.head(0))
 			    transactions.append(list(header))
-			    for i in range(0, len(df_target)):
-				    a = list(df_target.iloc[i])
+			    for i in range(0, len(nueva)):
+				    a = list(nueva.iloc[i])
 				    transactions.append(a)
 			    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
 			    context = {'rules': transactions}           	  
