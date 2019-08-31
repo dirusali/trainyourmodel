@@ -271,7 +271,7 @@ def upload_csv(request):
 			    a = list(df.iloc[i])
 			    t.append(a)
 		    itemsets, rules = apriori(t, min_support=0.2,  min_confidence=1)
-		    context = {'rules': t}           	  
+		    context = {'rules': rules}           	  
 		    return render(request, "apriori.html", context)	
 	    df_target = df
 	    lon = len(list(df.head(0)))
