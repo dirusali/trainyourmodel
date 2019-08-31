@@ -277,9 +277,7 @@ def upload_csv(request):
 	    pred = ''
 	    algo = request.POST['algoritmo']	
 	    grafica = request.POST['graficas']
-	    cate = request.POST['categorical']	
 	    clasi = request.POST['clasi']
-	    elbow = request.POST['elbow']	
 	    if request.POST['submit'] == '_plot': 
 	        if grafica == "scatter":
 		        fig = px.scatter_matrix(df_target)
