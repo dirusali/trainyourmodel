@@ -294,7 +294,7 @@ def upload_csv(request):
 				    a = list(df_target.iloc[i])
 				    transactions.append(a)
 			    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
-			    context = {'rules': rules}           	  
+			    context = {'rules': transactions}           	  
 			    return render(request, "apriori.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
 		    if 2 > 1:
