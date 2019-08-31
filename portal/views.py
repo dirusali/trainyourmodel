@@ -288,7 +288,7 @@ def upload_csv(request):
 	    if request.POST['submit'] == '_cate':
 		    if cate == 'apriori':
 			    file = request.FILES['csv_file']
-		            df = pd.read_csv(file)
+			    df = pd.read_csv(file)
 			    transactions = []
 			    header = list(df.head(0))
 			    transactions.append(list(header))
