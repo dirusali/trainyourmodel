@@ -287,7 +287,7 @@ def upload_csv(request):
 		        context = {'graph_div': graph_div}
 		        return render (request, "plottings.html", context)
 	    if request.POST['submit'] == '_cate':
-		    if cate == 'apriori':
+		    if 2 > 1:
 			    t = []
 			    h = list(nueva.head(0))
 			    t.append(list(h))
