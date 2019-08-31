@@ -262,9 +262,17 @@ def neural(request):
 def upload_csv(request):	
 	if request.method == "POST":
 	    csv = request.FILES['csv_file']
-	    f = request.FILES['csv_file']
 	    df = pd.read_csv(csv)
-	    matriz = pd.read_csv(f)	
+	    t = []
+	    if request.POST['submit'] == '_cate':
+		    h = list(df.head(0))
+		    t.append(list(h))
+		    for i in range(0, len(df)):
+			    a = list(df.iloc[i])
+		            t.append(a)
+		    itemsets, rules = apriori(t, min_support=0.2,  min_confidence=1)
+		    context = {'rules': t}           	  
+		    return render(request, "apriori.html", context)	
 	    df_target = df
 	    lon = len(list(df.head(0)))
 	    header = list(df[0:lon])
@@ -284,18 +292,7 @@ def upload_csv(request):
 		        fig = px.scatter_matrix(df_target)
 		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		        context = {'graph_div': graph_div}
-		        return render (request, "plottings.html", context)
-	    if request.POST['submit'] == '_cate':
-		    if 2 > 1:
-			    t = []
-			    h = list(matriz.head(0))
-			    t.append(list(h))
-			    for i in range(0, len(matriz)):
-				    a = list(matriz.iloc[i])
-				    t.append(a)
-			    itemsets, rules = apriori(t, min_support=0.2,  min_confidence=1)
-			    context = {'rules': t}           	  
-			    return render(request, "apriori.html", context)			  
+		        return render (request, "plottings.html", context)			  
 	    if request.POST['submit'] == '_unsuper':
 		    if 2 > 1:
 			    Nc = range(1, 20)
