@@ -263,7 +263,6 @@ def upload_csv(request):
 	if request.method == "POST":
 	    csv = request.FILES['csv_file']
 	    df = pd.read_csv(csv)
-	    apriori = pd.read_csv(csv)	
 	    df_target = df
 	    lon = len(list(df.head(0)))
 	    header = list(df[0:lon])
@@ -288,12 +287,14 @@ def upload_csv(request):
 		        return render (request, "plottings.html", context)
 	    if request.POST['submit'] == '_cate':
 		    if cate == 'apriori':
+			    file = request.FILES['csv_file']
+		            df = pd.read_csv(file)
 			    transactions = []
-			    header = list(apriori.head(0))
+			    header = list(df.head(0))
 			    transactions.append(list(header))
-			    for i in range(0, len(apriori)):
-				    a = list(apriori.iloc[i])
-				    transactions.append(a)
+			    for i in range(0, len(df)):
+				a = list(df.iloc[i])
+				transactions.append(a)
 			    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
 			    context = {'rules': rules}           	  
 			    return render(request, "apriori.html", context)			  
