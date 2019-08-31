@@ -293,7 +293,7 @@ def upload_csv(request):
 			    header = list(df.head(0))
 			    transactions.append(list(header))
 			    for i in range(0, len(df)):
-			            a = list(df.iloc[i])
+				    a = list(df.iloc[i])
 				    transactions.append(a)
 			    itemsets, rules = apriori(transactions, min_support=0.2,  min_confidence=1)
 			    context = {'rules': rules}           	  
