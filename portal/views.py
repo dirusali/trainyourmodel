@@ -289,10 +289,10 @@ def upload_csv(request):
 			    file = request.FILES['csv_file']
 			    matriz = pd.read_csv(file)
 			    t = []
-			    header = list(matriz.head(0))
+			    h = list(matriz.head(0))
 			    t.append(list(h))
-			    for i in range(0, len(nueva)):
-				    a = list(nueva.iloc[i])
+			    for i in range(0, len(matriz)):
+				    a = list(matriz.iloc[i])
 				    t.append(a)
 			    itemsets, rules = apriori(t, min_support=0.2,  min_confidence=1)
 			    context = {'rules': t}           	  
