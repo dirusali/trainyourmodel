@@ -262,8 +262,9 @@ def neural(request):
 def upload_csv(request):	
 	if request.method == "POST":
 	    csv = request.FILES['csv_file']
+	    f = request.FILES['csv_file']
 	    df = pd.read_csv(csv)
-	    nueva = df
+	    matriz = pd.read_csv(f)	
 	    df_target = df
 	    lon = len(list(df.head(0)))
 	    header = list(df[0:lon])
@@ -286,8 +287,6 @@ def upload_csv(request):
 		        return render (request, "plottings.html", context)
 	    if request.POST['submit'] == '_cate':
 		    if 2 > 1:
-			    file = request.FILES['csv_file']
-			    matriz = pd.read_csv(file)
 			    t = []
 			    h = list(matriz.head(0))
 			    t.append(list(h))
