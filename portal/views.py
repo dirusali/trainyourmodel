@@ -237,16 +237,10 @@ def neural(request):
 			    model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epochs,shuffle=True)
 			    pred = model.predict(X_test)
-			    mae = metrics.mean_absolute_error(y_test,pred)
-			    mse = metrics.mean_squared_error(y_test,pred)
-			    rmse = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			    fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
-			    fig.update_xaxes(title="Test Sample")
-			    fig.update_yaxes(title="Predictions")
-			    fig.update_layout(autosize=False, width=800,height=500)
-			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")	
-			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse}           
-			    return render(request, "scatter.html", context)
+			    _, accuracy = model.evaluate(X_test, y_test)
+			    accu = (accuracy*100)	
+			    context = {'accu': accu}           
+			    return render(request, "neural.html", context)
 	    #if red == 'Multi-Class Cross-Entropy': 
 	#		    model = Sequential() 
 	#                   model.add(Dense(dense, input_dim=dim, activation='relu'))
