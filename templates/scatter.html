@@ -7,7 +7,7 @@
    {{ scatter|safe }} 
    <br><br>
    <form action="{% url "portal:send_file" %} method="POST" enctype="multipart/form-data" class="form-horizontal">
-   <button class="btn btn-xs" name="submit" value="_download">PLOT </button>
+   <button class="btn btn-xs" name="submit" value="_download">DOWNLOAD PREDICTIONS </button>
    </form>                                                                                         
    <h4>Mean Absolute Error:</h4>     {{ mae }}                                                                                     
    <h4>Mean Squared Error:</h4>      {{ mse }}   
