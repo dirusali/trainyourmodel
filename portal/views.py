@@ -326,7 +326,6 @@ def upload_csv(request):
 					    wr.writerow([word])	
 			    response = StreamingHttpResponse(open('/var/www/feedmedata/media/pred.csv'), content_type='text/csv')
 			    response['Content-Disposition'] = 'attachment; filename=' + 'predictions.csv'
-			    return response				
 			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse, 'coef': coef}           
 			    return render(request, "scatter.html", context)	
 		    if algo == 'Support Vector Machine':
