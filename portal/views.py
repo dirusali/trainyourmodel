@@ -255,8 +255,8 @@ def neural(request):
 			       	
 def upload_csv(request):	
 	if request.method == "POST":
-	    csv = request.FILES['csv_file']
-	    df = pd.read_csv(csv)
+	    file = request.FILES['csv_file']
+	    df = pd.read_csv(file)
 	    t = []
 	    if request.POST['submit'] == '_cate':
 		    h = list(df.head(0))
@@ -317,6 +317,9 @@ def upload_csv(request):
 			    fig.update_yaxes(title="Predictions")
 			    fig.update_layout(autosize=False, width=800,height=500)
 			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")
+			    resultados = []
+			    for i in pred:
+		                    resultados.append(i)	
 			    with open('/var/www/feedmedata/files/pred.csv', 'w', ) as myfile:
 				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 				    for word in resultados:
@@ -368,6 +371,8 @@ def upload_csv(request):
 			    rmse = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			    matrix = confusion_matrix(y_test,pred)	
 			    report = classification_report(y_test,pred)	
+		    for i in pred:
+			    resultados.append(i)	
 		    with open('/var/www/feedmedata/files/pred.csv', 'w', ) as myfile:
 			    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 			    for word in resultados:
