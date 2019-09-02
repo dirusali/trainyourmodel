@@ -9,6 +9,12 @@ register = template.Library()
 
 
 @register.simple_tag
+def download():
+    response = StreamingHttpResponse(open('/var/www/feedmedata/media/pred.csv'), content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=' + 'predictions.csv'
+    return response  
+    
+@register.simple_tag
 def printer(x):
     x = print(x)
     return x
