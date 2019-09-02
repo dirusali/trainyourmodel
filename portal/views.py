@@ -373,22 +373,20 @@ def upload_csv(request):
 			    report = classification_report(y_test,pred)	
 		    for i in pred:
 			    resultados.append(i)	
-		    with open('/var/www/feedmedata/files/pred.csv', 'w', ) as myfile:
+		    with open('/var/www/feedmedata/media/pred.csv', 'w', ) as myfile:
 			    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 			    for word in resultados:
-			            wr.writerow([word])			
-		    context = {'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
+			            wr.writerow([word])	
+					
+		    context = {'myfile': myfile, 'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
 		    return render(request, "upload_csv.html", context)	
 	    
  	
-def download(request):
-	path_to_file = '/var/www/feedmedata/files/pred.csv'
-	file_name = 'predictions.csv'
-	response = HttpResponse(mimetype='application/force-download') # mimetype is replaced by content_type for django 1.7
-        response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(file_name)
-        response['X-Accel-Redirect'] = smart_str(path_to_file)
-	return response	
-	
-
-
+def send_file(request):
+	filename = '/var/www/feedmedata/media/pred.csv'
+	download_name ="predictions.csv"
+	wrapper = FileWrapper(open(filename))
+	response  = HttpResponse(wrapper,content_type='text/csv')
+	response['Content-Disposition'] = "attachment; filename= %s"% download_name
+	return response
  
