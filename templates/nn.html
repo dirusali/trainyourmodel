@@ -44,6 +44,9 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
         {% csrf_token %} 
         <br><br>
          <p>- <strong>Neural Networks</strong>: choose your desired deep learning algorithm.</p>
+             <select name="categories">
+                <option value="categories">Number of Classes</option><input type="number" name="categories" min="0" max="1000">
+             </select>
             <select name="red">
                 <option value="Mean Squared Error">Mean Squared Error</option>
                 <option value="Binary Cross-Entropy">Binary Cross-Entropy</option> 
