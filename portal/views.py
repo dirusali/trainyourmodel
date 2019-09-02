@@ -377,7 +377,6 @@ def upload_csv(request):
 			    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 			    for word in resultados:
 			            wr.writerow([word])	
-					
 		    context = {'myfile': myfile, 'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
 		    return render(request, "upload_csv.html", context)	
 	    
