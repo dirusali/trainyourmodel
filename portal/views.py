@@ -205,7 +205,7 @@ def neural(request):
 	    df = pd.read_csv(file)
 	    df_target = df
 	    lon = len(list(df.head(0)))
-	    dim = lon -1	
+	    dim = len(list(df.head(0))) -1	
 	    header = list(df[0:lon])
 	    target = header[dim]
 	    y = np.array(df[target])
@@ -220,16 +220,16 @@ def neural(request):
 	    batch = int(request.POST['batch'])
 	    nodes = int(request.POST['categories'])
 	    if red == 'Binary Crossentropy':
-			    model = Sequential()
+			    model= Sequential()
 			    model.add(Dense(dense, input_dim=dim, activation='relu'))
-			    model.add(Dense(dim-1, activation='relu'))
+			    model.add(Dense(dim, activation='relu'))
 			    model.add(Dense(1, activation='sigmoid'))
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
-			    _, accuracy = model.evaluate(X, y)
+			    model.fit(x=X_train,y=y_train,batch_size=batch, epochs=epochs,shuffle=True)
+			    _, accuracy = model.evaluate(X, y),			    
 			    accu = print('Accuracy: %.2f' % (accuracy*100))
-			    context = {'accu': accu}           
-			    return render(request, "neural.html", context)
+			    return render(request, "neural.html", context)			
+			
 	    if red == 'Mean Squared Error':
 			    model = Sequential()
 			    model.add(Dense(dense, input_dim=dim, activation='relu'))
