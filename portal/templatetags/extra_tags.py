@@ -10,7 +10,7 @@ from django.http import StreamingHttpResponse
 
 
 @register.simple_tag
-def download():
+def download(request):
     response = StreamingHttpResponse(open('/var/www/feedmedata/media/pred.csv'), content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=' + 'predictions.csv'
     return response  
