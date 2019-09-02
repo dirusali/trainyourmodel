@@ -43,14 +43,10 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
      <input type="file" name="file" id="file" required="True" class="form-control"> 
         {% csrf_token %} 
         <br><br>
-         <p>- <strong>Neural Networks</strong>: choose your desired deep learning algorithm.</p>
-             <select name="categories">
-                <option value="categories">Number of Classes</option><input type="number" name="categories" min="0" max="1000">
-             </select>
+         <p>- <strong>Neural Networks</strong>: please choose a loss function and parameters.</p>
             <select name="red">
                 <option value="Mean Squared Error">Mean Squared Error</option>
                 <option value="Binary Cross-Entropy">Binary Cross-Entropy</option> 
-                <option value="Multi-Class Cross-Entropy">Multi-Class Cross-Entropy</option> 
              </select>        
             <select name="dense">
                 <option value="Dense">Dense</option><input type="number" name="dense" min="0" max="1000">
