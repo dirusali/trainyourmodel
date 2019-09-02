@@ -226,7 +226,7 @@ def neural(request):
 			    model.add(Dense(1, activation='sigmoid'))
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X_train,y=y_train,batch_size=batch, epochs=epochs,shuffle=True)
-			    _, accuracy = model.evaluate(X, y),			    
+			    _, accuracy = model.evaluate(X_test, y_test)			    
 			    accu = (accuracy*100)
 			    context = {'accu': accu}           
 			    return render(request, "neural.html", context)						
@@ -252,8 +252,8 @@ def neural(request):
 			    model.add(Dense(dense, input_dim=dim, activation='relu'))
 			    model.add(Dense(nodes, activation='softmax'))
 			    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-			    model.fit(x=X,y=y,batch_size=batch, epochs=epochs,shuffle=True)
-			    _, accuracy = model.evaluate(X, y)
+			    model.fit(x=X_train,y=y_train,batch_size=batch, epochs=epochs,shuffle=True)
+			    _, accuracy = model.evaluate(X_test, y_test)
 			    accu = ('Accuracy: %.2f' % (accuracy*100))
 			    context = {'accu': accu}           
 			    return render(request, "neural.html", context)
