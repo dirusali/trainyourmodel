@@ -16,7 +16,5 @@ urlpatterns = [
         url(r'^results/$', upload_csv, name='upload_csv'),
         url(r'^deep-learning/$', NeuralView.as_view(), name='neuralview'),
         url(r'^neural-results/$', neural, name= 'neural'),
-        url(r'^download_csv/$', send_file, name= 'send_file')
-
 ]
 
