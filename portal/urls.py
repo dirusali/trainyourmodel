@@ -5,7 +5,7 @@ from django.views.generic.base import RedirectView
 from portal import views as portal_views
 
 app_name = 'portal'
-from .views import HomeView, upload_csv, FuncionaView, ContactoView, neural, NeuralView, CondicionesView, PrivacidadView, subscribe, successView, contacto
+from .views import HomeView, upload_csv, FuncionaView, send_file, ContactoView, neural, NeuralView, CondicionesView, PrivacidadView, subscribe, successView, contacto
 
 
 urlpatterns = [
@@ -16,7 +16,7 @@ urlpatterns = [
         url(r'^results/$', upload_csv, name='upload_csv'),
         url(r'^deep-learning/$', NeuralView.as_view(), name='neuralview'),
         url(r'^neural-results/$', neural, name= 'neural'),
-        url(r'^download_csv/$', download, name= 'download')
+        url(r'^download_csv/$', send_file, name= 'send_file')
 
 ]
 
