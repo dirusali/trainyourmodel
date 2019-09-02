@@ -216,7 +216,7 @@ def neural(request):
 	    pred = ''
 	    red = request.POST['red']
 	    dense = int(request.POST['dense'])	
-	    epoch = int(request.POST['epochs'])
+	    epochs = int(request.POST['epochs'])
 	    batch = int(request.POST['batch'])
 	    nodes = int(request.POST['categories'])
 	    if red == 'Binary Cross-Entropy':
@@ -235,7 +235,7 @@ def neural(request):
 			    model.add(Dense(dense, input_dim=dim, activation='relu'))
 			    model.add(Dense(1, activation='linear'))
 			    model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
-			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
+			    model.fit(x=X,y=y,batch_size=batch, epochs=epochs,shuffle=True)
 			    pred = model.predict(X_test)
 			    mae = metrics.mean_absolute_error(y_test,pred)
 			    mse = metrics.mean_squared_error(y_test,pred)
@@ -252,7 +252,7 @@ def neural(request):
 			    model.add(Dense(dense, input_dim=dim, activation='relu'))
 			    model.add(Dense(nodes, activation='softmax'))
 			    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-			    model.fit(x=X,y=y,batch_size=batch, epochs=epoch,shuffle=True)
+			    model.fit(x=X,y=y,batch_size=batch, epochs=epochs,shuffle=True)
 			    _, accuracy = model.evaluate(X, y)
 			    accu = ('Accuracy: %.2f' % (accuracy*100))
 			    context = {'accu': accu}           
