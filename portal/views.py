@@ -381,13 +381,13 @@ def upload_csv(request):
 		    context = {'myfile': myfile, 'matrix00': matrix[0][0], 'matrix01': matrix[0][1], 'matrix10': matrix[1][0], 'matrix11': matrix[1][1], 'mae': mae, 'mse': mse, 'rmse': rmse, 'f1': report[0:52], 'f2': report[54:106], 'f3': report[107:159], 'f4': report[160:213]}           
 		    return render(request, "upload_csv.html", context)	
 	    
- 	
-# def send_file(request):
-#	if request.POST['submit'] == '_download':
-#		filename = '/var/www/feedmedata/media/pred.csv'
-#		download_name ="predictions.csv"
-#		wrapper = FileWrapper(open(filename))
-#		response  = HttpResponse(wrapper,content_type='text/csv')
-#		response['Content-Disposition'] = "attachment; filename= %s"% download_name
-#		return response
+def send_file(request):
+	if request.POST['submit'] == '_download':
+		filename = '/var/www/feedmedata/media/pred.csv'
+		download_name ="predictions.csv"
+		wrapper = FileWrapper(open(filename))
+		response  = HttpResponse(wrapper,content_type='text/csv')
+		response['Content-Disposition'] = "attachment; filename= %s"% download_name
+		context = {'response': response}
+		return render(request, "download_csv.html", context)
  
