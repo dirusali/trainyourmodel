@@ -311,12 +311,13 @@ def upload_csv(request):
 			    mae = metrics.mean_absolute_error(y_test,pred)
 			    mse = metrics.mean_squared_error(y_test,pred)
 			    rmse = np.sqrt(metrics.mean_squared_error(y_test,pred))
+			    coef = pd.DataFrame(lm.coef_, X.columns, columns=['Coefficient'])	
 			    fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
 			    fig.update_xaxes(title="Test Sample")
 			    fig.update_yaxes(title="Predictions")
 			    fig.update_layout(autosize=False, width=800,height=500)
 			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")	
-			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse}           
+			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse, 'coef': coef}           
 			    return render(request, "scatter.html", context)	
 		    if algo == 'Support Vector Machine':
 			    param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
