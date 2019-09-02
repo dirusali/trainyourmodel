@@ -5,6 +5,21 @@ import numpy as np
 import json
 import ast
 register = template.Library()
+from django.template.loader import get_template, render_to_string
+from django.shortcuts import render
+from django.views.generic import TemplateView
+from django.views.generic.detail import DetailView
+from django.views import View
+from django.db.models import Count
+from django.shortcuts import redirect
+
+from portal.models import Subscribe
+#from portal.utils import SendSubscribeMail, round_next_down, round_next_up
+
+from el_pagination.views import AjaxListView
+from django.http import Http404, JsonResponse, HttpResponse, HttpResponseRedirect, HttpResponseServerError
+from django.db.models import Q
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.http import StreamingHttpResponse
 
 
