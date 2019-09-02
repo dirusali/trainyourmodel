@@ -215,8 +215,8 @@ def neural(request):
 	    graph_div = ''
 	    pred = ''
 	    red = request.POST['red']
-	    dense = int(request.POST['epoch'])	
-	    epoch = int(request.POST['epoch'])
+	    dense = int(request.POST['dense'])	
+	    epoch = int(request.POST['epochs'])
 	    batch = int(request.POST['batch'])
 	    nodes = int(request.POST['categories'])
 	    if red == 'Binary Cross-Entropy':
@@ -229,8 +229,7 @@ def neural(request):
 			    _, accuracy = model.evaluate(X, y),			    
 			    accu = ('Accuracy: %.2f' % (accuracy*100))
 			    context = {'accu': accu}           
-			    return render(request, "neural.html", context)			
-			
+			    return render(request, "neural.html", context)						
 	    if red == 'Mean Squared Error':
 			    model = Sequential()
 			    model.add(Dense(dense, input_dim=dim, activation='relu'))
@@ -248,7 +247,7 @@ def neural(request):
 			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")	
 			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse}           
 			    return render(request, "scatter.html", context)
-	    if red == 'Multiclass Crossentropy': 
+	    if red == 'Multi-Class Cross-Entropy': 
 			    model = Sequential() 
 			    model.add(Dense(dense, input_dim=dim, activation='relu'))
 			    model.add(Dense(nodes, activation='softmax'))
