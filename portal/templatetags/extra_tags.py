@@ -8,6 +8,15 @@ register = template.Library()
 
 
 
+def download(request):
+	path_to_file = '/var/www/feedmedata/files/pred.csv'
+	file_name = 'predictions.csv'
+	response = HttpResponse(mimetype='application/force-download') # mimetype is replaced by content_type for django 1.7
+        response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(file_name)
+        response['X-Accel-Redirect'] = smart_str(path_to_file)
+	return response	
+
+
 @register.simple_tag
 def printer(x):
     x = print(x)
