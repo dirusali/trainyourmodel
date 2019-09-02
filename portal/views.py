@@ -383,11 +383,7 @@ def upload_csv(request):
 	    
 def send_file(request):
 	if request.POST['submit'] == '_download':
-		filename = '/var/www/feedmedata/media/pred.csv'
-		download_name ="predictions.csv"
-		wrapper = FileWrapper(open(filename))
-		response  = HttpResponse(wrapper,content_type='text/csv')
-		response['Content-Disposition'] = "attachment; filename= %s"% download_name
-		context = {'response': response}
-		return render(request, "download_csv.html", context)
+	        response = StreamingHttpResponse(open('/var/www/feedmedata/media/pred.csv'), content_type='text/csv')
+		response['Content-Disposition'] = 'attachment; filename=' + 'predictions.csv'
+		return response
  
