@@ -2,7 +2,7 @@
 import plotly
 import plotly.express as px
 import plotly.graph_objects as go
-from django.utils.encoding import smart_str
+from django.http import StreamingHttpResponse
 import io
 import csv
 from io import BytesIO
@@ -320,7 +320,7 @@ def upload_csv(request):
 			    resultados = []
 			    for i in pred:
 		                    resultados.append(i)	
-			    with open('/var/www/feedmedata/files/pred.csv', 'w', ) as myfile:
+			    with open('/var/www/feedmedata/media/pred.csv', 'w', ) as myfile:
 				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 				    for word in resultados:
 					    wr.writerow([word])	
