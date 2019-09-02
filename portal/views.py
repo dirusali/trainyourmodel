@@ -316,7 +316,11 @@ def upload_csv(request):
 			    fig.update_xaxes(title="Test Sample")
 			    fig.update_yaxes(title="Predictions")
 			    fig.update_layout(autosize=False, width=800,height=500)
-			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")	
+			    scatter = plotly.offline.plot(fig, auto_open = False, output_type="div")
+			    with open('/var/www/feedmedata/files/pred.csv', 'w', ) as myfile:
+			    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+			    for word in resultados:
+			            wr.writerow([word])	
 			    context = {'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse, 'coef': coef}           
 			    return render(request, "scatter.html", context)	
 		    if algo == 'Support Vector Machine':
