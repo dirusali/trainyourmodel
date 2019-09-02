@@ -311,7 +311,7 @@ def upload_csv(request):
 			    mae = metrics.mean_absolute_error(y_test,pred)
 			    mse = metrics.mean_squared_error(y_test,pred)
 			    rmse = np.sqrt(metrics.mean_squared_error(y_test,pred))
-			    coef = pd.DataFrame(lm.coef_, X.columns, columns=['Coefficient'])	
+			    coef = pd.DataFrame(lm.coef_, df.columns, columns=['Coefficient'])	
 			    fig = go.Figure(data=go.Scatter(x=y_test, y=pred, mode='markers'))
 			    fig.update_xaxes(title="Test Sample")
 			    fig.update_yaxes(title="Predictions")
