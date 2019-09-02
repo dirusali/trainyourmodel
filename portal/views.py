@@ -218,7 +218,7 @@ def neural(request):
 	    dense = int(request.POST['dense'])	
 	    epochs = int(request.POST['epochs'])
 	    batch = int(request.POST['batch'])
-	    nodes = int(request.POST['categories'])
+	    #nodes = int(request.POST['categories'])
 	    if red == 'Binary Cross-Entropy':
 			    model= Sequential()
 			    model.add(Dense(dense, input_dim=dim, activation='relu'))
