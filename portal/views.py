@@ -227,7 +227,7 @@ def neural(request):
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X_train,y=y_train,batch_size=batch, epochs=epochs,shuffle=True)
 			    _, accuracy = model.evaluate(X, y),			    
-			    accu = ('Accuracy: %.2f' % (accuracy*100))
+			    accu = (accuracy*100)
 			    context = {'accu': accu}           
 			    return render(request, "neural.html", context)						
 	    if red == 'Mean Squared Error':
