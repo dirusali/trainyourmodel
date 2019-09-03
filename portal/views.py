@@ -2,7 +2,8 @@
 import plotly
 import plotly.express as px
 import plotly.graph_objects as go
-from django.http import StreamingHttpResponse
+from django.core.mail import send_mail, BadHeaderError, EmailMessage
+
 import io
 import csv
 from io import BytesIO
