@@ -227,7 +227,7 @@ def neural(request):
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X_train,y=y_train,batch_size=batch, epochs=epochs,shuffle=True)
 			    pred = model.predict(X_test)	
-			    _, accuracy = model.evaluate(pred, y_test)			    
+			    _, accuracy = model.evaluate(X_test, y_test)			    
 			    accu = (accuracy*100)
 			    resultados = []
 			    for i in pred:
@@ -245,6 +245,7 @@ def neural(request):
 			    model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epochs,shuffle=True)
 			    pred = model.predict(X_test)
+			    _, accuracy = model.evaluate(X_test, y_test)
 			    resultados = []
 			    for i in pred:
 		                    resultados.append(i[0])	
@@ -252,7 +253,6 @@ def neural(request):
 				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 				    for word in resultados:
 					    wr.writerow([word])
-			    _, accuracy = model.evaluate(pred, y_test)
 			    accu = (accuracy*100)	
 			    context = {'accu': accu, 'pred': pred}           
 			    return render(request, "neural.html", context)
