@@ -316,6 +316,13 @@ def upload_csv(request):
 			    kmeans = KMeans(n_clusters=nclusters)
 			    model = kmeans.fit(Z)
 			    labels = kmeans.labels_
+			    resultados = []
+			    for i in labels:
+		                    resultados.append(i)	
+			    with open('/var/www/feedmedata/static/labels.csv', 'w', ) as myfile:
+				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+				    for word in resultados:
+					    wr.writerow([word]	
 			    context = {'graph': graph, 'labels': labels}           
 			    return render(request, "kmeans.html", context)					
 	    if request.POST['submit'] == '_super': 	
