@@ -322,7 +322,7 @@ def upload_csv(request):
 			    with open('/var/www/feedmedata/static/labels.csv', 'w', ) as myfile:
 				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 				    for word in resultados:
-					    wr.writerow([word]	
+					    wr.writerow([word])	
 			    context = {'graph': graph, 'labels': labels}           
 			    return render(request, "kmeans.html", context)					
 	    if request.POST['submit'] == '_super': 	
