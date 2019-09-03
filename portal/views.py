@@ -301,7 +301,12 @@ def upload_csv(request):
 		        fig = px.scatter_matrix(df_target)
 		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
 		        context = {'graph_div': graph_div}
-		        return render (request, "plottings.html", context)			  
+		        return render (request, "plottings.html", context)
+		if grafica == "heatmap":
+		        fig = px.density_heatmap(df_target)
+		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
+		        context = {'graph_div': graph_div}
+		        return render (request, "plottings.html", context)		  
 	    if request.POST['submit'] == '_unsuper':
 		    if 2 > 1:
 			    Nc = range(1, 20)
