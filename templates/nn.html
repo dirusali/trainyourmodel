@@ -37,7 +37,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
     <div class="container" align="center">{% comment %}<!-- section home-intro" -->{% endcomment %}
      <section class="home-upload">
      <h2 class="tit1">Deep Learning Made Easy</h2>         
-     <p class="feat"> Please upload your data in csv format. You can choose one of the following options: </p>      
+     <p class="feat"> Please upload your data in csv format and place your target variable in the last column: </p>      
 
      <form action="{% url "portal:neural" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
      <input type="file" name="file" id="file" required="True" class="form-control"> 
