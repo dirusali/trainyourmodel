@@ -273,6 +273,18 @@ def upload_csv(request):
 	    file = request.FILES['csv_file']
 	    df = pd.read_csv(file)
 	    t = []
+	    names = list(df.head(0))
+	    if request.POST['submit'] == '_plot': 
+	        if grafica == "scatter":
+		        fig = px.scatter_matrix(df_target)
+		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
+		        context = {'graph_div': graph_div}
+		        return render (request, "plottings.html", context)
+	        if grafica == "heatmap":
+		        fig = go.Figure(data=go.Heatmap(z = df.corr(),x=names,y=names))
+		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
+		        context = {'graph_div': graph_div}
+		        return render (request, "heatmap.html", context)
 	    if request.POST['submit'] == '_cate':
 		    h = list(df.head(0))
 		    t.append(list(h))
@@ -296,17 +308,7 @@ def upload_csv(request):
 	    algo = request.POST['algoritmo']	
 	    grafica = request.POST['graficas']
 	    clasi = request.POST['clasi']
-	    if request.POST['submit'] == '_plot': 
-	        if grafica == "scatter":
-		        fig = px.scatter_matrix(df_target)
-		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
-		        context = {'graph_div': graph_div}
-		        return render (request, "plottings.html", context)
-	        if grafica == "heatmap":
-		        fig = px.density_heatmap(df_target)
-		        graph_div = plotly.offline.plot(fig, auto_open = False, output_type="div")
-		        context = {'graph_div': graph_div}
-		        return render (request, "plottings.html", context)		  
+	    		  
 	    if request.POST['submit'] == '_unsuper':
 		    if 2 > 1:
 			    Nc = range(1, 20)
