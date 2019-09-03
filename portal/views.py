@@ -274,6 +274,7 @@ def upload_csv(request):
 	    df = pd.read_csv(file)
 	    t = []
 	    names = list(df.head(0))
+	    df_target = df
 	    grafica = request.POST['graficas']
 	    if request.POST['submit'] == '_plot': 
 	        if grafica == "scatter":
@@ -295,7 +296,6 @@ def upload_csv(request):
 		    itemsets, rules = apriori(t, min_support=0.2,  min_confidence=1)
 		    context = {'rules': rules}           	  
 		    return render(request, "apriori.html", context)	
-	    df_target = df
 	    lon = len(list(df.head(0)))
 	    header = list(df[0:lon])
 	    target = header[lon-1]
