@@ -274,6 +274,7 @@ def upload_csv(request):
 	    df = pd.read_csv(file)
 	    t = []
 	    names = list(df.head(0))
+	    grafica = request.POST['graficas']
 	    if request.POST['submit'] == '_plot': 
 	        if grafica == "scatter":
 		        fig = px.scatter_matrix(df_target)
@@ -308,7 +309,7 @@ def upload_csv(request):
 	    algo = request.POST['algoritmo']	
 	    grafica = request.POST['graficas']
 	    clasi = request.POST['clasi']
-	    		  
+	
 	    if request.POST['submit'] == '_unsuper':
 		    if 2 > 1:
 			    Nc = range(1, 20)
