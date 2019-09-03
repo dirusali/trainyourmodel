@@ -393,6 +393,7 @@ def upload_csv(request):
 			    rmse = np.sqrt(metrics.mean_squared_error(y_test,pred))
 			    matrix = confusion_matrix(y_test,pred)	
 			    report = classification_report(y_test,pred)	
+		    resultados = []
 		    for i in pred:
 			    resultados.append(i)	
 		    with open('/var/www/feedmedata/static/pred.csv', 'w', ) as myfile:
