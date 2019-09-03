@@ -4,7 +4,9 @@
 <html> 
   <body style="background-color:#E4FDE1";"font size: 5";font-style: verdana";"align: center";>
   <h2> These are the results for your dataset and selected algorithm</h2>
-  <a href="{% static 'pred.csv' %}" download><font color="blue">Click Here To Download Your Model Predictions</font></a>                                                                                          
+  <a href="{% static 'pred.csv' %}" download><font color="blue">Click Here To Download Your Model Predictions</font></a> 
+   <br><br>  
+   <p> A csv file will be downloaded with one column having the predicted values for each of your test items</p>                                                             
   <h4>Confusion Matrix:</h4>
   <p>A confusion matrix is a table describing the performance of a classificatiom algorithm on your set of test data. This is how to read it:<br>
   <table>
