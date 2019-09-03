@@ -226,9 +226,17 @@ def neural(request):
 			    model.add(Dense(1, activation='sigmoid'))
 			    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X_train,y=y_train,batch_size=batch, epochs=epochs,shuffle=True)
-			    _, accuracy = model.evaluate(X_test, y_test)			    
+			    pred = model.predict(X_test)	
+			    _, accuracy = model.evaluate(pred, y_test)			    
 			    accu = (accuracy*100)
-			    context = {'accu': accu}           
+			    resultados = []
+			    for i in pred:
+		                    resultados.append(i[0])	
+			    with open('/var/www/feedmedata/static/pred.csv', 'w', ) as myfile:
+				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+				    for word in resultados:
+					    wr.writerow([word])	
+			    context = {'accu': accu, 'pred': pred}           
 			    return render(request, "neural.html", context)						
 	    if red == 'Mean Squared Error':
 			    model = Sequential()
@@ -237,9 +245,16 @@ def neural(request):
 			    model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
 			    model.fit(x=X,y=y,batch_size=batch, epochs=epochs,shuffle=True)
 			    pred = model.predict(X_test)
-			    _, accuracy = model.evaluate(X_test, y_test)
+			    resultados = []
+			    for i in pred:
+		                    resultados.append(i[0])	
+			    with open('/var/www/feedmedata/static/pred.csv', 'w', ) as myfile:
+				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+				    for word in resultados:
+					    wr.writerow([word])
+			    _, accuracy = model.evaluate(pred, y_test)
 			    accu = (accuracy*100)	
-			    context = {'accu': accu}           
+			    context = {'accu': accu, 'pred': pred}           
 			    return render(request, "neural.html", context)
 	    #if red == 'Multi-Class Cross-Entropy': 
 	#		    model = Sequential() 
@@ -325,7 +340,7 @@ def upload_csv(request):
 				    for word in resultados:
 					    wr.writerow([word])	
 			    context = {'pred':pred, 'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse, 'coef': coef}           
-			    return render(request, "scatter.html", context, response)	
+			    return render(request, "scatter.html", context)	
 		    if algo == 'Support Vector Machine':
 			    param_grid = {'C':[0.1,1,10,100,1000],'gamma':[1,0.1,0.01,0.001,0.0001]}
 			    grid = GridSearchCV(SVC(),param_grid,verbose=3)
