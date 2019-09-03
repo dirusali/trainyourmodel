@@ -3,8 +3,12 @@
 
 <html> 
   <body style="background-color:#E4FDE1";"font size: 5";font-style: verdana";"align: center";>
-  <h4>These is the accuracy of your model:</h4>
+  <h4>These is the accuracy of your model in %:</h4>
   {{ accu }} 
+  <br><br>                                                                                          
   <a href="{% static 'pred.csv' %}" download><font color="blue">Click Here To Download Your Model Predictions</font></a>                                                                                         
+  <br><br>  
+   <p> A csv file will be downloaded with one column having the predicted values for each of your test items</p>                                                            
+
   </body>
 </html>
