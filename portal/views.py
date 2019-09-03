@@ -320,12 +320,10 @@ def upload_csv(request):
 			    resultados = []
 			    for i in pred:
 		                    resultados.append(i)	
-			    with open('/var/www/feedmedata/media/pred.csv', 'w', ) as myfile:
+			    with open('/var/www/feedmedata/static/pred.csv', 'w', ) as myfile:
 				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 				    for word in resultados:
 					    wr.writerow([word])	
-			    response = StreamingHttpResponse(open('/var/www/feedmedata/media/pred.csv'), content_type='text/csv')
-			    response['Content-Disposition'] = 'attachment; filename=' + 'predictions.csv'			
 			    context = {'pred':pred, 'scatter': scatter, 'mae': mae, 'mse': mse, 'rmse': rmse, 'coef': coef}           
 			    return render(request, "scatter.html", context, response)	
 		    if algo == 'Support Vector Machine':
@@ -375,7 +373,7 @@ def upload_csv(request):
 			    report = classification_report(y_test,pred)	
 		    for i in pred:
 			    resultados.append(i)	
-		    with open('/var/www/feedmedata/media/pred.csv', 'w', ) as myfile:
+		    with open('/var/www/feedmedata/static/pred.csv', 'w', ) as myfile:
 			    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 			    for word in resultados:
 			            wr.writerow([word])	
