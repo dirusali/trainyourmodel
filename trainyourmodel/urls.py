@@ -5,7 +5,7 @@ from django.conf.urls import handler404, handler500
 from django.http import HttpResponse
 #from rest_framework_jwt.views import obtain_jwt_token
 from django.views.generic import TemplateView
-from feedmedata import settings
+from trainyourmodel import settings
 from django.contrib.sitemaps.views import sitemap
 #from portal.sitemaps import SearchTagSitemap, CategorySitemap, SearchTagSitemapFemale, StaticViewSitemap
 from portal import views as portal_views
