@@ -21,7 +21,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
     <header id="header-home" style="background-color:#80ffbf">    
         <div id="menu-mobile" style="background-color:#80ffbf;"></div>
             <div class="nav-home" style="background-color:#80ffbf;">
-                <div class="logo"><a href="/"><img src="{% static 'images/logo-feedmedata.png' %}" alt="Logo feedmedata" width="200" height="75"/></a></div>
+                <div class="logo"><a href="/"><img src="{% static 'images/logo-feedmedata.png' %}" alt="Logo feedmedata" width="200" height="106"/></a></div>
                 <nav>
                     {% include "menu.html" %}
                 </nav>
@@ -38,7 +38,7 @@ Machine Learning as a Software is an Online tool you can use for Data Science an
      <section class="home-upload">
      <h2 class="tit1">Machine Learning Made Easy</h2>  
          
-     <p class="feat"> Please upload your data in csv format. You can choose one of the following options:   
+     <p class="feat"> Upload your csv file</p>    
      
      <form action="{% url "portal:upload_csv" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
         {% csrf_token %}
