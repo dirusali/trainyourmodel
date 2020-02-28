@@ -24,19 +24,54 @@
 		</div>
 	</header>
 	{% comment %}<!-- ./header -->
-	<!-- section section-text" -->{% endcomment %}
-	<section class="section-text como-funciona-intro">
-		<div class="container small">
-		<h2 class="tit1">Machine Learning Made Easy</h2>
-		<p class="feat"> Trainyourmodel is a free tool allowing to run machine learning algorithms in one click.
-		<br><br>
-		Just upload your data in csv format and place the target variable, if you have one, in the last column. 
-		<br><br>
-		Once you click run you will get results printed and a link to download predictions for your test data.
-	        <br><br>
-		In general, you can use Unsupervised Algorithms to classify unlabeled data and find hidden patterns.
-		<br><br>
-		On the other hand, Supervised Algorithms need a labeled training dataset as input.<br> 
-		</p>
+{% extends "base.html" %}
+{% load extra_tags %}
+{% load static %}
+{% block meta %}
+<meta name="description" content="How does it work?">
+<meta property="og:title" content="How it works>
+<meta property="og:site_name" content="Trainyourmodel">
+<meta property="og:url" content="www.trainyourmodel.com/">
+<meta property="og:description" content="how it works">
+<meta property="og:type" content="website" />
+<meta property="og:image" content="/static/images/Logo-feedmedata.png">
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://www.trainyourmodel.com" />
+<meta name="robots" content="index, follow">
+{% endblock %}
+{% block content %}
+<body class="home" style="background-color:#80ffbf; width:100%"> 
+    <div id="top"></div>
+    <header id="header-home" style="background-color:#80ffbf">    
+        <div id="menu-mobile" style="background-color:#80ffbf;"></div>
+            <div class="nav-home" style="background-color:#80ffbf;">
+                <div class="logo"><a href="/"><img src="{% static 'images/logo-feedmedata.png' %}" alt="Logo feedmedata" width="200" height="75"/></a></div>
+                <nav>
+                    {% include "menu.html" %}
+                </nav>
+                <a href="#" class="toggle-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>          
+            </div>          
+            </div> 
+</header>   	
+	
+				     
+<!-- section section-text" -->{% endcomment %}
+<section class="section-text como-funciona-intro">
+    <div class="container small">
+    <h2 class="tit1">Machine Learning Made Easy</h2>
+    <p class="feat"> Trainyourmodel is a free tool allowing to run machine learning algorithms in one click.
+    <br><br>
+    Just upload your data in csv format and place the target variable, if you have one, in the last column. 
+    <br><br>
+    Once you click run you will get results printed and a link to download predictions for your test data.
+    <br><br>
+    In general, you can use Unsupervised Algorithms to classify unlabeled data and find hidden patterns.
+    <br><br>
+    On the other hand, Supervised Algorithms need a labeled training dataset as input.<br> 
+    </p>
 			
 {% endblock %}
