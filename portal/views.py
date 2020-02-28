@@ -107,8 +107,8 @@ def contacto(request):
         if name and message and email:
             try:
                 #email_message.send()
-                send_mail('Feedmedata :: Formulario Web', body, 'dirusali@gmail.com', ['dirusali@gmail.com'])
-                send_mail('Feedmedata', 'Your email was sent, I will try to respond asap', 'dirusali@gmail.com', [email])
+                send_mail('Trainyourmodel :: Formulario Web', body, 'dirusali@gmail.com', ['dirusali@gmail.com'])
+                send_mail('Trainyourmodel', 'Your email was sent, I will try to respond asap', 'dirusali@gmail.com', [email])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return HttpResponseRedirect('/message-sent/')
@@ -232,7 +232,7 @@ def neural(request):
 			    resultados = []
 			    for i in pred:
 		                    resultados.append(i[0])	
-			    with open('/var/www/feedmedata/static/pred.csv', 'w', ) as myfile:
+			    with open('/var/www/trainyourmodel/static/pred.csv', 'w', ) as myfile:
 				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 				    for word in resultados:
 					    wr.writerow([word])	
@@ -249,7 +249,7 @@ def neural(request):
 			    resultados = []
 			    for i in pred:
 		                    resultados.append(i[0])	
-			    with open('/var/www/feedmedata/static/pred.csv', 'w', ) as myfile:
+			    with open('/var/www/trainyourmodel/static/pred.csv', 'w', ) as myfile:
 				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 				    for word in resultados:
 					    wr.writerow([word])
@@ -327,7 +327,7 @@ def upload_csv(request):
 			    resultados = []
 			    for i in labels:
 		                    resultados.append(i)	
-			    with open('/var/www/feedmedata/static/labels.csv', 'w', ) as myfile:
+			    with open('/var/www/trainyourmodel/static/labels.csv', 'w', ) as myfile:
 				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 				    for word in resultados:
 					    wr.writerow([word])	
@@ -350,7 +350,7 @@ def upload_csv(request):
 			    resultados = []
 			    for i in pred:
 		                    resultados.append(i)	
-			    with open('/var/www/feedmedata/static/pred.csv', 'w', ) as myfile:
+			    with open('/var/www/trainyourmodel/static/pred.csv', 'w', ) as myfile:
 				    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 				    for word in resultados:
 					    wr.writerow([word])	
@@ -404,7 +404,7 @@ def upload_csv(request):
 		    resultados = []
 		    for i in pred:
 			    resultados.append(i)	
-		    with open('/var/www/feedmedata/static/pred.csv', 'w', ) as myfile:
+		    with open('/var/www/trainyourmodel/static/pred.csv', 'w', ) as myfile:
 			    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 			    for word in resultados:
 			            wr.writerow([word])	
