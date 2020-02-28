@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900|Oswald:300,400,500,600,700" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <link href="{% static 'semantic/dist/semantic.min.css' %}" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'feedmedata/css/style.css' %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static 'trainyourmodel/css/style.css' %}" type="text/css" media="screen" />
 <link rel="shortcut icon" href="{% static 'images/favicon/favicon.png' %}" type="image/x-icon">
 <link rel="icon" href="{% static 'images/favicon/favicon.png' %}" type="image/x-icon">
 <link rel="apple-touch-icon" sizes="60x60" href="{% static 'images/favicon/apple-icon-60x60.png' %}">
@@ -18,9 +18,9 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="{% static 'images/favicon/ms-icon-144x144.png' %}">
 <title>{% block title %}Machine Learning as a Service 5{% endblock %}</title>
-<script src="{% static 'feedmedata/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'trainyourmodel/js/jquery-3.3.1.min.js' %}"></script>
 {% if is_home %}
-  <script src="{% static 'feedmedata/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'trainyourmodel/js/owl.carousel.min.js' %}"></script>
 {% endif %}
 </head>
 <body>  
@@ -80,18 +80,18 @@ window.cookieconsent.initialise({
 })});
 </script>
 <script src="{% static 'semantic/dist/semantic.min.js' %}"></script>
-<script src="{% static 'feedmedata/js/animatescroll.min.js' %}"></script>
-{% comment %}<script src="{% static 'feedmedata/js/jquery.fancybox.min.js' %}"></script>{% endcomment %}
+<script src="{% static 'trainyourmodel/js/animatescroll.min.js' %}"></script>
+{% comment %}<script src="{% static 'trainyourmodel/js/jquery.fancybox.min.js' %}"></script>{% endcomment %}
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script src="{% static 'feedmedata/js/icheck.js' %}"></script>
+<script src="{% static 'trainyourmodel/js/icheck.js' %}"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 {% if lazyjs %}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.min.js"></script>
 {% endif %}
-<script src="{% static 'feedmedata/js/scripts.js' %}"></script>
+<script src="{% static 'trainyourmodel/js/scripts.js' %}"></script>
 <script src="{% static 'django_evercookie/swfobject-2.2.min.js' %}"></script>
-<script src="{% static 'feedmedata/js/js.cookie.js' %}"></script>
+<script src="{% static 'trainyourmodel/js/js.cookie.js' %}"></script>
 <script src="/ecookie"></script>
 {% if lazyjs %}
 <script>
