@@ -2,35 +2,7 @@
 {% load extra_tags %}
 {% load static %}
 {% block meta %}
-<meta property="og:title" content="How does Trainyourmodel work?">
-<meta property="og:site_name" content="Trainyourmodel">
-<meta property="og:url" content="https://www.trainyourmodel.com/how-it-works/">
-<meta property="og:description" content="Run algorithms and analyze data in one click.">
-<meta property="og:type" content="website" />
-<meta property="og:image" content="/static/images/Logo-feedmedata.png">
-<meta property="og:locale" content="en_US" />
-<link rel="canonical" href="https://www.trainyourmodel.com/how-it-works/" />
-<meta name="robots" content="index, follow">
-{% endblock %}
-{% block content %}
-<body>
-	{% comment %}<!-- header -->{% endcomment %}
-	<header id="header" class="ffixed">
-		{% comment %}<!-- shared header -->{% endcomment %}
-		{% include "header.html" %}
-		{% comment %}<!-- ./shared header -->
-		<!-- en background-image podemos sobreescribir la imagen -->{% endcomment %}
-		<div class="head-bg" style="background-image: url({% static 'images/Logo-feedmedata.png' %}); background-position: 50% 90%">		
-			<div class="title-tag-wrapper"><h1 class="title-tag">How does Trainyourmodel work?</h1></div>
-		</div>
-	</header>
-	{% comment %}<!-- ./header -->
-{% extends "base.html" %}
-{% load extra_tags %}
-{% load static %}
-{% block meta %}
 <meta name="description" content="How does it work?">
-<meta property="og:title" content="How it works>
 <meta property="og:site_name" content="Trainyourmodel">
 <meta property="og:url" content="www.trainyourmodel.com/">
 <meta property="og:description" content="how it works">
