@@ -2,7 +2,6 @@
 from django.db import models, OperationalError, transaction
 from django.template.defaultfilters import slugify
 import json
-from django_mysql.models import ListTextField
 from django.utils import timezone
 from lxml import html
 import collections
