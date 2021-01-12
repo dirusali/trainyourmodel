@@ -13,5 +13,4 @@ from portal import views as portal_views
 urlpatterns = [
     url(r'^', include('portal.urls')),    
     url(r'^admin/', admin.site.urls),
-    url(r'^api-token-auth/', obtain_jwt_token),
 ]
