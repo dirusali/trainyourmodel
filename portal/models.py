@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-from django_mysql.models import ListTextField
 from django.db.models import Count, CharField, Model
 
 
