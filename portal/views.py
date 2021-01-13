@@ -311,7 +311,6 @@ def upload_csv(request):
 	    clasi = request.POST['clasi']
 	
 	    if request.POST['submit'] == '_unsuper':
-		    if 2 > 1:
 			    Nc = range(1, 20)
 			    kmeans = [KMeans(n_clusters=i) for i in Nc]
 			    score = [kmeans[i].fit(Z).score(Z) for i in range(len(kmeans))]
